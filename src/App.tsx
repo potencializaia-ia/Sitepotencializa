@@ -1,3 +1,6 @@
+import { Routes, Route } from "react-router-dom";
+import { ServicePage } from "./pages/ServicePage";
+
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/sections/Hero';
@@ -12,9 +15,9 @@ import { Blog } from '@/sections/Blog';
 import { Marquee } from '@/sections/Marquee';
 import { FinalCTA } from '@/sections/FinalCTA';
 
-function App() {
+function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
       <main>
         <Hero />
@@ -30,8 +33,18 @@ function App() {
         <FinalCTA />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Routes>
+      {/* Página principal */}
+      <Route path="/" element={<Home />} />
+
+      {/* Página dos produtos */}
+      <Route path="/servicos/:slug" element={<ServicePage />} />
+    </Routes>
+  );
+}

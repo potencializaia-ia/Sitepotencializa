@@ -88,10 +88,10 @@ export function Benefits() {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-[#FF0066]/20"
+                className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-[#ff851b]/20"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop&crop=face"
+                  src="/dist/assets/images/benefits-image.jpg"
                   alt="Mulher usando smartphone"
                   className="w-full h-full object-cover"
                 />

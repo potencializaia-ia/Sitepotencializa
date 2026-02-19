@@ -50,7 +50,7 @@ export function Methodology() {
                 className="bg-white rounded-2xl p-8 text-center shadow-card hover:shadow-card-hover transition-shadow duration-300 border border-gray-100"
               >
                 {/* Number */}
-                <div className="inline-flex items-center justify-center bg-[#46c5f7] rounded-full px-4 py-2 min-w-[3.5rem] min-h-[3.5rem] shadow-md ring-4 ring-pink-100 mx-auto mb-6">
+                <div className="inline-flex items-center justify-center bg-[#46c5f7] rounded-full px-4 py-2 min-w-[3.5rem] min-h-[3.5rem] shadow-md ring-4 ring-blue-100 mx-auto mb-6">
                   <span className="text-sm sm:text-base font-bold text-white whitespace-nowrap"> {step.number} </span>
                 </div>
 

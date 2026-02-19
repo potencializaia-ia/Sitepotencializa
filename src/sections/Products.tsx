@@ -1,32 +1,37 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { SectionBadge } from '@/components/SectionBadge';
+import { Link } from "react-router-dom";
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
 
 const products = [
   {
     title: 'Atendimento Inteligente 24/7',
+    slug: 'atendimento-inteligente',
     description: 'Tira dúvidas e resolve problemas a qualquer momento, de forma rápida e automática.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face',
-    link: '#',
+    
   },
   {
     title: 'Assistente Pré-Vendas',
+    slug: 'assistente-pre-vendas',
     description: 'Captura e qualifica leads, entregando para sua equipe apenas quem está pronto para comprar.',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=face',
-    link: '#',
+    
   },
   {
     title: 'Copiloto de Vendas',
+    slug: 'copiloto-de-vendas',
     description: 'Responde dúvidas, recomenda produtos e recupera carrinhos, fechando mais vendas sem sobrecarregar seu time.',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=300&fit=crop&crop=face',
-    link: '#',
+    
   },
   {
     title: 'Suporte Turbo',
+    slug: 'suporte-turbo',
     description: 'Atende a equipe técnica com respostas rápidas, passo a passo de uso e soluções imediatas para clientes e parceiros.',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=300&fit=crop&crop=face',
-    link: '#',
+    
   },
 ];
 
@@ -78,13 +83,13 @@ export function Products() {
                   <p className="text-[#2D2D4A]/70 mb-4 leading-relaxed">
                     {product.description}
                   </p>
-                  <a
-                    href={product.link}
+                  <Link
+                    to={`/servicos/${product.slug}`}
                     className="inline-flex items-center gap-2 text-[#FF0066] font-medium hover:gap-3 transition-all"
                   >
                     Saiba mais
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             </StaggerItem>
