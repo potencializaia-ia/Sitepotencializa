@@ -15,6 +15,9 @@ import { Blog } from '@/sections/Blog';
 import { Marquee } from '@/sections/Marquee';
 import { FinalCTA } from '@/sections/FinalCTA';
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 function Home() {
   return (
     <>
@@ -35,6 +38,16 @@ function Home() {
       <Footer />
     </>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
 }
 
 export default function App() {

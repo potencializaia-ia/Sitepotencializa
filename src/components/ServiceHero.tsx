@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SectionBadge } from "@/components/SectionBadge";
-import { CheckCircle2, CalendarCheck, MessageCircleMore, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  PlayCircle,
+  CheckCircle2,
+  MessageCircle,
+  TrendingUp,
+  Clock,
+} from "lucide-react";
 
 type ServiceHeroProps = {
   badgeText?: string;
@@ -13,172 +20,170 @@ type ServiceHeroProps = {
   imageAlt?: string;
 };
 
-export function ServiceHero({
-  badgeText = "atendimento inteligente",
-  title,
-  subtitle,
-  ctaText,
-  ctaHref = "/#contato",
-  imageSrc,
-  imageAlt = "Imagem do serviço",
-}: ServiceHeroProps) {
+export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imageSrc, imageAlt }: ServiceHeroProps) {
   const containerVariants = {
     hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
+    show: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
+    hidden: { opacity: 0, y: 18 },
+    show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
+      transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const },
     },
   };
 
   return (
-    // 1) começa no topo, mesmo nível do header (nada de padding-top aqui)
-    <section className="relative overflow-hidden">
-      {/* 2) wrapper mais largo + cantos arredondados */}
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="bg-hero-gradient rounded-[28px] sm:rounded-[36px] overflow-hidden w-full">
-          {/* 3) mantém a mesma disposição, só aumenta o tamanho do container */}
-          <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 pt-24 sm:pt-28 pb-16">
+    <section className="relative min-h-screen pt-24 overflow-hidden">
+      {/* Fundo / Gradiente */}
+      <div className="absolute inset-0 bg-hero-gradient" />
+
+      {/* blobs suaves */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#fc7500]/25 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-y-12" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Texto */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="text-center lg:text-left space-y-8"
+          >
             <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid lg:grid-cols-2 gap-10 items-center"
+              variants={itemVariants}
+              className="flex justify-center lg:justify-start"
             >
-              {/* LEFT */}
-              <div className="text-center lg:text-left">
-                <motion.div
-                  variants={itemVariants}
-                  className="flex justify-center lg:justify-start"
-                >
-                  <SectionBadge text={badgeText} />
-                </motion.div>
+              <SectionBadge text={badgeText} />
+            </motion.div>
 
-                <motion.h1
-                  variants={itemVariants}
-                  className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D4A] leading-tight"
-                >
-                  {title}
-                </motion.h1>
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-7xl font-bold leading-tight text-[#2D2D4A]"
+            >
+              {title}
+            </motion.h1>
 
-                <motion.p
-                  variants={itemVariants}
-                  className="mt-5 text-lg text-[#2D2D4A]/80 max-w-xl mx-auto lg:mx-0"
-                >
-                  {subtitle}
-                </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-[#2D2D4A]/75 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+            >
+              {subtitle}
+            </motion.p>
 
-                <motion.div
-                  variants={itemVariants}
-                  className="mt-8 flex justify-center lg:justify-start"
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              {/* CTA principal usa ctaHref */}
+              <a href={ctaHref} className="inline-flex">
+                <Button
+                  size="lg"
+                  className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-8 py-6 text-base font-semibold rounded-full shadow-lg"
                 >
-                  <a href={ctaHref}>
-                    <Button
-                      size="lg"
-                      className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
-                    >
-                      {ctaText}
-                    </Button>
-                  </a>
-                </motion.div>
+                  <span>{ctaText}</span>
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
 
-                {/* mini features (checks coloridos) */}
-                <motion.div
-                  variants={itemVariants}
-                  className="mt-10 grid sm:grid-cols-2 gap-3 max-w-xl mx-auto lg:mx-0"
-                >
-                  {["Responde em segundos", "Agenda e direciona", "Escala para humano", "Opera 24/7"].map(
-                    (t) => (
-                      <div
-                        key={t}
-                        className="flex items-center gap-2 text-sm text-[#2D2D4A]/75 justify-center lg:justify-start"
-                      >
-                        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
-                          <CheckCircle2 className="h-4 w-4 text-[#FF0066]" />
-                        </span>
-                        {t}
-                      </div>
-                    )
-                  )}
-                </motion.div>
-              </div>
-
-              {/* RIGHT */}
-              <motion.div
-                variants={itemVariants}
-                className="relative w-full max-w-xl mx-auto"
+              {/* Botão secundário (opcional) */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-base font-semibold rounded-full bg-white/70 backdrop-blur-sm border border-white/50 hover:bg-white"
               >
-                {/* círculo rosa atrás (mantém, só ajusta posição levemente) */}
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-1/2 right-8 -translate-y-1/3 w-[360px] h-[360px] bg-[#FF0066] rounded-full -z-10"
-                />
+                <PlayCircle className="w-5 h-5 mr-2" />
+                Ver demonstração
+              </Button>
+            </motion.div>
 
-                {/* imagem */}
-                <div className="relative z-10">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-[#2D2D4A]/70"
+            >
+              {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map(
+                (t) => (
+                  <div key={t} className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#fc7500]" />
+                    <span>{t}</span>
+                  </div>
+                )
+              )}
+            </motion.div>
+          </motion.div>
+
+          {/* Visual */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] as const }}
+            className="relative"
+          >
+            <div className="relative bg-white/35 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                {/* header mock */}
+                <div className="bg-gradient-to-r from-[#001f3f] to-sky-500 p-4 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <MessageCircle className="text-white w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold">Assistente Virtual</h3>
+                    <p className="text-white/80 text-xs">Online agora</p>
+                  </div>
+                </div>
+
+                {/* imagem do serviço (usa imageSrc) */}
+                <div className="relative h-56 sm:h-64 bg-slate-50">
                   <img
                     src={imageSrc}
                     alt={imageAlt}
-                    className="w-full h-auto object-cover rounded-2xl shadow-card"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
-                {/* Floating badges (mesma disposição) */}
-                <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -left-2 sm:left-0 top-1/4 z-20"
-                >
-                  <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-[#FF0066]/10 rounded-lg flex items-center justify-center">
-                      <MessageCircleMore className="w-4 h-4 text-[#FF0066]" />
+                {/* input */}
+                <div className="p-4 border-t border-slate-100 bg-white">
+                  <div className="flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2">
+                    <div className="text-sm text-slate-500 flex-1">
+                      Digite sua mensagem…
                     </div>
-                    <span className="text-sm font-medium text-[#2D2D4A]">
-                      Respondendo <span className="font-bold">dúvidas</span> em tempo real
-                    </span>
+                    <div className="w-8 h-8 bg-[#fc7500] rounded-full flex items-center justify-center">
+                      <ArrowRight className="w-4 h-4 text-white" />
+                    </div>
                   </div>
-                </motion.div>
+                </div>
+              </div>
 
-                <motion.div
-                  animate={{ y: [10, -10, 10] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute right-0 top-1/2 z-20"
-                >
-                  <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-[#FF0066]/10 rounded-lg flex items-center justify-center">
-                      <CalendarCheck className="w-4 h-4 text-[#FF0066]" />
-                    </div>
-                    <span className="text-sm font-medium text-[#2D2D4A]">
-                      Agendando <span className="font-bold">atendimentos</span> automaticamente
-                    </span>
+              {/* cards flutuantes */}
+              <div className="absolute -right-3 top-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-green-600" />
                   </div>
-                </motion.div>
+                  <div>
+                    <p className="text-xs text-slate-500">Conversões</p>
+                    <p className="text-lg font-bold text-slate-900">+147%</p>
+                  </div>
+                </div>
+              </div>
 
-                <motion.div
-                  animate={{ y: [-8, 8, -8] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-                  className="absolute left-1/3 -bottom-6 z-20"
-                >
-                  <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-[#FF0066]/10 rounded-lg flex items-center justify-center">
-                      <Sparkles className="w-4 h-4 text-[#FF0066]" />
-                    </div>
-                    <span className="text-sm font-medium text-[#2D2D4A]">
-                      Padrão de marca <span className="font-bold">consistente</span>
-                    </span>
+              <div className="absolute -left-3 bottom-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-sky-600" />
                   </div>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Tempo de resposta</p>
+                    <p className="text-lg font-bold text-slate-900">&lt; 1s</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

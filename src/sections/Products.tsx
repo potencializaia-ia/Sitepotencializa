@@ -8,28 +8,28 @@ const products = [
   {
     title: 'Atendimento Inteligente 24/7',
     slug: 'atendimento-inteligente',
-    description: 'Tira dúvidas e resolve problemas a qualquer momento, de forma rápida e automática.',
+    description: 'IA treinada para atender, resolver dúvidas, registrar informações e escalar seu suporte sem perder qualidade.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face',
     
   },
   {
-    title: 'Assistente Pré-Vendas',
+    title: 'Vendas & Pré-Vendas com IA',
     slug: 'assistente-pre-vendas',
-    description: 'Captura e qualifica leads, entregando para sua equipe apenas quem está pronto para comprar.',
+    description: 'Funil conversacional que qualifica leads, agenda contatos e entrega oportunidades prontas para seu time.',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=face',
     
   },
   {
-    title: 'Copiloto de Vendas',
+    title: 'Integração & Operação Digital',
     slug: 'copiloto-de-vendas',
-    description: 'Responde dúvidas, recomenda produtos e recupera carrinhos, fechando mais vendas sem sobrecarregar seu time.',
+    description: 'Conectamos sua IA aos seus sistemas para centralizar dados, automatizar processos e gerar controle.',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=300&fit=crop&crop=face',
     
   },
   {
-    title: 'Suporte Turbo',
+    title: 'IA Sob Medida',
     slug: 'suporte-turbo',
-    description: 'Atende a equipe técnica com respostas rápidas, passo a passo de uso e soluções imediatas para clientes e parceiros.',
+    description: 'Desenvolvemos soluções personalizadas para necessidades específicas do seu negócio.',
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=300&fit=crop&crop=face',
     
   },

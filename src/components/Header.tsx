@@ -11,6 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "react-router-dom";
 
 const solucoesItems = [
   { title: "Atendimento Inteligente", href: "#" },
@@ -74,11 +75,15 @@ export function Header() {
           ].join(" ")}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+            className="flex items-center"
+          >
             <span className="text-xl font-bold tracking-tight text-[#001f3f]">
               Potencializa<span className="text-[#fc7500]">.</span>ia
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">

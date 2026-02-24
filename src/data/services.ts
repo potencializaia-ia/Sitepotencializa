@@ -2,6 +2,7 @@ export const services = [
   {
     title: "Atendimento Inteligente 24/7",
     slug: "atendimento-inteligente",
+    badge: "atendimento inteligente",
     subtitle: "Atenda seus clientes 24h com velocidade e consistência",
     description:
       "Automatize seu atendimento com IA treinada para responder com contexto, reduzir filas e manter o padrão da sua marca.",
@@ -20,11 +21,13 @@ export const services = [
       "Relatórios e insights",
     ],
     cta: "Quero automatizar meu atendimento",
+    ctaHref: "/#contato",
   },
 
   {
     title: "Assistente Pré-Vendas",
     slug: "assistente-pre-vendas",
+    badge: "pré-vendas",
     subtitle: "Qualifique leads antes do contato humano",
     description:
       "Capture, qualifique e direcione oportunidades certas, entregando para seu time apenas quem está pronto para avançar.",
@@ -43,11 +46,13 @@ export const services = [
       "Agendamento e handoff para vendedor",
     ],
     cta: "Quero qualificar meus leads",
+    ctaHref: "/#contato",
   },
 
   {
     title: "Copiloto de Vendas",
     slug: "copiloto-de-vendas",
+    badge: "vendas",
     subtitle: "Feche mais com IA apoiando seu time comercial",
     description:
       "Responda dúvidas, recomende soluções e recupere oportunidades automaticamente, sem sobrecarregar sua equipe.",
@@ -66,11 +71,13 @@ export const services = [
       "Relatórios de performance",
     ],
     cta: "Quero acelerar minhas vendas",
+    ctaHref: "/#contato",
   },
 
   {
     title: "Suporte Turbo",
     slug: "suporte-turbo",
+    badge: "suporte",
     subtitle: "Resolva chamados com respostas guiadas e base viva",
     description:
       "Agilize o suporte técnico com IA treinada e fluxos passo a passo, diminuindo tickets e aumentando satisfação.",
@@ -89,5 +96,6 @@ export const services = [
       "Relatórios de causas e recorrência",
     ],
     cta: "Quero otimizar meu suporte",
+    ctaHref: "/#contato",
   },
 ] as const;
