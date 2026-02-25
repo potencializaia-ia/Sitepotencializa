@@ -89,6 +89,8 @@ export function ServicePage() {
           ctaHref={service.ctaHref}
           imageSrc={service.image}
           imageAlt={service.title}
+          messageUser={service.messageUser}
+          messageBot={service.messageBot}
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

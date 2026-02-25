@@ -18,9 +18,21 @@ type ServiceHeroProps = {
   ctaHref?: string;
   imageSrc: string;
   imageAlt?: string;
+  messageUser?: string;
+  messageBot?: string;
 };
 
-export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imageSrc, imageAlt }: ServiceHeroProps) {
+export function ServiceHero({
+  badgeText,
+  title,
+  subtitle,
+  ctaText,
+  ctaHref = "/#contato",
+  imageSrc,
+  imageAlt = "Imagem do serviço",
+  messageUser,
+  messageBot,
+}: ServiceHeroProps) {
   const containerVariants = {
     hidden: {},
     show: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } },
@@ -34,6 +46,10 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
       transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const },
     },
   };
+
+  const userMsg = messageUser ?? "Quero automatizar meu atendimento no WhatsApp.";
+  const botMsg =
+    messageBot ?? "Entendi! Vamos automatizar seu atendimento no WhatsApp com IA.";
 
   return (
     <section className="relative min-h-screen pt-24 overflow-hidden">
@@ -54,10 +70,7 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
             animate="show"
             className="text-center lg:text-left space-y-8"
           >
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center lg:justify-start"
-            >
+            <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
               <SectionBadge text={badgeText} />
             </motion.div>
 
@@ -79,7 +92,6 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              {/* CTA principal usa ctaHref */}
               <a href={ctaHref} className="inline-flex">
                 <Button
                   size="lg"
@@ -90,7 +102,6 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
                 </Button>
               </a>
 
-              {/* Botão secundário (opcional) */}
               <Button
                 variant="outline"
                 size="lg"
@@ -105,14 +116,12 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
               variants={itemVariants}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-[#2D2D4A]/70"
             >
-              {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map(
-                (t) => (
-                  <div key={t} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-[#fc7500]" />
-                    <span>{t}</span>
-                  </div>
-                )
-              )}
+              {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map((t) => (
+                <div key={t} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-[#fc7500]" />
+                  <span>{t}</span>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -123,43 +132,108 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] as const }}
             className="relative"
           >
-            <div className="relative bg-white/35 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                {/* header mock */}
-                <div className="bg-gradient-to-r from-[#001f3f] to-sky-500 p-4 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                    <MessageCircle className="text-white w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold">Assistente Virtual</h3>
-                    <p className="text-white/80 text-xs">Online agora</p>
-                  </div>
-                </div>
-
-                {/* imagem do serviço (usa imageSrc) */}
-                <div className="relative h-56 sm:h-64 bg-slate-50">
-                  <img
-                    src={imageSrc}
-                    alt={imageAlt}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* input */}
-                <div className="p-4 border-t border-slate-100 bg-white">
-                  <div className="flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2">
-                    <div className="text-sm text-slate-500 flex-1">
-                      Digite sua mensagem…
+            {/* GLASS WRAPPER (deixa os floaters vazarem) */}
+            <div className="relative bg-white/35 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50 overflow-visible">
+              {/* INNER CLIP (segura cantos do conteúdo do chat) */}
+              <div className="relative rounded-3xl overflow-hidden">
+                {/* CHAT CARD */}
+                <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
+                  {/* header mock */}
+                  <div className="bg-gradient-to-r from-[#001f3f] to-sky-500 p-4 flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                      <MessageCircle className="text-white w-6 h-6" />
                     </div>
-                    <div className="w-8 h-8 bg-[#fc7500] rounded-full flex items-center justify-center">
-                      <ArrowRight className="w-4 h-4 text-white" />
+                    <div>
+                      <h3 className="text-white font-semibold">Assistente Virtual</h3>
+                      <p className="text-white/80 text-xs">Online agora</p>
+                    </div>
+                  </div>
+
+                  {/* ÁREA DAS MENSAGENS COM WALLPAPER */}
+                  <div className="relative h-72 sm:h-80 overflow-hidden">
+                    {/* wallpaper */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={imageSrc}
+                        alt={imageAlt}
+                        className="w-full h-full object-cover opacity-25 blur-sm"
+                      />
+                      {/* overlay pra leitura */}
+                      <div className="absolute inset-0 bg-white/25" />
+                    </div>
+
+                    {/* mensagens */}
+                    <div className="relative p-6 pt-8 pb-20 space-y-4 h-full overflow-y-auto">
+                      {/* Bot */}
+                      <div className="flex items-start gap-2">
+                        <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center shrink-0">
+                          <MessageCircle className="w-4 h-4 text-sky-600" />
+                        </div>
+
+                        <div className="bg-white/90 backdrop-blur-sm p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 max-w-[82%]">
+                          Olá! 👋 Como posso ajudar você hoje?
+                        </div>
+                      </div>
+
+                      {/* Usuário */}
+                      <div className="flex items-start gap-2 justify-end">
+                        <div className="bg-[#2D2D4A] p-3 rounded-2xl rounded-tr-none shadow-sm text-sm text-white max-w-[82%]">
+                          {userMsg}
+                        </div>
+                      </div>
+
+                      {/* Bot */}
+                      <div className="flex items-start gap-2">
+                        <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center shrink-0">
+                          <MessageCircle className="w-4 h-4 text-sky-600" />
+                        </div>
+
+                        <div className="bg-white/90 backdrop-blur-sm p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 max-w-[82%]">
+                          {botMsg}
+                        </div>
+                      </div>
+
+                      {/* digitando */}
+                      <div className="flex items-center justify-center gap-1 pt-1">
+                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce" />
+                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce [animation-delay:0.1s]" />
+                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce [animation-delay:0.2s]" />
+                      </div>
+
+                      {/* espaço extra pra não “colar” no input */}
+                      <div className="h-2" />
+                    </div>
+                  </div>
+
+                  {/* input */}
+                  <div className="p-4 border-t border-slate-100 bg-white">
+                    <div className="flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2">
+                      <div className="text-sm text-slate-500 flex-1">Digite sua mensagem…</div>
+                      <div className="w-8 h-8 bg-[#fc7500] rounded-full flex items-center justify-center">
+                        <ArrowRight className="w-4 h-4 text-white" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* cards flutuantes */}
-              <div className="absolute -right-3 top-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
+              {/* Tempo de resposta (FLOATER) — fora do card, dentro do wrapper */}
+              <div className="absolute -left-4 bottom-32 z-20">
+                <div className="bg-white rounded-xl p-4 shadow-xl border border-slate-100 w-[210px]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-sky-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500">Tempo de resposta</p>
+                      <p className="text-lg font-bold text-slate-900">&lt; 1s</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Conversões (FLOATER) — fora do card, dentro do wrapper */}
+              <div className="absolute -right-3 top-16 z-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                     <TrendingUp className="w-5 h-5 text-green-600" />
@@ -167,18 +241,6 @@ export function ServiceHero({ badgeText, title, subtitle, ctaText, ctaHref, imag
                   <div>
                     <p className="text-xs text-slate-500">Conversões</p>
                     <p className="text-lg font-bold text-slate-900">+147%</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -left-3 bottom-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500">Tempo de resposta</p>
-                    <p className="text-lg font-bold text-slate-900">&lt; 1s</p>
                   </div>
                 </div>
               </div>
