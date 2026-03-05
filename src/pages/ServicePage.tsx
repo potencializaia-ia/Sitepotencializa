@@ -36,7 +36,7 @@ export function ServicePage() {
       <>
         <Header />
 
-        <section className="pt-24 pb-20 bg-[#F5F5F7]">
+        <section className="pb-20 bg-[#F5F5F7]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-2xl font-bold text-[#2D2D4A]">
               Serviço não encontrado
@@ -55,123 +55,104 @@ export function ServicePage() {
   }
 
   // FAQ específico (Bloco 1 por enquanto)
-  const faqItems =
-    slug === "atendimento-inteligente"
-      ? [
-        {
-          q: "Preciso trocar meus sistemas atuais?",
-          a: "Não. Integramos com o que você já usa sempre que houver API disponível.",
-        },
-        {
-          q: "E quando o cliente precisa de um humano?",
-          a: "A IA transfere com todo o contexto para sua equipe.",
-        },
-        {
-          q: "Funciona fora do horário comercial?",
-          a: "Sim. A operação é 24/7.",
-        },
-      ]
-      : [];
-
+  const faqItems = service.faq ?? [];
   return (
     <>
       {/* Header fixo */}
       <Header />
 
-      {/* Conteúdo */}
-      <section className="pt-24 pb-20 bg-[#F5F5F7]">
-
-        <ServiceHero
-          badgeText={service.badge}
-          title={service.title}
-          subtitle={service.subtitle}
-          ctaText={service.cta}
-          ctaHref={service.ctaHref}
-          imageSrc={service.image}
-          imageAlt={service.title}
-          messageUser={service.messageUser}
-          messageBot={service.messageBot}
+      <ServiceHero
+        badgeText={service.badge}
+        title={service.title}
+        subtitle={service.subtitle}
+        ctaText={service.cta}
+        ctaHref={service.ctaHref}
+        imageSrc={service.image}
+        imageAlt={service.title}
+        messageUser={service.messageUser}
+        messageBot={service.messageBot}
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Base da página (fundo cinza) */}
+        <main className="bg-[#F5F5F7]">
 
           {/* ================= PROBLEMA ================= */}
-          <div className="text-center mb-12">
-
-            <SectionBadge text="o problema" className="mb-6" />
-
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-              Oportunidades perdidas todos os dias
-              <span className="text-[#FF0066]">.</span>
-            </h2>
-
-            <p className="mt-3 text-lg text-[#2D2D4A]/70">
-              Pequenos atrasos viram grandes perdas.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-            {[
-              "Demora no atendimento",
-              "Filas no WhatsApp",
-              "Equipes sobrecarregadas",
-              "Respostas inconsistentes",
-              "Atendimento fora do horário",
-              "Vendas perdidas",
-            ].map((t) => (
-              <div
-                key={t}
-                className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
-              >
-                <div className="flex gap-3">
-                  <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
-                    <Check className="h-4 w-4 text-[#FF0066]" />
-                  </span>
-
-                  <p className="text-[#2D2D4A] font-medium">{t}</p>
-                </div>
+          <section className="py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <SectionBadge text="o problema" className="mb-6" />
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
+                  Oportunidades perdidas todos os dias
+                  <span className="text-[#FF0066]">.</span>
+                </h2>
+                <p className="mt-3 text-lg text-[#2D2D4A]/70">
+                  Pequenos atrasos viram grandes perdas.
+                </p>
               </div>
-            ))}
-          </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  "Demora no atendimento",
+                  "Filas no WhatsApp",
+                  "Equipes sobrecarregadas",
+                  "Respostas inconsistentes",
+                  "Atendimento fora do horário",
+                  "Vendas perdidas",
+                ].map((t) => (
+                  <div
+                    key={t}
+                    className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
+                  >
+                    <div className="flex gap-3">
+                      <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
+                        <Check className="h-4 w-4 text-[#FF0066]" />
+                      </span>
+                      <p className="text-[#2D2D4A] font-medium">{t}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
           {/* ================= O QUE FAZ ================= */}
-          <div className="text-center mb-12">
-
-            <SectionBadge text="o que faz" className="mb-6" />
-
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-              Atendimento automático e inteligente
-              <span className="text-[#FF0066]">.</span>
-            </h2>
-
-            <p className="mt-3 text-lg text-[#2D2D4A]/70">
-              Um fluxo único que resolve e organiza.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-            {[
-              "WhatsApp, Instagram e site",
-              "Base personalizada",
-              "Triagem inteligente",
-              "Redirecionamento humano",
-              "Registro automático",
-              "Operação 24/7",
-            ].map((t) => (
-              <div
-                key={t}
-                className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
-              >
-                <div className="flex gap-3">
-                  <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
-                    <Check className="h-4 w-4 text-[#FF0066]" />
-                  </span>
-
-                  <p className="text-[#2D2D4A]/80">{t}</p>
-                </div>
+          <section className="py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <SectionBadge text="o que faz" className="mb-6" />
+                <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
+                  Atendimento automático e inteligente
+                  <span className="text-[#FF0066]">.</span>
+                </h2>
+                <p className="mt-3 text-lg text-[#2D2D4A]/70">
+                  Um fluxo único que resolve e organiza.
+                </p>
               </div>
-            ))}
-          </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  "WhatsApp, Instagram e site",
+                  "Base personalizada",
+                  "Triagem inteligente",
+                  "Redirecionamento humano",
+                  "Registro automático",
+                  "Operação 24/7",
+                ].map((t) => (
+                  <div
+                    key={t}
+                    className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
+                  >
+                    <div className="flex gap-3">
+                      <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
+                        <Check className="h-4 w-4 text-[#FF0066]" />
+                      </span>
+                      <p className="text-[#2D2D4A]/80">{t}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
           {/* BENEFÍCIOS */}
           <section className="py-24 bg-white">
@@ -337,48 +318,46 @@ export function ServicePage() {
           </section>
 
           {/* ================= FAQ ================= */}
-          <div className="mb-24">
+          {faqItems.length > 0 && (
+            <section className="py-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
 
-            <div className="text-center mb-12">
+                  <SectionBadge text="FAQ" className="mb-6" />
 
-              <SectionBadge text="FAQ" className="mb-6" />
+                  <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
+                    Perguntas frequentes
+                    <span className="text-[#FF0066]">.</span>
+                  </h2>
 
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-                Perguntas frequentes
-                <span className="text-[#FF0066]">.</span>
-              </h2>
+                  <p className="mt-3 text-lg text-[#2D2D4A]/70">
+                    Tire suas dúvidas sobre atendimento com IA.
+                  </p>
+                </div>
 
-              <p className="mt-3 text-lg text-[#2D2D4A]/70">
-                Tire suas dúvidas sobre atendimento com IA.
-              </p>
+              <div className="max-w-4xl mx-auto">
+                <Accordion type="single" collapsible className="space-y-3">
+                  {faqItems.map((item) => (
+                    <AccordionItem
+                      key={item.q}
+                      value={item.q}
+                      className="bg-white rounded-2xl px-6 shadow-card border border-gray-100"
+                    >
+                      <AccordionTrigger className="text-left text-[#2D2D4A] font-medium">
+                        {item.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-[#2D2D4A]/70">
+                        {item.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </div>
-
-            <div className="max-w-4xl mx-auto">
-
-              <Accordion type="single" collapsible className="space-y-3">
-
-                {faqItems.map((item) => (
-                  <AccordionItem
-                    key={item.q}
-                    value={item.q}
-                    className="bg-white rounded-2xl px-6 shadow-card border border-gray-100"
-                  >
-                    <AccordionTrigger className="text-left text-[#2D2D4A] font-medium">
-                      {item.q}
-                    </AccordionTrigger>
-
-                    <AccordionContent className="text-[#2D2D4A]/70">
-                      {item.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-
-              </Accordion>
-            </div>
-          </div>
-        </div>
-      </section >
-    </>
-  );
+          </section>
+        )}
+       </main>
+     </>
+    );
 }
                 

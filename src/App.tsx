@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ServicePage } from "./pages/ServicePage";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -14,9 +15,6 @@ import { FAQ } from '@/sections/FAQ';
 import { Blog } from '@/sections/Blog';
 import { Marquee } from '@/sections/Marquee';
 import { FinalCTA } from '@/sections/FinalCTA';
-
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 function Home() {
   return (
@@ -40,24 +38,17 @@ function Home() {
   );
 }
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [pathname]);
-
-  return null;
-}
-
 export default function App() {
   return (
-    <Routes>
-      {/* Página principal */}
-      <Route path="/" element={<Home />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* Página principal */}
+        <Route path="/" element={<Home />} />
 
-      {/* Página dos produtos */}
-      <Route path="/servicos/:slug" element={<ServicePage />} />
-    </Routes>
+        {/* Página dos produtos */}
+        <Route path="/servicos/:slug" element={<ServicePage />} />
+      </Routes>
+    </>
   );
 }

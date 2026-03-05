@@ -24,6 +24,20 @@ export const services = [
     messageBot: "Entendi! Vamos automatizar seu atendimento no WhatsApp com IA.",
     cta: "Quero automatizar meu atendimento",
     ctaHref: "/#contato",
+    faq: [
+      {
+        q: "Preciso trocar meus sistemas atuais?",
+        a: "Não. Integramos com o que você já usa sempre que houver API disponível.",
+      },
+      {
+        q: "E quando o cliente precisa de um humano?",
+        a: "A IA transfere com todo o contexto para sua equipe.",
+      },
+      {
+        q: "Funciona fora do horário comercial?",
+        a: "Sim. A operação é 24/7.",
+      },
+    ],
   },
 
   {
@@ -51,6 +65,20 @@ export const services = [
     messageBot: "Entendi! Vamos qualificar seus leads com base em perguntas personalizadas.",
     cta: "Quero qualificar meus leads",
     ctaHref: "/#contato",
+    faq: [
+      {
+        q: "A IA consegue qualificar do meu jeito?",
+        a: "Sim. As perguntas e critérios de qualificação são personalizados para seu funil e oferta.",
+      },
+      {
+        q: "Ela integra com meu CRM?",
+        a: "Na maioria dos casos, sim — usamos integrações via API ou automações (ex.: n8n/Make) quando necessário.",
+      },
+      {
+        q: "O lead pode ir direto para o vendedor?",
+        a: "Sim. Quando atingir o score certo, fazemos o handoff com contexto e histórico da conversa.",
+      },
+    ],
   },
 
   {
@@ -78,6 +106,20 @@ export const services = [
     messageBot: "Perfeito! Vamos criar um copiloto de vendas para apoiar seu time comercial.",
     cta: "Quero acelerar minhas vendas",
     ctaHref: "/#contato",
+    faq: [
+      {
+        q: "Isso substitui meu time comercial?",
+        a: "Não. Ele acelera o time: responde dúvidas, sugere abordagens e recupera oportunidades.",
+      },
+      {
+        q: "Ele recomenda planos e serviços automaticamente?",
+        a: "Sim. Com base no seu catálogo e regras de negócio que você definir.",
+      },
+      {
+        q: "Dá para automatizar follow-up?",
+        a: "Sim. Criamos fluxos de reengajamento e lembretes com regras (tempo, etapa, interesse).",
+      },
+    ],
   },
 
   {
@@ -105,5 +147,19 @@ export const services = [
     messageBot: "Ótimo! Vamos criar um suporte turbo para resolver chamados com eficiência.",
     cta: "Quero otimizar meu suporte",
     ctaHref: "/#contato",
+    faq: [
+      {
+        q: "A IA aprende com meus artigos e documentos?",
+        a: "Sim. Podemos treinar com sua base (FAQ, docs, helpdesk, site) e manter tudo atualizado.",
+      },
+      {
+        q: "Ela reduz tickets repetidos?",
+        a: "Sim. Respostas guiadas e triagem diminuem volume e aumentam resolução no primeiro contato.",
+      },
+      {
+        q: "Pode abrir chamado quando necessário?",
+        a: "Sim. Quando não resolver, registra e encaminha com o contexto completo.",
+      },
+    ],
   },
 ] as const;
