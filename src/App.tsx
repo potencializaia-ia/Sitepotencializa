@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { ServicePage } from "./pages/ServicePage";
+import { ServicePage } from "@/pages/ServicePage";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 import { Header } from '@/components/Header';
@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
 
         {/* Página dos produtos */}
-        <Route path="/servicos/:slug" element={<ServicePage />} />
+        <Route path="/servicos/:slug" element={<ServicePage services={services} />} />
       </Routes>
     </>
   );

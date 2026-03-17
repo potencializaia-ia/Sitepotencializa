@@ -61,7 +61,7 @@ export function ServiceHero({
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-y-12" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-20 sm:pb-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <motion.div

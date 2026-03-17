@@ -1,363 +1,332 @@
-import { useParams } from "react-router-dom";
+export const services = [
+  {
+    title: "Atendimento Inteligente 24/7",
+    slug: "atendimento-inteligente",
+    badge: "atendimento inteligente",
+    subtitle: "Atenda seus clientes 24h com velocidade e consistência",
+    description:
+      "Automatize seu atendimento com IA treinada para responder com contexto, reduzir filas e manter o padrão da sua marca.",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=700&fit=crop&crop=face",
 
-import {
-  Check,
-  MessageCircle,
-  Globe,
-  Instagram,
-  Phone,
-  Wallet,
-  CalendarCheck,
-  ShieldCheck,
-  Users,
-  Activity,
-} from "lucide-react";
+    messageUser: "Quero automatizar meu atendimento no WhatsApp.",
+    messageBot: "Entendi! Vamos automatizar seu atendimento no WhatsApp com IA.",
 
-import { services } from "../data/services";
+    cta: "Quero automatizar meu atendimento",
+    ctaHref: "/#contato",
 
-import { Header } from "@/components/Header";
-import { SectionBadge } from "@/components/SectionBadge";
-import { Button } from "@/components/ui/button";
-import { ServiceHero } from "@/components/ServiceHero";
+    benefits: [
+      "Respostas instantâneas 24/7",
+      "Padronização do atendimento",
+      "Redução de custos operacionais",
+      "Escalonamento para humano quando necessário",
+    ],
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+    features: [
+      "Treinamento com base da empresa (FAQ, site, docs)",
+      "Integração com WhatsApp/Instagram",
+      "Coleta de dados e motivos de contato",
+      "Relatórios e insights",
+    ],
 
-export function ServicePage() {
-  const { slug } = useParams();
-  const service = services.find((s) => s.slug === slug);
+    whatItDoesTitle: "O que faz",
+    whatItDoesIntro:
+      "Seu atendimento pode ser ótimo no horário comercial, mas muita gente procura contato fora desse período.",
+    whatItDoesHighlight:
+      "Nossa IA não substitui sua equipe — potencializa seu alcance e garante que nenhuma oportunidade seja perdida.",
+    whatItDoesSteps: [
+      {
+        n: "1",
+        title: "Atende em múltiplos canais",
+        desc: "WhatsApp, Instagram, site e outros pontos de contato em um único fluxo.",
+      },
+      {
+        n: "2",
+        title: "Responde com contexto",
+        desc: "Usa informações reais da sua empresa para dar respostas mais precisas.",
+      },
+      {
+        n: "3",
+        title: "Qualifica e direciona",
+        desc: "Entende a intenção do cliente e encaminha para o fluxo ou pessoa certa.",
+      },
+      {
+        n: "4",
+        title: "Registra e organiza tudo",
+        desc: "Coleta dados, histórico e insights para sua operação ganhar clareza.",
+      },
+    ],
 
-  if (!service) {
-    return (
-      <>
-        <Header />
+    timelineSteps: [
+      "Cliente entra em contato por qualquer canal",
+      "Agente responde instantaneamente com a voz da sua marca",
+      "Resolve dúvidas, faz agendamentos ou coleta informações",
+      "Envia lembretes e confirmações automaticamente",
+      "Centraliza tudo em um painel de controle simples",
+    ],
 
-        <section className="pb-20 bg-[#F5F5F7]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-bold text-[#2D2D4A]">
-              Serviço não encontrado
-            </h1>
+    faq: [
+      {
+        q: "Preciso trocar meus sistemas atuais?",
+        a: "Não. Integramos com o que você já usa sempre que houver API disponível.",
+      },
+      {
+        q: "E quando o cliente precisa de um humano?",
+        a: "A IA transfere com todo o contexto para sua equipe.",
+      },
+      {
+        q: "Funciona fora do horário comercial?",
+        a: "Sim. A operação é 24/7.",
+      },
+    ],
+  },
 
-            <a
-              href="/"
-              className="mt-4 inline-block text-[#FF0066] font-medium underline"
-            >
-              Voltar para Home
-            </a>
-          </div>
-        </section>
-      </>
-    );
-  }
+  {
+    title: "Assistente Pré-Vendas",
+    slug: "assistente-pre-vendas",
+    badge: "pré-vendas",
+    subtitle: "Qualifique leads antes do contato humano",
+    description:
+      "Capture, qualifique e direcione oportunidades certas, entregando para seu time apenas quem está pronto para avançar.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=700&fit=crop&crop=face",
 
-  // FAQ específico (Bloco 1 por enquanto)
-  const faqItems = service.faq ?? [];
-  return (
-    <>
-      {/* Header fixo */}
-      <Header />
+    messageUser: "Quero qualificar meus leads antes do contato humano.",
+    messageBot:
+      "Entendi! Vamos qualificar seus leads com base em perguntas personalizadas.",
 
-      <ServiceHero
-        badgeText={service.badge}
-        title={service.title}
-        subtitle={service.subtitle}
-        ctaText={service.cta}
-        ctaHref={service.ctaHref}
-        imageSrc={service.image}
-        imageAlt={service.title}
-        messageUser={service.messageUser}
-        messageBot={service.messageBot}
-        />
+    cta: "Quero qualificar meus leads",
+    ctaHref: "/#contato",
 
-        {/* Base da página (fundo cinza) */}
-        <main className="bg-[#F5F5F7]">
+    benefits: [
+      "Leads mais qualificados",
+      "Menos tempo perdido no comercial",
+      "Aumento de conversão",
+      "Atendimento rápido no primeiro contato",
+    ],
 
-          {/* ================= PROBLEMA ================= */}
-          <section className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <SectionBadge text="o problema" className="mb-6" />
-                <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-                  Oportunidades perdidas todos os dias
-                  <span className="text-[#FF0066]">.</span>
-                </h2>
-                <p className="mt-3 text-lg text-[#2D2D4A]/70">
-                  Pequenos atrasos viram grandes perdas.
-                </p>
-              </div>
+    features: [
+      "Perguntas de qualificação personalizadas",
+      "Score de lead (quente/morno/frio)",
+      "Integração com CRM",
+      "Agendamento e handoff para vendedor",
+    ],
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  "Demora no atendimento",
-                  "Filas no WhatsApp",
-                  "Equipes sobrecarregadas",
-                  "Respostas inconsistentes",
-                  "Atendimento fora do horário",
-                  "Vendas perdidas",
-                ].map((t) => (
-                  <div
-                    key={t}
-                    className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
-                  >
-                    <div className="flex gap-3">
-                      <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
-                        <Check className="h-4 w-4 text-[#FF0066]" />
-                      </span>
-                      <p className="text-[#2D2D4A] font-medium">{t}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+    whatItDoesTitle: "O que faz",
+    whatItDoesIntro:
+      "Seu time comercial perde tempo quando precisa filtrar contatos sem contexto ou sem intenção real de compra.",
+    whatItDoesHighlight:
+      "Nossa IA antecipa esse trabalho, organiza os leads e entrega para o vendedor apenas quem realmente vale a atenção.",
+    whatItDoesSteps: [
+      {
+        n: "1",
+        title: "Capta o lead no primeiro contato",
+        desc: "Recebe o interesse do potencial cliente em canais como site, WhatsApp ou redes sociais.",
+      },
+      {
+        n: "2",
+        title: "Faz perguntas estratégicas",
+        desc: "Qualifica o lead com base em critérios definidos por você e pelo seu funil.",
+      },
+      {
+        n: "3",
+        title: "Classifica e prioriza",
+        desc: "Identifica quem está mais próximo da compra e separa por nível de oportunidade.",
+      },
+      {
+        n: "4",
+        title: "Entrega o contexto para o comercial",
+        desc: "Encaminha o lead com histórico, respostas e informações relevantes para acelerar a venda.",
+      },
+    ],
 
-          {/* ================= O QUE FAZ ================= */}
-          <section className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <SectionBadge text="o que faz" className="mb-6" />
-                <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-                  Atendimento automático e inteligente
-                  <span className="text-[#FF0066]">.</span>
-                </h2>
-                <p className="mt-3 text-lg text-[#2D2D4A]/70">
-                  Um fluxo único que resolve e organiza.
-                </p>
-              </div>
+    timelineSteps: [
+      "Lead entra em contato por um canal de aquisição",
+      "IA faz perguntas para entender perfil, necessidade e interesse",
+      "Classifica automaticamente o lead como quente, morno ou frio",
+      "Encaminha os melhores contatos para o time comercial",
+      "Organiza dados e histórico para facilitar o follow-up",
+    ],
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  "WhatsApp, Instagram e site",
-                  "Base personalizada",
-                  "Triagem inteligente",
-                  "Redirecionamento humano",
-                  "Registro automático",
-                  "Operação 24/7",
-                ].map((t) => (
-                  <div
-                    key={t}
-                    className="bg-white rounded-2xl p-6 shadow-card border border-gray-100"
-                  >
-                    <div className="flex gap-3">
-                      <span className="mt-0.5 inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF0066]/10">
-                        <Check className="h-4 w-4 text-[#FF0066]" />
-                      </span>
-                      <p className="text-[#2D2D4A]/80">{t}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+    faq: [
+      {
+        q: "A IA consegue qualificar do meu jeito?",
+        a: "Sim. As perguntas e critérios de qualificação são personalizados para seu funil e oferta.",
+      },
+      {
+        q: "Ela integra com meu CRM?",
+        a: "Na maioria dos casos, sim — usamos integrações via API ou automações quando necessário.",
+      },
+      {
+        q: "O lead pode ir direto para o vendedor?",
+        a: "Sim. Quando atingir o score certo, fazemos o handoff com contexto e histórico da conversa.",
+      },
+    ],
+  },
 
-          {/* BENEFÍCIOS */}
-          <section className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <SectionBadge text="benefícios" className="mb-6" />
-                <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A] mb-4">
-                  O que oferece<span className="text-[#fc7500]">.</span>
-                </h2>
-                <div className="w-24 h-1 bg-[#fc7500] mx-auto rounded-full" />
-              </div>
+  {
+    title: "Copiloto de Vendas",
+    slug: "copiloto-de-vendas",
+    badge: "vendas",
+    subtitle: "Feche mais com IA apoiando seu time comercial",
+    description:
+      "Responda dúvidas, recomende soluções e recupere oportunidades automaticamente, sem sobrecarregar sua equipe.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=1200&h=700&fit=crop&crop=face",
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { icon: Wallet, title: "Redução de custos", desc: "Automatize tarefas repetitivas e reduza esforço operacional sem perder qualidade." },
-                  { icon: CalendarCheck, title: "Mais conversões", desc: "Atendimento instantâneo que aumenta agendamentos e oportunidades." },
-                  { icon: ShieldCheck, title: "24/7 sem pausas", desc: "Nunca perca uma chance fora do horário comercial." },
-                  { icon: Users, title: "Time focado", desc: "Sua equipe foca em estratégia e relacionamento de alto nível." },
-                ].map(({ icon: Icon, title, desc }) => (
-                  <div
-                    key={title}
-                    className="bg-[#F5F5F7] rounded-2xl p-8 border border-slate-100 hover:border-[#fc7500]/40 transition-all hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <div className="w-14 h-14 bg-[#fc7500]/10 rounded-2xl flex items-center justify-center mb-6">
-                      <Icon className="w-7 h-7 text-[#fc7500]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-[#2D2D4A] mb-3">{title}</h3>
-                    <p className="text-[#2D2D4A]/70 leading-relaxed">{desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+    messageUser: "Quero um assistente que ajude meu time comercial a fechar mais.",
+    messageBot:
+      "Perfeito! Vamos criar um copiloto de vendas para apoiar seu time comercial.",
 
-          {/* COMO FUNCIONA */}
-          <section className="py-24 bg-[#2D2D4A] text-white relative overflow-hidden">
-            <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-500/40 via-[#2D2D4A] to-[#2D2D4A]" />
+    cta: "Quero acelerar minhas vendas",
+    ctaHref: "/#contato",
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                  <SectionBadge text="como funciona" className="mb-6" />
-                  <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                    Como funciona<span className="text-[#fc7500]">.</span>
-                  </h2>
+    benefits: [
+      "Mais conversões e velocidade",
+      "Recomendação inteligente de serviços",
+      "Recuperação de oportunidades",
+      "Padronização de abordagem",
+    ],
 
-                  <p className="text-xl text-white/80 leading-relaxed mb-6">
-                    Seu atendimento pode ser ótimo no horário comercial, mas muita gente procura contato fora desse período.
-                  </p>
-                  <p className="text-lg text-white/70 leading-relaxed mb-10">
-                    Nossa IA não substitui sua equipe — <span className="text-white font-semibold">potencializa seu alcance</span> e garante que nenhuma oportunidade seja perdida.
-                  </p>
+    features: [
+      "Respostas prontas com personalização",
+      "Fluxos de follow-up e reengajamento",
+      "Integração com catálogo/planos",
+      "Relatórios de performance",
+    ],
 
-                  <div className="space-y-6">
-                    {[
-                      { n: "1", title: "Integração simples", desc: "Conecte com WhatsApp, site ou CRM." },
-                      { n: "2", title: "Treinamento personalizado", desc: "A IA aprende seus serviços e tom de voz." },
-                      { n: "3", title: "Atendimento autônomo", desc: "Responde, qualifica e agenda automaticamente." },
-                    ].map((s) => (
-                      <div key={s.n} className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
-                          <span className="text-[#fc7500] font-bold">{s.n}</span>
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold mb-1">{s.title}</h4>
-                          <p className="text-white/70">{s.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+    whatItDoesTitle: "O que faz",
+    whatItDoesIntro:
+      "Nem toda venda se perde por falta de interesse — muitas se perdem por demora, falta de clareza ou ausência de acompanhamento.",
+    whatItDoesHighlight:
+      "Nossa IA apoia o comercial ao longo da conversa, acelera respostas e mantém oportunidades vivas até o fechamento.",
+    whatItDoesSteps: [
+      {
+        n: "1",
+        title: "Responde dúvidas comerciais",
+        desc: "Apresenta informações sobre serviços, planos e diferenciais com rapidez e consistência.",
+      },
+      {
+        n: "2",
+        title: "Recomenda a melhor solução",
+        desc: "Sugere serviços e ofertas com base no perfil e na necessidade do cliente.",
+      },
+      {
+        n: "3",
+        title: "Recupera oportunidades paradas",
+        desc: "Reativa contatos que esfriaram com follow-ups automáticos e personalizados.",
+      },
+      {
+        n: "4",
+        title: "Acompanha o processo comercial",
+        desc: "Mantém a conversa organizada e ajuda o time a agir no momento certo.",
+      },
+    ],
 
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#fc7500] rounded-3xl blur-3xl opacity-15" />
-                  <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-                    <div className="grid grid-cols-2 gap-4">
-                      {[
-                        { icon: MessageCircle, title: "WhatsApp", desc: "Integração oficial" },
-                        { icon: Globe, title: "Website", desc: "Widget no seu site" },
-                        { icon: Instagram, title: "Instagram", desc: "Respostas no Direct" },
-                        { icon: Phone, title: "Telefone", desc: "Atendimento por voz" },
-                      ].map(({ icon: Icon, title, desc }) => (
-                        <div
-                          key={title}
-                          className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors"
-                        >
-                          <Icon className="w-8 h-8 text-[#fc7500] mb-4" />
-                          <h4 className="font-semibold mb-2">{title}</h4>
-                          <p className="text-sm text-white/70">{desc}</p>
-                        </div>
-                      ))}
-                    </div>
+    timelineSteps: [
+      "Cliente demonstra interesse em um serviço ou solução",
+      "IA responde dúvidas e apresenta opções relevantes",
+      "Sugere a melhor oferta com base no perfil do contato",
+      "Executa follow-ups automáticos para não perder timing",
+      "Apoia o time comercial até a conversão",
+    ],
 
-                    <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-green-500/15 rounded-full flex items-center justify-center">
-                            <Activity className="w-5 h-5 text-green-400" />
-                          </div>
-                          <div>
-                            <p className="text-sm font-medium">Status do sistema</p>
-                            <p className="text-xs text-white/70">100% Operacional</p>
-                          </div>
-                        </div>
-                        <span className="text-green-400 text-sm font-semibold">● Online</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+    faq: [
+      {
+        q: "Isso substitui meu time comercial?",
+        a: "Não. Ele acelera o time: responde dúvidas, sugere abordagens e recupera oportunidades.",
+      },
+      {
+        q: "Ele recomenda planos e serviços automaticamente?",
+        a: "Sim. Com base no seu catálogo e regras de negócio que você definir.",
+      },
+      {
+        q: "Dá para automatizar follow-up?",
+        a: "Sim. Criamos fluxos de reengajamento e lembretes com regras de tempo, etapa e interesse.",
+      },
+    ],
+  },
 
-          {/* STATS */}
-          <section className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                {[
-                  { value: "98%", label: "Satisfação" },
-                  { value: "3x", label: "Conversões" },
-                  { value: "-40%", label: "Custos" },
-                  { value: "< 1s", label: "Resposta" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <p className="text-4xl md:text-5xl font-bold text-[#fc7500] mb-2">{s.value}</p>
-                    <p className="text-[#2D2D4A]/70 font-medium">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+  {
+    title: "Suporte Turbo",
+    slug: "suporte-turbo",
+    badge: "suporte",
+    subtitle: "Resolva chamados com respostas guiadas e base viva",
+    description:
+      "Agilize o suporte técnico com IA treinada e fluxos passo a passo, diminuindo tickets e aumentando satisfação.",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=700&fit=crop&crop=face",
 
-          {/* CTA */}
-          <section className="py-24 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#001f3f] via-sky-600 to-[#fc7500]" />
-            <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_20%_10%,white,transparent_45%)]" />
+    messageUser: "Quero otimizar meu suporte técnico com IA.",
+    messageBot:
+      "Ótimo! Vamos criar um suporte turbo para resolver chamados com eficiência.",
 
-            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-              <SectionBadge text="vamos conversar" className="mb-6" />
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                Pronto para automatizar seu atendimento<span className="text-white">?</span>
-              </h2>
-              <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                Descubra como transformar conversas em resultados com IA treinada para seu negócio.
-              </p>
+    cta: "Quero otimizar meu suporte",
+    ctaHref: "/#contato",
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-white text-[#001f3f] hover:bg-white/90 px-10 py-6 rounded-full text-base font-bold">
-                  Solicitar diagnóstico
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-white/70 text-white hover:bg-white/10 px-10 py-6 rounded-full text-base font-bold"
-                >
-                  Falar com especialista
-                </Button>
-              </div>
+    benefits: [
+      "Resolução mais rápida",
+      "Menos tickets repetidos",
+      "Base de conhecimento organizada",
+      "Melhor experiência do cliente",
+    ],
 
-              <p className="text-white/70 text-sm mt-6">
-                Setup rápido • Sem compromisso • Personalizado para sua marca
-              </p>
-            </div>
-          </section>
+    features: [
+      "Tutoriais e troubleshooting guiado",
+      "Integração com helpdesk (se usar)",
+      "Registro de dúvidas recorrentes",
+      "Relatórios de causas e recorrência",
+    ],
 
-          {/* ================= FAQ ================= */}
-          {faqItems.length > 0 && (
-            <section className="py-24">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+    whatItDoesTitle: "O que faz",
+    whatItDoesIntro:
+      "Quando o suporte depende sempre do time humano para questões repetidas, a operação fica lenta, cara e desgastante.",
+    whatItDoesHighlight:
+      "Nossa IA ajuda a resolver dúvidas recorrentes, orienta o cliente passo a passo e reduz o volume de chamados desnecessários.",
+    whatItDoesSteps: [
+      {
+        n: "1",
+        title: "Responde dúvidas recorrentes",
+        desc: "Atua sobre perguntas repetidas e problemas comuns com agilidade.",
+      },
+      {
+        n: "2",
+        title: "Guia a resolução passo a passo",
+        desc: "Entrega instruções claras para o cliente resolver o problema com autonomia.",
+      },
+      {
+        n: "3",
+        title: "Identifica quando escalar",
+        desc: "Encaminha o caso para o time técnico quando realmente precisa de intervenção humana.",
+      },
+      {
+        n: "4",
+        title: "Transforma suporte em inteligência",
+        desc: "Registra padrões, causas e dúvidas frequentes para melhorar sua operação.",
+      },
+    ],
 
-                  <SectionBadge text="FAQ" className="mb-6" />
+    timelineSteps: [
+      "Cliente abre contato com uma dúvida ou problema",
+      "IA identifica o tipo de chamado e busca a melhor resposta",
+      "Orienta a resolução com passos simples e claros",
+      "Escala para o time técnico quando necessário",
+      "Registra padrões para evoluir a base de conhecimento",
+    ],
 
-                  <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-                    Perguntas frequentes
-                    <span className="text-[#FF0066]">.</span>
-                  </h2>
-
-                  <p className="mt-3 text-lg text-[#2D2D4A]/70">
-                    Tire suas dúvidas sobre atendimento com IA.
-                  </p>
-                </div>
-
-              <div className="max-w-4xl mx-auto">
-                <Accordion type="single" collapsible className="space-y-3">
-                  {faqItems.map((item) => (
-                    <AccordionItem
-                      key={item.q}
-                      value={item.q}
-                      className="bg-white rounded-2xl px-6 shadow-card border border-gray-100"
-                    >
-                      <AccordionTrigger className="text-left text-[#2D2D4A] font-medium">
-                        {item.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-[#2D2D4A]/70">
-                        {item.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </div>
-          </section>
-        )}
-       </main>
-     </>
-    );
-}
-                
+    faq: [
+      {
+        q: "A IA aprende com meus artigos e documentos?",
+        a: "Sim. Podemos treinar com sua base (FAQ, docs, helpdesk, site) e manter tudo atualizado.",
+      },
+      {
+        q: "Ela reduz tickets repetidos?",
+        a: "Sim. Respostas guiadas e triagem diminuem volume e aumentam resolução no primeiro contato.",
+      },
+      {
+        q: "Pode abrir chamado quando necessário?",
+        a: "Sim. Quando não resolver, registra e encaminha com o contexto completo.",
+      },
+    ],
+  },
+] as const;
