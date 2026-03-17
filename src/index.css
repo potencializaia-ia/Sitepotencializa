@@ -102,7 +102,9 @@
   }
   
   .bg-footer-gradient {
-    background: linear-gradient(135deg, #2D2D4A 0%, #5A1F47 100%);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(252, 117, 0, 0.14), transparent 38%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #163b5b 100%);
   }
   
   .glassmorphism {

@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
 
         {/* Página dos produtos */}
-        <Route path="/servicos/:slug" element={<ServicePage services={services} />} />
+        <Route path="/servicos/:slug" element={<ServicePage />} />
       </Routes>
     </>
   );

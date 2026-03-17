@@ -5,57 +5,75 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/Ani
 
 const steps = [
   {
-    number: 'Diagnóstico',
+    number: '1',
+    label: 'Diagnóstico',
     title: 'Entendemos seu negócio a fundo',
-    description: 'Analisamos seus processos, canais, funil, público e objetivos para identificar oportunidades reais de automação e crescimento.',
+    description:
+      'Analisamos seus processos, canais, funil, público e objetivos para identificar oportunidades reais de automação e crescimento.',
   },
   {
-    number: 'Estratégia',
+    number: '2',
+    label: 'Estratégia',
     title: 'Desenhamos a solução ideal',
-    description: 'Criamos a arquitetura da IA, fluxos conversacionais, integrações e automações alinhadas ao seu modelo de negócio.',
+    description:
+      'Criamos a arquitetura da IA, os fluxos conversacionais, integrações e automações alinhadas ao seu modelo de negócio.',
   },
   {
-    number: 'Implementação',
+    number: '3',
+    label: 'Implementação',
     title: 'Construímos e integramos tudo',
-    description: 'Desenvolvemos, treinamos e conectamos a IA aos seus sistemas, garantindo estabilidade, segurança e performance.',
+    description:
+      'Desenvolvemos, treinamos e conectamos a IA aos seus sistemas, garantindo estabilidade, segurança e performance.',
   },
   {
-    number: 'Otimização',
+    number: '4',
+    label: 'Otimização',
     title: 'Aprimoramos com dados reais',
-    description: 'Ajustamos a solução com base em métricas, comportamento dos usuários e resultados obtidos.',
-  }
+    description:
+      'Ajustamos a solução com base em métricas, comportamento dos usuários e resultados obtidos.',
+  },
 ];
 
 export function Methodology() {
   return (
-    <section className="py-20 bg-[#F5F5F7]">
+    <section className="py-24 bg-[#F5F5F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionBadge text="Como trabalhamos" className="mb-6" />
+          <SectionBadge text="como trabalhamos" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
-              Modelo de operação<span className="text-[#fc7500]">®</span>
+              Modelo de operação<span className="text-[#fc7500]">.</span>
             </h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <p className="text-lg text-[#2D2D4A]/70 max-w-2xl mx-auto">
+              Da análise inicial à evolução contínua, estruturamos cada etapa para transformar atendimento em resultado.
+            </p>
           </AnimatedSection>
         </div>
 
         {/* Steps Grid */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {steps.map((step) => (
             <StaggerItem key={step.number}>
               <motion.div
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white rounded-2xl p-8 text-center shadow-card hover:shadow-card-hover transition-shadow duration-300 border border-gray-100"
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.25 }}
+                className="h-full bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 {/* Number */}
-                <div className="inline-flex items-center justify-center bg-[#46c5f7] rounded-full px-4 py-2 min-w-[3.5rem] min-h-[3.5rem] shadow-md ring-4 ring-blue-100 mx-auto mb-6">
-                  <span className="text-sm sm:text-base font-bold text-white whitespace-nowrap"> {step.number} </span>
+                <div className="w-14 h-14 bg-[#fc7500] rounded-full flex items-center justify-center mb-6 shadow-sm">
+                  <span className="text-xl font-bold text-white">{step.number}</span>
                 </div>
 
+                {/* Label */}
+                <p className="text-sm font-semibold uppercase tracking-wide text-[#fc7500] mb-3">
+                  {step.label}
+                </p>
+
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-[#2D2D4A] mb-4">
+                <h3 className="text-xl font-semibold text-[#2D2D4A] mb-4 leading-snug">
                   {step.title}
                 </h3>
 
