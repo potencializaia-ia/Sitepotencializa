@@ -115,83 +115,87 @@ export function ServicePage() {
         </section>
 
         {/* ================= O QUE FAZ ================= */}
-        <section className="py-24 bg-[#F5F5F7]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#2D2D4A] text-white relative overflow-hidden rounded-[32px] shadow-[0_20px_60px_rgba(45,45,74,0.18)]">
-              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-500/30 via-[#2D2D4A] to-[#2D2D4A]" />
+        <section className="py-24 bg-footer-gradient text-white relative overflow-hidden">
 
-              <div className="relative z-10 px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                  <div>
-                    <SectionBadge text="o que faz" className="mb-6" />
+          {/* Glow */}
+          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#fc7500]/20 via-transparent to-transparent" />
 
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                      {service.whatItDoesTitle}
-                      <span className="text-[#fc7500]">.</span>
-                    </h2>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                    <p className="text-xl text-white/80 leading-relaxed mb-6">
-                      {service.whatItDoesIntro}
-                    </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                    <p className="text-lg text-white/70 leading-relaxed mb-10">
-                      {service.whatItDoesHighlight}
-                    </p>
+              {/* LEFT */}
+              <div>
+                <SectionBadge text="o que faz" className="mb-6 bg-white/10 border-white/20 text-white" />
 
-                    <div className="space-y-5">
-                      {service.whatItDoesSteps.map((s) => (
-                        <div key={s.n} className="flex items-start gap-4">
-                          <div className="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
-                            <span className="text-[#fc7500] font-bold">{s.n}</span>
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-semibold mb-1">{s.title}</h4>
-                            <p className="text-white/70 leading-relaxed">{s.desc}</p>
-                          </div>
-                        </div>
-                      ))}
+                <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                  {service.whatItDoesTitle}
+                  <span className="text-[#fc7500]">.</span>
+                </h2>
+
+                <p className="text-xl text-white/80 leading-relaxed mb-6">
+                  {service.whatItDoesIntro}
+                </p>
+
+                <p className="text-lg text-white/70 leading-relaxed mb-10">
+                  {service.whatItDoesHighlight}
+                </p>
+
+                <div className="space-y-5">
+                  {service.whatItDoesSteps.map((s) => (
+                    <div key={s.n} className="flex items-start gap-4">
+                      <div className="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                        <span className="text-[#fc7500] font-bold">{s.n}</span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold mb-1">{s.title}</h4>
+                        <p className="text-white/70 leading-relaxed">{s.desc}</p>
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* RIGHT */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-[#fc7500] rounded-3xl blur-3xl opacity-10" />
+
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { icon: MessageCircle, title: "WhatsApp", desc: "Integração oficial" },
+                      { icon: Globe, title: "Website", desc: "Widget no seu site" },
+                      { icon: Instagram, title: "Instagram", desc: "Respostas no Direct" },
+                      { icon: Phone, title: "Telefone", desc: "Atendimento por voz" },
+                    ].map(({ icon: Icon, title, desc }) => (
+                      <div
+                        key={title}
+                        className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors"
+                      >
+                        <Icon className="w-8 h-8 text-[#fc7500] mb-4" />
+                        <h4 className="font-semibold mb-2">{title}</h4>
+                        <p className="text-sm text-white/70">{desc}</p>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-[#fc7500] rounded-3xl blur-3xl opacity-10" />
-                    <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-                      <div className="grid grid-cols-2 gap-4">
-                        {[
-                          { icon: MessageCircle, title: "WhatsApp", desc: "Integração oficial" },
-                          { icon: Globe, title: "Website", desc: "Widget no seu site" },
-                          { icon: Instagram, title: "Instagram", desc: "Respostas no Direct" },
-                          { icon: Phone, title: "Telefone", desc: "Atendimento por voz" },
-                        ].map(({ icon: Icon, title, desc }) => (
-                          <div
-                            key={title}
-                            className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors"
-                          >
-                            <Icon className="w-8 h-8 text-[#fc7500] mb-4" />
-                            <h4 className="font-semibold mb-2">{title}</h4>
-                            <p className="text-sm text-white/70">{desc}</p>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-green-500/15 rounded-full flex items-center justify-center">
-                              <Activity className="w-5 h-5 text-green-400" />
-                            </div>
-                            <div>
-                              <p className="text-sm font-medium">Status do sistema</p>
-                              <p className="text-xs text-white/70">100% Operacional</p>
-                            </div>
-                          </div>
-                          <span className="text-green-400 text-sm font-semibold">● Online</span>
+                  <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-500/15 rounded-full flex items-center justify-center">
+                          <Activity className="w-5 h-5 text-green-400" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium">Status do sistema</p>
+                          <p className="text-xs text-white/70">100% Operacional</p>
                         </div>
                       </div>
+                      <span className="text-green-400 text-sm font-semibold">● Online</span>
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
+
             </div>
           </div>
         </section>
@@ -274,6 +278,34 @@ export function ServicePage() {
           </div>
         </section>
 
+        {/* STATS */}
+        <section className="py-20 bg-gradient-to-r from-[#F5F5F7] via-white to-[#F5F5F7]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { value: "98%", label: "Satisfação" },
+                { value: "3x", label: "Conversões" },
+                { value: "-40%", label: "Custos" },
+                { value: "< 1s", label: "Resposta" },
+              ].map((s) => (
+                <div key={s.label} className="relative">
+                  
+                  {/* Glow sutil */}
+                  <div className="absolute inset-0 bg-[#fc7500]/10 blur-2xl opacity-30" />
+
+                  <p className="relative text-4xl md:text-5xl font-bold text-[#fc7500] mb-2">
+                    {s.value}
+                  </p>
+
+                  <p className="text-[#2D2D4A]/70 font-medium">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* BENEFÍCIOS */}
         <section className="py-24 bg-[#F5F5F7]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -307,106 +339,90 @@ export function ServicePage() {
           </div>
         </section>
 
-        {/* STATS */}
-        <section className="py-20 bg-[#F5F5F7]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {[
-                { value: "98%", label: "Satisfação" },
-                { value: "3x", label: "Conversões" },
-                { value: "-40%", label: "Custos" },
-                { value: "< 1s", label: "Resposta" },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm"
+        {/* ================= CTA + FAQ ================= */}
+        <section className="py-24 bg-footer-gradient text-white relative overflow-hidden">
+
+          {/* Glow */}
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.15),transparent_45%)]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {/* ================= CTA ================= */}
+            <div className="text-center max-w-4xl mx-auto mb-20">
+
+              <SectionBadge
+                text="vamos conversar"
+                className="mb-6 bg-white/10 border-white/20 text-white"
+              />
+
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                Pronto para automatizar seu atendimento?
+              </h2>
+
+              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                Descubra como transformar conversas em resultados com IA treinada para seu negócio.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button className="bg-[#fc7500] hover:bg-[#e56700] text-white px-10 py-6 rounded-full text-base font-bold transition-all hover:scale-105">
+                  Solicitar diagnóstico
+                </Button>
+
+                <Button
+                  className="bg-white/10 border border-white/40 text-white hover:bg-white/20 hover:text-white px-10 py-6 rounded-full text-base font-bold transition-all"
                 >
-                  <p className="text-4xl md:text-5xl font-bold text-[#fc7500] mb-2">
-                    {s.value}
-                  </p>
-                  <p className="text-[#2D2D4A]/70 font-medium">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-24 bg-[#F5F5F7]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,#0f4c81_0%,#1696d2_55%,#fc7500_100%)] shadow-[0_24px_60px_rgba(15,76,129,0.18)]">
-              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_20%_10%,white,transparent_45%)]" />
-
-              <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-20 text-center text-white">
-                <SectionBadge text="vamos conversar" className="mb-6" />
-
-                <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                  Pronto para automatizar seu atendimento?
-                </h2>
-
-                <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-                  Descubra como transformar conversas em resultados com IA treinada para seu negócio.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="bg-white text-[#001f3f] hover:bg-white/90 px-10 py-6 rounded-full text-base font-bold">
-                    Solicitar diagnóstico
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    className="border-white text-white hover:bg-white/10 px-10 py-6 rounded-full text-base font-bold"
-                  >
-                    Falar com especialista
-                  </Button>
-                </div>
-
-                <p className="text-white/75 text-sm mt-6">
-                  Setup rápido • Sem compromisso • Personalizado para sua marca
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        {faqItems.length > 0 && (
-          <section className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-12">
-                <SectionBadge text="FAQ" className="mb-6" />
-
-                <h2 className="text-3xl sm:text-4xl font-bold text-[#2D2D4A]">
-                  Perguntas frequentes
-                  <span className="text-[#fc7500]">.</span>
-                </h2>
-
-                <p className="mt-3 text-lg text-[#2D2D4A]/70">
-                  Tire suas dúvidas sobre atendimento com IA.
-                </p>
+                  Falar com especialista
+                </Button>
               </div>
 
+              <p className="text-white/60 text-sm mt-6">
+                Setup rápido • Sem compromisso • Personalizado para sua marca
+              </p>
+            </div>
+
+            {/* ================= FAQ ================= */}
+            {faqItems.length > 0 && (
               <div className="max-w-4xl mx-auto">
+
+                <div className="text-center mb-12">
+                  <SectionBadge
+                    text="FAQ"
+                    className="mb-6 bg-white/10 border-white/20 text-white"
+                  />
+
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                    Perguntas frequentes
+                    <span className="text-[#fc7500]">.</span>
+                  </h2>
+
+                  <p className="mt-3 text-lg text-white/70">
+                    Tire suas dúvidas sobre atendimento com IA.
+                  </p>
+                </div>
+
                 <Accordion type="single" collapsible className="space-y-3">
                   {faqItems.map((item) => (
                     <AccordionItem
                       key={item.q}
                       value={item.q}
-                      className="bg-white rounded-2xl px-6 shadow-card border border-gray-100"
+                      className="bg-white/5 backdrop-blur-md px-6 border border-white/10 first:rounded-t-2xl last:rounded-b-2xl"
                     >
-                      <AccordionTrigger className="text-left text-[#2D2D4A] font-medium">
+                      <AccordionTrigger className="text-left text-white font-medium">
                         {item.q}
                       </AccordionTrigger>
-                      <AccordionContent className="text-[#2D2D4A]/70">
+
+                      <AccordionContent className="text-white/70">
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
               </div>
-            </div>
-          </section>
-        )}
+            )}
+
+          </div>
+        </section>
+        
       </main>
     </>
   );

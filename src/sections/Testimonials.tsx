@@ -46,7 +46,7 @@ export function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="cases" className="py-20 bg-testimonial-gradient">
+    <section id="cases" className="py-20 bg-footer-gradient">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -73,7 +73,7 @@ export function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4 }}
-                className="bg-white rounded-2xl p-8 sm:p-10 shadow-xl"
+                className="bg-white rounded-2xl p-8 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.25)]"
               >
                 {/* Label */}
                 <p className="text-sm font-medium text-[--laranja] mb-4">
@@ -104,13 +104,13 @@ export function Testimonials() {
             <div className="flex justify-center gap-4 mt-8">
               <button
                 onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all"
               >
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
               <button
                 onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center transition-all"
               >
                 <ChevronRight className="w-6 h-6 text-white" />
               </button>
@@ -122,8 +122,7 @@ export function Testimonials() {
         <AnimatedSection delay={0.3} className="text-center mt-12">
           <Button
             size="lg"
-            variant="outline"
-            className="border-white text-white hover:bg-white hover:text-[#2D2D4A] px-8 py-6 text-base font-medium rounded-lg transition-all"
+            className="bg-[#fc7500] hover:bg-[#e56700] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
           >
             Fale com um consultor
           </Button>

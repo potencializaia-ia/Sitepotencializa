@@ -14,10 +14,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 
 const solucoesItems = [
-  { title: "Atendimento Inteligente", href: "#" },
-  { title: "Assistente Pré-Vendas", href: "#" },
-  { title: "Copiloto de Vendas", href: "#" },
-  { title: "Suporte Turbo", href: "#" },
+  { title: "Atendimento Inteligente", href: "/servicos/atendimento-inteligente" },
+  { title: "Assistente Pré-Vendas", href: "/servicos/assistente-pre-vendas" },
+  { title: "Copiloto de Vendas", href: "/servicos/copiloto-de-vendas" },
+  { title: "Suporte Turbo", href: "/servicos/suporte-turbo" },
 ];
 
 const segmentosItems = [
@@ -120,12 +120,12 @@ export function Header() {
                       {segmentosItems.map((item) => (
                         <li key={item.title}>
                           <NavigationMenuLink asChild>
-                            <a
-                              href={item.href}
+                            <Link
+                              to={item.href}
                               className="block rounded-lg p-3 text-sm transition-colors hover:bg-black/5 text-slate-700 hover:text-slate-900"
                             >
                               {item.title}
-                            </a>
+                            </Link>
                           </NavigationMenuLink>
                         </li>
                       ))}
@@ -162,14 +162,14 @@ export function Header() {
                 <div className="space-y-2">
                   <p className="text-sm font-semibold text-gray-500 px-2">Soluções</p>
                   {solucoesItems.map((item) => (
-                    <a
+                    <Link
                       key={item.title}
-                      href={item.href}
+                      to={item.href}
                       className="block px-2 py-2 text-[#2D2D4A] hover:text-slate-900 transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.title}
-                    </a>
+                    </Link>
                   ))}
                 </div>
 
