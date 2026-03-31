@@ -44,7 +44,7 @@ export function ServicePage() {
 
             <a
               href="/"
-              className="mt-4 inline-block text-[#FF0066] font-medium underline"
+              className="mt-4 inline-block text-[#7fdbff] font-medium underline"
             >
               Voltar para Home
             </a>
@@ -75,14 +75,14 @@ export function ServicePage() {
       <main className="bg-[#F5F5F7]">
 
         {/* ================= PROBLEMA ================= */}
-        <section className="py-24 bg-[#F5F5F7]">
+        <section className="py-20 bg-[#F5F5F7]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
+            <div className="text-center mb-16">
               <SectionBadge text="o problema" className="mb-6" />
               <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A]">
                 Oportunidades se perdem
                 <br className="hidden sm:block" />
-                em pequenos atrasos<span className="text-[#fc7500]">.</span>
+                em pequenos atrasos<span className="text-[#ff851b]">.</span>
               </h2>
               <p className="mt-4 text-lg text-[#2D2D4A]/70 max-w-2xl mx-auto">
                 Quando o atendimento demora, falha ou depende demais da disponibilidade do time, o cliente sente — e o negócio também.
@@ -100,11 +100,11 @@ export function ServicePage() {
               ].map((t) => (
                 <div
                   key={t}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-[#fc7500]/35 hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-[#ff851b]/35 hover:shadow-md transition-all"
                 >
                   <div className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#fc7500]/10">
-                      <Check className="h-4 w-4 text-[#fc7500]" />
+                    <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#ff851b]/10">
+                      <Check className="h-4 w-4 text-[#ff851b]" />
                     </span>
                     <p className="text-[#2D2D4A] font-medium leading-relaxed">{t}</p>
                   </div>
@@ -115,10 +115,10 @@ export function ServicePage() {
         </section>
 
         {/* ================= O QUE FAZ ================= */}
-        <section className="py-24 bg-footer-gradient text-white relative overflow-hidden">
+        <section className="py-20 bg-footer-gradient text-white relative overflow-hidden">
 
           {/* Glow */}
-          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#fc7500]/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ff851b]/20 via-transparent to-transparent" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -130,7 +130,7 @@ export function ServicePage() {
 
                 <h2 className="text-4xl md:text-5xl font-bold mb-8">
                   {service.whatItDoesTitle}
-                  <span className="text-[#fc7500]">.</span>
+                  <span className="text-[#ff851b]">.</span>
                 </h2>
 
                 <p className="text-xl text-white/80 leading-relaxed mb-6">
@@ -145,7 +145,7 @@ export function ServicePage() {
                   {service.whatItDoesSteps.map((s) => (
                     <div key={s.n} className="flex items-start gap-4">
                       <div className="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
-                        <span className="text-[#fc7500] font-bold">{s.n}</span>
+                        <span className="text-[#ff851b] font-bold">{s.n}</span>
                       </div>
                       <div>
                         <h4 className="text-lg font-semibold mb-1">{s.title}</h4>
@@ -158,7 +158,7 @@ export function ServicePage() {
 
               {/* RIGHT */}
               <div className="relative">
-                <div className="absolute inset-0 bg-[#fc7500] rounded-3xl blur-3xl opacity-10" />
+                <div className="absolute inset-0 bg-[#ff851b] rounded-3xl blur-3xl opacity-10" />
 
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
                   <div className="grid grid-cols-2 gap-4">
@@ -172,7 +172,7 @@ export function ServicePage() {
                         key={title}
                         className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-colors"
                       >
-                        <Icon className="w-8 h-8 text-[#fc7500] mb-4" />
+                        <Icon className="w-8 h-8 text-[#ff851b] mb-4" />
                         <h4 className="font-semibold mb-2">{title}</h4>
                         <p className="text-sm text-white/70">{desc}</p>
                       </div>
@@ -201,12 +201,12 @@ export function ServicePage() {
         </section>
 
         {/* ================= COMO FUNCIONA ================= */}
-        <section className="py-24 bg-[#F5F5F7]">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-[#F5F5F7]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <SectionBadge text="passo a passo" className="mb-6" />
               <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A]">
-                Como funciona<span className="text-[#fc7500]">.</span>
+                Como funciona<span className="text-[#ff851b]">.</span>
               </h2>
             </div>
 
@@ -224,12 +224,12 @@ export function ServicePage() {
                   return (
                     <div key={text} className="relative md:grid md:grid-cols-2 md:items-center">
                       {/* ponto central desktop */}
-                      <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#fc7500]" />
+                      <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#ff851b]" />
 
                       {/* mobile */}
                       <div className="md:hidden relative pl-16">
-                        <div className="absolute left-[0.35rem] top-2 w-3 h-3 rounded-full bg-[#fc7500]" />
-                        <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#fc7500] text-white text-lg font-bold mb-3 shadow-md">
+                        <div className="absolute left-[0.35rem] top-2 w-3 h-3 rounded-full bg-[#ff851b]" />
+                        <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#ff851b] text-white text-lg font-bold mb-3 shadow-md">
                           {index + 1}.
                         </div>
                         <p className="text-[1.65rem] sm:text-[1.8rem] leading-tight font-semibold text-[#2D2D4A] max-w-sm">
@@ -241,7 +241,7 @@ export function ServicePage() {
                       <div className={`hidden md:flex ${isLeft ? "justify-end pr-12" : "justify-end pr-16"}`}>
                         {isLeft && (
                           <div className="max-w-sm text-right">
-                            <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#fc7500] text-white text-lg font-bold mb-3 shadow-md">
+                            <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#ff851b] text-white text-lg font-bold mb-3 shadow-md">
                               {index + 1}.
                             </div>
                             <p className="text-[1.9rem] leading-tight font-semibold text-[#2D2D4A]">
@@ -255,7 +255,7 @@ export function ServicePage() {
                       <div className={`hidden md:flex ${!isLeft ? "justify-start pl-12" : "justify-start pl-16"}`}>
                         {!isLeft && (
                           <div className="max-w-sm text-left">
-                            <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#fc7500] text-white text-lg font-bold mb-3 shadow-md">
+                            <div className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-[#ff851b] text-white text-lg font-bold mb-3 shadow-md">
                               {index + 1}.
                             </div>
                             <p className="text-[1.9rem] leading-tight font-semibold text-[#2D2D4A]">
@@ -291,9 +291,9 @@ export function ServicePage() {
                 <div key={s.label} className="relative">
                   
                   {/* Glow sutil */}
-                  <div className="absolute inset-0 bg-[#fc7500]/10 blur-2xl opacity-30" />
+                  <div className="absolute inset-0 bg-[#ff851b]/10 blur-2xl opacity-30" />
 
-                  <p className="relative text-4xl md:text-5xl font-bold text-[#fc7500] mb-2">
+                  <p className="relative text-4xl md:text-5xl font-bold text-[#ff851b] mb-2">
                     {s.value}
                   </p>
 
@@ -307,14 +307,14 @@ export function ServicePage() {
         </section>
 
         {/* BENEFÍCIOS */}
-        <section className="py-24 bg-[#F5F5F7]">
+        <section className="py-20 bg-[#F5F5F7]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <SectionBadge text="benefícios" className="mb-6" />
               <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A] mb-4">
-                O que oferece<span className="text-[#fc7500]">.</span>
+                O que oferece<span className="text-[#ff851b]">.</span>
               </h2>
-              <div className="w-24 h-1 bg-[#fc7500] mx-auto rounded-full" />
+              <div className="w-24 h-1 bg-[#ff851b] mx-auto rounded-full" />
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -326,10 +326,10 @@ export function ServicePage() {
               ].map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-[#fc7500]/40 transition-all hover:-translate-y-1 hover:shadow-lg"
+                  className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-[#ff851b]/40 transition-all hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="w-14 h-14 bg-[#fc7500]/10 rounded-2xl flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-[#fc7500]" />
+                  <div className="w-14 h-14 bg-[#ff851b]/10 rounded-2xl flex items-center justify-center mb-6">
+                    <Icon className="w-7 h-7 text-[#ff851b]" />
                   </div>
                   <h3 className="text-xl font-bold text-[#2D2D4A] mb-3">{title}</h3>
                   <p className="text-[#2D2D4A]/70 leading-relaxed">{desc}</p>
@@ -340,7 +340,7 @@ export function ServicePage() {
         </section>
 
         {/* ================= CTA + FAQ ================= */}
-        <section className="py-24 bg-footer-gradient text-white relative overflow-hidden">
+        <section className="py-20 bg-footer-gradient text-white relative overflow-hidden">
 
           {/* Glow */}
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.15),transparent_45%)]" />
@@ -364,7 +364,7 @@ export function ServicePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-[#fc7500] hover:bg-[#e56700] text-white px-10 py-6 rounded-full text-base font-bold transition-all hover:scale-105">
+                <Button className="bg-[#ff851b] hover:bg-[#e07316] text-white px-10 py-6 rounded-full text-base font-bold transition-all hover:scale-105">
                   Solicitar diagnóstico
                 </Button>
 
@@ -392,7 +392,7 @@ export function ServicePage() {
 
                   <h2 className="text-3xl sm:text-4xl font-bold text-white">
                     Perguntas frequentes
-                    <span className="text-[#fc7500]">.</span>
+                    <span className="text-[#ff851b]">.</span>
                   </h2>
 
                   <p className="mt-3 text-lg text-white/70">

@@ -27,7 +27,7 @@ export function Footer() {
           <div className="space-y-6">
             <a href="#" className="inline-block">
               <span className="text-2xl font-bold text-white">
-                Potencializa<span className="text-[#FF0066]">.</span>ia
+                Potencializa<span className="text-[#ff851b]">.</span>ia
               </span>
             </a>
             <div className="flex items-center gap-4">

@@ -108,7 +108,7 @@ export function Pricing() {
           <SectionBadge text="planos e preços" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
-              Planos inteligentes para cada objetivo<span className="text-[#FF0066]">.</span>
+              Planos inteligentes para cada objetivo<span className="text-[#ff851b]">.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
@@ -127,14 +127,14 @@ export function Pricing() {
                 transition={{ duration: 0.3 }}
                 className={`bg-white rounded-2xl p-6 sm:p-8 border-2 transition-all duration-300 ${
                   plan.highlighted
-                    ? 'border-[#FF0066] shadow-xl'
+                    ? 'border-[#7fdbff] shadow-xl'
                     : 'border-gray-100 shadow-card hover:shadow-card-hover'
                 }`}
               >
                 {/* Plan Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <span className={`w-3 h-3 rounded-full ${plan.name === 'Essencial' ? 'border-2 border-[#FF0066]' : 'bg-[#FF0066]'}`} />
+                    <span className={`w-3 h-3 rounded-full ${plan.name === 'Essencial' ? 'border-2 border-[#ff851b]' : 'bg-[#ff851b]'}`} />
                     <h3 className="text-xl font-semibold text-[#2D2D4A]">{plan.name}</h3>
                   </div>
                   {plan.price !== 'Sob consulta' && (
@@ -180,7 +180,7 @@ export function Pricing() {
                 <Button
                   className={`w-full mb-6 py-6 font-medium ${
                     plan.ctaStyle === 'pink'
-                      ? 'bg-[#FF0066] hover:bg-[#E6005C] text-white'
+                      ? 'bg-[#ff851b] hover:bg-[#e07316] text-white'
                       : 'bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white'
                   }`}
                 >

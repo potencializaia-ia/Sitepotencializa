@@ -122,7 +122,7 @@ export function Testimonials() {
         <AnimatedSection delay={0.3} className="text-center mt-12">
           <Button
             size="lg"
-            className="bg-[#fc7500] hover:bg-[#e56700] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
+            className="bg-[#ff851b] hover:bg-[#e07316] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
           >
             Fale com um consultor
           </Button>

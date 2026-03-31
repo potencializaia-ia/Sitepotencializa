@@ -37,7 +37,7 @@ export function Hero() {
           {/* Badge */}
           <motion.div variants={itemVariants}>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-white/30 rounded-full text-sm font-medium text-[#2D2D4A] mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#FF0066]" />
+              <span className="w-2 h-2 rounded-full bg-[#ff851b]" />
               O que fazemos
             </div>
           </motion.div>
@@ -86,7 +86,7 @@ export function Hero() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[350px] h-[350px] bg-[#FF0066] rounded-full -z-10"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[350px] h-[350px] bg-[#7fdbff] rounded-full -z-10"
             />
 
             {/* Hero Image */}
@@ -105,8 +105,8 @@ export function Hero() {
               className="absolute left-0 top-1/3 z-20"
             >
               <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg border border-gray-100">
-                <div className="w-8 h-8 bg-[#FF0066]/10 rounded-lg flex items-center justify-center">
-                  <HandHeart className="w-4 h-4 text-[#FF0066]" />
+                <div className="w-8 h-8 bg-[#7fdbff]/20 rounded-lg flex items-center justify-center">
+                  <HandHeart className="w-4 h-4 text-[#0ea5e9]" />
                 </div>
                 <span className="text-sm font-medium text-[#2D2D4A]">
                   Oferecendo <span className="font-bold">6 ofertas</span> personalizadas
@@ -121,8 +121,8 @@ export function Hero() {
               className="absolute right-0 top-1/2 z-20"
             >
               <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl shadow-lg border border-gray-100">
-                <div className="w-8 h-8 bg-[#FF0066]/10 rounded-lg flex items-center justify-center">
-                  <ShoppingCart className="w-4 h-4 text-[#FF0066]" />
+                <div className="w-8 h-8 bg-[#ff851b]/10 rounded-lg flex items-center justify-center">
+                  <ShoppingCart className="w-4 h-4 text-[#ff851b]" />
                 </div>
                 <span className="text-sm font-medium text-[#2D2D4A]">
                   Recuperando <span className="font-bold">11 carrinhos</span> abandonados

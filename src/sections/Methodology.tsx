@@ -43,7 +43,7 @@ export function Methodology() {
           <SectionBadge text="como trabalhamos" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
-              Modelo de operação<span className="text-[#fc7500]">.</span>
+              Modelo de operação<span className="text-[#ff851b]">.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
@@ -63,12 +63,12 @@ export function Methodology() {
                 className="h-full bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 {/* Number */}
-                <div className="w-14 h-14 bg-[#fc7500] rounded-full flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-14 h-14 bg-[#ff851b] rounded-full flex items-center justify-center mb-6 shadow-sm">
                   <span className="text-xl font-bold text-white">{step.number}</span>
                 </div>
 
                 {/* Label */}
-                <p className="text-sm font-semibold uppercase tracking-wide text-[#fc7500] mb-3">
+                <p className="text-sm font-semibold uppercase tracking-wide text-[#ff851b] mb-3">
                   {step.label}
                 </p>
 

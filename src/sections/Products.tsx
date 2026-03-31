@@ -46,7 +46,7 @@ export function Products() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
               Do atendimento
               <br />
-              ao suporte técnico<span className="text-[#FF0066]">.</span>
+              ao suporte técnico<span className="text-[#ff851b]">.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
@@ -85,7 +85,7 @@ export function Products() {
                   </p>
                   <Link
                     to={`/servicos/${product.slug}`}
-                    className="inline-flex items-center gap-2 text-[#FF0066] font-medium hover:gap-3 transition-all"
+                    className="inline-flex items-center gap-2 text-[#ff851b] font-medium hover:gap-3 transition-all"
                   >
                     Saiba mais
                     <ArrowRight className="w-4 h-4" />

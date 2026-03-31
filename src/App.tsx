@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import {Login} from "@/pages/Login";
+import {SignUp} from "@/pages/SignUp";
 import { ServicePage } from "@/pages/ServicePage";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
@@ -52,6 +53,9 @@ export default function App() {
 
         {/* Página de login */}
         <Route path="/login" element={<Login />} />
+
+        {/* Página de cadastro */}
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </>
   );

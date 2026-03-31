@@ -51,7 +51,7 @@ module.exports = {
       },
       backgroundImage: {
         "footer-gradient":
-          "radial-gradient(circle at 80% 20%, rgba(252,117,0,0.15), transparent 40%), linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #163B5B 100%)",
+          "radial-gradient(circle at 80% 20%, rgba(255,133,27,0.15), transparent 40%), linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #163B5B 100%)",
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

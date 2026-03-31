@@ -17,11 +17,11 @@ export function Marquee() {
       >
         <span className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#2D2D4A] mx-4">
           {repeatedText}
-          <span className="text-[#FF0066]">.</span>
+          <span className="text-[#ff851b]">.</span>
         </span>
         <span className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#2D2D4A] mx-4">
           {repeatedText}
-          <span className="text-[#FF0066]">.</span>
+          <span className="text-[#ff851b]">.</span>
         </span>
       </motion.div>
     </section>

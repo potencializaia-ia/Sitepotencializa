@@ -57,7 +57,7 @@ export function ServiceHero({
       <div className="absolute inset-0 bg-hero-gradient" />
 
       {/* blobs suaves */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#fc7500]/25 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#7fdbff]/25 rounded-full blur-3xl opacity-50" />
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-y-12" />
 
@@ -118,7 +118,7 @@ export function ServiceHero({
             >
               {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map((t) => (
                 <div key={t} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-[#fc7500]" />
+                  <CheckCircle2 className="w-5 h-5 text-[#ff851b]" />
                   <span>{t}</span>
                 </div>
               ))}
@@ -195,9 +195,9 @@ export function ServiceHero({
 
                       {/* digitando */}
                       <div className="flex items-center justify-center gap-1 pt-1">
-                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce" />
-                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce [animation-delay:0.1s]" />
-                        <span className="w-2 h-2 bg-[#fc7500] rounded-full animate-bounce [animation-delay:0.2s]" />
+                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce" />
+                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce [animation-delay:0.1s]" />
+                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce [animation-delay:0.2s]" />
                       </div>
 
                       {/* espaço extra pra não “colar” no input */}
@@ -209,7 +209,7 @@ export function ServiceHero({
                   <div className="p-4 border-t border-slate-100 bg-white">
                     <div className="flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2">
                       <div className="text-sm text-slate-500 flex-1">Digite sua mensagem…</div>
-                      <div className="w-8 h-8 bg-[#fc7500] rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-[#ff851b] rounded-full flex items-center justify-center">
                         <ArrowRight className="w-4 h-4 text-white" />
                       </div>
                     </div>

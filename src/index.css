@@ -36,8 +36,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
     
     /* Custom colors */
-    --laranja: #fc7500;
-    --azul: #46c5f7;
+    --laranja: #ff851b;
+    --azul: #7fdbff;
     --navy: 240 26% 23%;
     --gradient-purple: 270 30% 80%;
     --gradient-pink: 330 40% 78%;
@@ -103,7 +103,7 @@
   
   .bg-footer-gradient {
   background:
-    radial-gradient(circle at 80% 20%, rgba(252, 117, 0, 0.14), transparent 38%),
+    radial-gradient(circle at 80% 20%, rgba(255, 133, 27, 0.14), transparent 38%),
     linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #163b5b 100%);
   }
   
@@ -140,6 +140,6 @@
 
 /* Selection color */
 ::selection {
-  background-color: rgba(255, 0, 102, 0.2);
+  background-color: rgba(127, 219, 255, 0.25);
   color: inherit;
 }

@@ -37,7 +37,7 @@ export function Blog() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A]">
                 Conteúdos que podem
                 <br />
-                mudar suas decisões<span className="text-[#FF0066]">.</span>
+                mudar suas decisões<span className="text-[#ff851b]">.</span>
               </h2>
             </AnimatedSection>
           </div>
@@ -77,7 +77,7 @@ export function Blog() {
                   <span className="inline-block px-3 py-1 bg-[#F5F5F7] rounded-full text-xs font-medium text-[#2D2D4A]/70 mb-4">
                     {post.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-[#2D2D4A] leading-snug group-hover:text-[#FF0066] transition-colors">
+                  <h3 className="text-lg font-semibold text-[#2D2D4A] leading-snug group-hover:text-[#7fdbff] transition-colors">
                     {post.title}
                   </h3>
                 </div>

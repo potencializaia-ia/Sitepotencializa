@@ -81,7 +81,7 @@ export function Header() {
             className="flex items-center"
           >
             <span className="text-xl font-bold tracking-tight text-[#001f3f]">
-              Potencializa<span className="text-[#fc7500]">.</span>ia
+              Potencializa<span className="text-[#ff851b]">.</span>ia
             </span>
           </Link>
 
@@ -144,9 +144,11 @@ export function Header() {
 
           {/* Login Button */}
           <div className="hidden lg:block">
-            <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-6 rounded-xl shadow-sm">
-              Login
-            </Button>
+            <Link to="/login">
+              <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-6 rounded-xl shadow-sm">
+                Login
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu */}
