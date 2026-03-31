@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import {Login} from "@/pages/Login";
 import { ServicePage } from "@/pages/ServicePage";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
@@ -48,6 +49,9 @@ export default function App() {
 
         {/* Página dos produtos */}
         <Route path="/servicos/:slug" element={<ServicePage />} />
+
+        {/* Página de login */}
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

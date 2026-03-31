@@ -98,12 +98,12 @@ export function Header() {
                       {solucoesItems.map((item) => (
                         <li key={item.title}>
                           <NavigationMenuLink asChild>
-                            <a
-                              href={item.href}
+                            <Link
+                              to={item.href}
                               className="block rounded-lg p-3 text-sm transition-colors hover:bg-black/5 text-slate-700 hover:text-slate-900"
                             >
                               {item.title}
-                            </a>
+                            </Link>
                           </NavigationMenuLink>
                         </li>
                       ))}
@@ -200,9 +200,11 @@ export function Header() {
                   ))}
                 </div>
 
-                <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white mt-4 rounded-xl">
-                  Login
-                </Button>
+                <Link to="/login">
+                  <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white mt-4 rounded-xl">
+                    Login
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
