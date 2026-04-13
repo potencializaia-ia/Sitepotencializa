@@ -1,5 +1,91 @@
 export const services = [
   {
+    title: "Consultoria em IA",
+    slug: "consultoria-ia",
+    badge: "consultoria",
+    subtitle: "Do diagnóstico ao plano de ação — com clareza e resultado",
+    description:
+      "Analisamos seu negócio, mapeamos onde a IA gera mais impacto e entregamos um plano personalizado para você implementar com segurança e velocidade.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=700&fit=crop",
+
+    messageUser: "Quero entender como a IA pode ajudar meu negócio.",
+    messageBot: "Ótimo! Vamos fazer um diagnóstico completo e montar um plano sob medida para você.",
+
+    cta: "Quero meu diagnóstico gratuito",
+    ctaHref: "/#contato",
+
+    benefits: [
+      "Diagnóstico real do seu negócio",
+      "Priorização dos pontos de maior impacto",
+      "Plano de implementação personalizado",
+      "Decisões baseadas em dados, não em achismo",
+    ],
+
+    features: [
+      "Mapeamento de processos e gargalos",
+      "Análise de canais e fluxos de atendimento",
+      "Identificação de oportunidades de automação",
+      "Entrega de roadmap com próximos passos",
+    ],
+
+    whatItDoesTitle: "Clareza antes de executar",
+    whatItDoesIntro:
+      "Muitas empresas adotam IA sem saber por onde começar — e acabam investindo no lugar errado ou no momento errado.",
+    whatItDoesHighlight:
+      "Nossa consultoria existe para mudar isso: antes de qualquer implementação, entendemos fundo o seu negócio e entregamos um plano que faz sentido para a sua realidade.",
+    whatItDoesSteps: [
+      {
+        n: "1",
+        title: "Imersão no negócio",
+        desc: "Entrevistamos seu time, analisamos processos e mapeamos o funcionamento real da sua operação.",
+      },
+      {
+        n: "2",
+        title: "Identificação de oportunidades",
+        desc: "Apontamos onde a IA resolve gargalos, reduz custos ou acelera resultados com mais impacto.",
+      },
+      {
+        n: "3",
+        title: "Construção do plano",
+        desc: "Montamos um roadmap prático com prioridades, sequência de implementação e retorno esperado.",
+      },
+      {
+        n: "4",
+        title: "Apresentação e alinhamento",
+        desc: "Entregamos tudo documentado e explicado para que sua equipe possa agir com segurança.",
+      },
+    ],
+
+    timelineSteps: [
+      "Reunião de imersão para entender o negócio e objetivos",
+      "Mapeamento de processos, canais e gargalos",
+      "Análise e identificação de oportunidades reais com IA",
+      "Construção do plano com prioridades e sequência de ação",
+      "Apresentação do roadmap com próximos passos definidos",
+    ],
+
+    faq: [
+      {
+        q: "A consultoria já inclui a implementação?",
+        a: "A consultoria é focada no diagnóstico e plano. A implementação pode ser contratada separadamente ou feita pelo seu time com base no roadmap.",
+      },
+      {
+        q: "Meu negócio precisa ser grande para contratar?",
+        a: "Não. Atendemos desde pequenas operações até empresas em escala — o plano é sempre ajustado à sua realidade.",
+      },
+      {
+        q: "Quanto tempo leva o processo?",
+        a: "Em geral, de 1 a 2 semanas para imersão, análise e entrega do plano completo.",
+      },
+      {
+        q: "O diagnóstico é gratuito?",
+        a: "Oferecemos uma primeira conversa sem custo para entender seu contexto. A consultoria completa é um serviço pago.",
+      },
+    ],
+  },
+
+  {
     title: "Atendimento Inteligente 24/7",
     slug: "atendimento-inteligente",
     badge: "atendimento inteligente",

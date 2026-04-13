@@ -4,7 +4,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 
 export function FinalCTA() {
   return (
-    <section className="py-20 bg-footer-gradient">
+    <section id="contato" className="py-20 bg-footer-gradient">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <SectionBadge text="o poder do simples" className="mb-6 bg-white/10 border-white/20 text-white" />

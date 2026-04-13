@@ -4,6 +4,13 @@ import { SectionBadge } from '@/components/SectionBadge';
 import { Link } from "react-router-dom";
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
 
+const consultoria = {
+  title: 'Consultoria em IA',
+  slug: 'consultoria-ia',
+  description: 'Diagnóstico completo do seu negócio para identificar onde a IA gera mais impacto. Mapeamos processos, definimos prioridades e entregamos um plano de implementação personalizado — do zero à escala.',
+  image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+};
+
 const products = [
   {
     title: 'Atendimento Inteligente 24/7',
@@ -37,7 +44,7 @@ const products = [
 
 export function Products() {
   return (
-    <section className="py-20 bg-[#F5F5F7]">
+    <section id="produtos" className="py-20 bg-[#F5F5F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -55,6 +62,48 @@ export function Products() {
             </p>
           </AnimatedSection>
         </div>
+
+        {/* Consultoria — featured */}
+        <AnimatedSection className="mb-6">
+          <motion.div
+            whileHover={{ scale: 1.01, y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="group bg-[#2D2D4A] rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300"
+          >
+            <div className="flex flex-col md:flex-row">
+              {/* Image */}
+              <div className="relative md:w-2/5 h-56 md:h-64 overflow-hidden flex-shrink-0">
+                <img
+                  src={consultoria.image}
+                  alt={consultoria.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#2D2D4A]/60 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D4A]/60 to-transparent md:hidden" />
+              </div>
+
+              {/* Content */}
+              <div className="p-8 flex flex-col justify-center">
+                <span className="inline-block text-xs font-semibold uppercase tracking-widest text-[#ff851b] mb-3">
+                  Serviço principal
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {consultoria.title}
+                </h3>
+                <p className="text-white/70 mb-6 leading-relaxed text-base">
+                  {consultoria.description}
+                </p>
+                <Link
+                  to={`/servicos/${consultoria.slug}`}
+                  className="inline-flex items-center gap-2 text-[#ff851b] font-medium hover:gap-3 transition-all"
+                >
+                  Saiba mais
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatedSection>
 
         {/* Products Grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -11,6 +11,7 @@ const plans = [
     name: 'Essencial',
     subtitle: 'Configure você mesmo!',
     price: '390',
+    priceMonthly: '490',
     setup: '990',
     setupOptional: true,
     setupNote: 'E nós configuramos para você!',
@@ -40,6 +41,7 @@ const plans = [
     name: 'Avançado',
     subtitle: 'Nós configuramos pra você.',
     price: '690',
+    priceMonthly: '870',
     setup: '2.000',
     setupOptional: false,
     setupNote: 'Para a configuração inicial',
@@ -69,6 +71,7 @@ const plans = [
     name: 'Customizado',
     subtitle: 'Vamos desenvolver a solução perfeita!',
     price: 'Sob consulta',
+    priceMonthly: 'Sob consulta',
     setup: '',
     setupOptional: false,
     setupNote: 'Diagnóstico personalizado',
@@ -116,6 +119,26 @@ export function Pricing() {
               Escolha a solução ideal para transformar seu negócio com a potência da IA.
             </p>
           </AnimatedSection>
+
+          {/* Billing Toggle */}
+          <AnimatedSection delay={0.2}>
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <span className={`text-sm font-medium ${!isAnnual ? 'text-[#2D2D4A]' : 'text-[#2D2D4A]/50'}`}>
+                Mensal
+              </span>
+              <Switch
+                checked={isAnnual}
+                onCheckedChange={setIsAnnual}
+                className="[&[data-state=checked]]:bg-[#ff851b] [&[data-state=unchecked]]:bg-gray-300"
+              />
+              <span className={`text-sm font-medium ${isAnnual ? 'text-[#2D2D4A]' : 'text-[#2D2D4A]/50'}`}>
+                Anual
+                <span className="ml-2 text-xs bg-[#ff851b] text-white px-2 py-0.5 rounded-full">
+                  Economize 20%
+                </span>
+              </span>
+            </div>
+          </AnimatedSection>
         </div>
 
         {/* Pricing Cards */}
@@ -132,17 +155,11 @@ export function Pricing() {
                 }`}
               >
                 {/* Plan Header */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center mb-4">
                   <div className="flex items-center gap-2">
                     <span className={`w-3 h-3 rounded-full ${plan.name === 'Essencial' ? 'border-2 border-[#ff851b]' : 'bg-[#ff851b]'}`} />
                     <h3 className="text-xl font-semibold text-[#2D2D4A]">{plan.name}</h3>
                   </div>
-                  {plan.price !== 'Sob consulta' && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-500">ANUAL</span>
-                      <Switch checked={isAnnual} onCheckedChange={setIsAnnual} />
-                    </div>
-                  )}
                 </div>
 
                 <p className="text-sm text-[#2D2D4A]/70 mb-4">{plan.subtitle}</p>
@@ -154,7 +171,9 @@ export function Pricing() {
                   ) : (
                     <div className="flex items-baseline gap-1">
                       <span className="text-sm text-[#2D2D4A]/70">Apenas</span>
-                      <span className="text-4xl font-bold text-[#2D2D4A]">R$ {plan.price}</span>
+                      <span className="text-4xl font-bold text-[#2D2D4A]">
+                        R$ {isAnnual ? plan.price : plan.priceMonthly}
+                      </span>
                       <span className="text-sm text-[#2D2D4A]/70">/mês</span>
                     </div>
                   )}

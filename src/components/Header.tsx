@@ -14,10 +14,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 
 const solucoesItems = [
-  { title: "Atendimento Inteligente", href: "/servicos/atendimento-inteligente" },
-  { title: "Assistente Pré-Vendas", href: "/servicos/assistente-pre-vendas" },
-  { title: "Copiloto de Vendas", href: "/servicos/copiloto-de-vendas" },
-  { title: "Suporte Turbo", href: "/servicos/suporte-turbo" },
+  { title: "Consultoria em IA", href: "/servicos/consultoria-ia" },
+  { title: "Atendimento Inteligente 24/7", href: "/servicos/atendimento-inteligente" },
+  { title: "Vendas & Pré-Vendas com IA", href: "/servicos/assistente-pre-vendas" },
+  { title: "Integração & Operação Digital", href: "/servicos/copiloto-de-vendas" },
+  { title: "IA Sob Medida", href: "/servicos/suporte-turbo" },
 ];
 
 const segmentosItems = [
@@ -29,10 +30,9 @@ const segmentosItems = [
 ];
 
 const navItems = [
-  { title: "Planos", href: "#planos" },
   { title: "Cases", href: "#cases" },
+  { title: "Planos", href: "#planos" },
   { title: "Blog", href: "#blog" },
-  { title: "Sobre", href: "#products" },
   { title: "Contato", href: "#contato" },
 ];
 
