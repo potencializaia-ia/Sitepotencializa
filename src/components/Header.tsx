@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Menu, UserCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -11,13 +11,12 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 const solucoesItems = [
   { title: "Consultoria em IA", href: "/servicos/consultoria-ia" },
   { title: "Atendimento Inteligente 24/7", href: "/servicos/atendimento-inteligente" },
-  { title: "Vendas & Pré-Vendas com IA", href: "/servicos/assistente-pre-vendas" },
-  { title: "Integração & Operação Digital", href: "/servicos/copiloto-de-vendas" },
   { title: "IA Sob Medida", href: "/servicos/suporte-turbo" },
 ];
 
@@ -40,6 +39,9 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const navigate = useNavigate();
+  const { isAuthenticated, firstName, loading } = useAuth();
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -50,13 +52,11 @@ export function Header() {
     ? "bg-white/55 backdrop-blur-md border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.10)]"
     : "bg-white/90 border border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.08)]";
 
-  const linkClass = isScrolled
-    ? "text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
-    : "text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors";
+  const linkClass =
+    "text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors";
 
-  const triggerClass = isScrolled
-    ? "text-sm font-medium text-slate-700 hover:text-slate-900 bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:text-slate-900"
-    : "text-sm font-medium text-slate-700 hover:text-slate-900 bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:text-slate-900";
+  const triggerClass =
+    "text-sm font-medium text-slate-700 hover:text-slate-900 bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:text-slate-900";
 
   return (
     <motion.header
@@ -74,7 +74,6 @@ export function Header() {
             pillClass,
           ].join(" ")}
         >
-          {/* Logo */}
           <Link
             to="/"
             onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
@@ -85,7 +84,6 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             <NavigationMenu>
               <NavigationMenuList>
@@ -142,16 +140,43 @@ export function Header() {
             ))}
           </div>
 
-          {/* Login Button */}
-          <div className="hidden lg:block">
-            <Link to="/login">
-              <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-6 rounded-xl shadow-sm">
-                Login
-              </Button>
-            </Link>
+          <div className="hidden lg:flex items-center gap-3">
+            {!loading &&
+              (isAuthenticated ? (
+                <button
+                  type="button"
+                  onClick={() => navigate("/perfil")}
+                  className="
+                    flex items-center gap-3 
+                    rounded-full 
+                    bg-white/80 backdrop-blur-md 
+                    border border-slate-200 
+                    px-3 py-1.5 
+                    shadow-sm 
+                    hover:shadow-md 
+                    hover:bg-white 
+                    transition-all duration-200
+                  "
+                >
+                  {/* Avatar */}
+                  <div className="w-8 h-8 rounded-full bg-[#2D2D4A] text-white flex items-center justify-center text-sm font-semibold">
+                    {firstName?.charAt(0).toUpperCase()}
+                  </div>
+
+                  {/* Nome */}
+                  <span className="text-sm font-medium text-[#2D2D4A]">
+                    {firstName}
+                  </span>
+                </button>
+              ) : (
+                <Link to="/login">
+                  <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-6 rounded-xl shadow-sm">
+                    Login
+                  </Button>
+                </Link>
+              ))}
           </div>
 
-          {/* Mobile Menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
@@ -202,11 +227,28 @@ export function Header() {
                   ))}
                 </div>
 
-                <Link to="/login">
-                  <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white mt-4 rounded-xl">
-                    Login
-                  </Button>
-                </Link>
+                {!loading &&
+                  (isAuthenticated ? (
+                    <div className="border-t pt-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          navigate("/perfil");
+                        }}
+                        className="w-full flex items-center gap-2 px-2 py-2 text-[#2D2D4A] hover:text-slate-900 transition-colors"
+                      >
+                        <UserCircle2 className="h-5 w-5" />
+                        <span>{firstName}</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white mt-4 rounded-xl w-full">
+                        Login
+                      </Button>
+                    </Link>
+                  ))}
               </div>
             </SheetContent>
           </Sheet>

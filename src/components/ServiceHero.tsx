@@ -52,14 +52,13 @@ export function ServiceHero({
     messageBot ?? "Entendi! Vamos automatizar seu atendimento no WhatsApp com IA.";
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen bg-hero-gradient overflow-hidden">
       {/* Fundo / Gradiente */}
-      <div className="absolute inset-0 bg-hero-gradient" />
 
       {/* blobs suaves */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#7fdbff]/25 rounded-full blur-3xl opacity-50" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-y-12" />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#ff851b]/20 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-300/15 rounded-full blur-3xl opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-y-12" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 sm:pt-44 pb-10 sm:pb-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -76,14 +75,14 @@ export function ServiceHero({
 
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl font-bold leading-tight text-[#2D2D4A]"
+              className="text-5xl md:text-7xl font-bold leading-tight text-white"
             >
               {title}
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-[#2D2D4A]/75 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              className="text-xl md:text-2xl text-white/85 max-w-lg mx-auto lg:mx-0 leading-relaxed"
             >
               {subtitle}
             </motion.p>
@@ -114,7 +113,7 @@ export function ServiceHero({
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-[#2D2D4A]/70"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/80"
             >
               {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map((t) => (
                 <div key={t} className="flex items-center gap-2">

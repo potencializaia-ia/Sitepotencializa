@@ -8,7 +8,7 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/Ani
 
 const plans = [
   {
-    name: 'Essencial',
+    name: 'Consultoria',
     subtitle: 'Configure você mesmo!',
     price: '390',
     priceMonthly: '490',
@@ -38,7 +38,7 @@ const plans = [
     ],
   },
   {
-    name: 'Avançado',
+    name: 'Automação Simples',
     subtitle: 'Nós configuramos pra você.',
     price: '690',
     priceMonthly: '870',
@@ -68,7 +68,7 @@ const plans = [
     ],
   },
   {
-    name: 'Customizado',
+    name: 'Hiperautomação',
     subtitle: 'Vamos desenvolver a solução perfeita!',
     price: 'Sob consulta',
     priceMonthly: 'Sob consulta',
@@ -108,7 +108,7 @@ export function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionBadge text="planos e preços" className="mb-6" />
+          <SectionBadge text="Planos e Preços" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
               Planos inteligentes para cada objetivo<span className="text-[#ff851b]">.</span>

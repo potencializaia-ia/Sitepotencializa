@@ -46,11 +46,11 @@ export function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="cases" className="py-20 bg-footer-gradient">
+    <section id="cases" className="py-20 bg-section-gradient">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <SectionBadge text="resultados incríveis" className="mb-6 bg-white/10 border-white/20 text-white" />
+          <SectionBadge text="Resultados incríveis" className="mb-6 bg-white/10 border-white/20 text-white" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
               Quem simplifica cresce<span className="text-[--laranja]">.</span>

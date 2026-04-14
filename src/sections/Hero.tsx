@@ -36,7 +36,7 @@ export function Hero() {
         >
           {/* Badge */}
           <motion.div variants={itemVariants}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-white/30 rounded-full text-sm font-medium text-[#2D2D4A] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium text-white mb-8">
               <span className="w-2 h-2 rounded-full bg-[#ff851b]" />
               O que fazemos
             </div>
@@ -45,7 +45,7 @@ export function Hero() {
           {/* Title */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D4A] leading-tight max-w-4xl mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mb-6"
           >
             I.A. para negócios,
             <br />
@@ -55,7 +55,7 @@ export function Hero() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg text-[#2D2D4A]/80 max-w-2xl mb-8"
+            className="text-lg text-white/85 max-w-2xl mb-8"
           >
             Automação inteligente para atrair, converter e encantar clientes: 24/7, sem esforço, sem pausas e com a personalidade única da sua marca.
           </motion.p>
@@ -64,7 +64,7 @@ export function Hero() {
           <motion.div variants={itemVariants}>
             <Button
               size="lg"
-              className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
+              className="bg-[#ff851b] hover:bg-[#e07316] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
             >
               Fale com um consultor
             </Button>

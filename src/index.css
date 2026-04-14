@@ -94,7 +94,11 @@
   }
   
   .bg-hero-gradient {
-    background: linear-gradient(135deg, #001f3f -5%, #7fdbff 50%, #ff851b 100%);
+    background: radial-gradient(circle at 80% 20%, rgba(255,133,27,0.45), transparent 50%), linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #163B5B 100%);
+  }
+
+  .bg-service-hero-gradient {
+    background: radial-gradient(circle at 20% 60%, rgba(255,133,27,0.50), transparent 55%), radial-gradient(circle at 85% 20%, rgba(255,100,0,0.35), transparent 45%), linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #163B5B 100%);
   }
   
   .bg-testimonial-gradient {

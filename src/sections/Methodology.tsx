@@ -40,7 +40,7 @@ export function Methodology() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionBadge text="como trabalhamos" className="mb-6" />
+          <SectionBadge text="Como trabalhamos" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
               Modelo de operação<span className="text-[#ff851b]">.</span>

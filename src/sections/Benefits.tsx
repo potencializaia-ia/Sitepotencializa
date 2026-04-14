@@ -88,7 +88,7 @@ export function Benefits() {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-[#ff851b]/20"
+                className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-[#ff851b]/70"
               >
                 <img
                   src="/dist/assets/images/benefits-image.jpg"

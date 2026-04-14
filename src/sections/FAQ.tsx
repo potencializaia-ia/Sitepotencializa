@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { SectionBadge } from '@/components/SectionBadge';
-import { AnimatedSection } from '@/components/AnimatedSection';
+import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
 
 const faqItems = [
   {
@@ -89,24 +89,25 @@ export function FAQ() {
 
           {/* Right Column - Accordion */}
           <div className="lg:col-span-2">
-            <AnimatedSection delay={0.2}>
+            <StaggerContainer>
               <Accordion type="single" collapsible className="space-y-3">
                 {faqItems.map((item, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`item-${index}`}
-                    className="bg-white rounded-xl px-6 border-none shadow-sm"
-                  >
-                    <AccordionTrigger className="text-left text-[#2D2D4A] font-medium hover:no-underline py-5">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-[#2D2D4A]/70 pb-5 leading-relaxed">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
+                  <StaggerItem key={index}>
+                    <AccordionItem
+                      value={`item-${index}`}
+                      className="bg-white rounded-xl px-6 border-none shadow-sm"
+                    >
+                      <AccordionTrigger className="text-left text-[#2D2D4A] font-medium hover:no-underline py-5">
+                        {item.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-[#2D2D4A]/70 pb-5 leading-relaxed">
+                        {item.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </StaggerItem>
                 ))}
               </Accordion>
-            </AnimatedSection>
+            </StaggerContainer>
           </div>
         </div>
       </div>

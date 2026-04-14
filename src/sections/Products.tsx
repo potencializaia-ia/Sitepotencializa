@@ -13,32 +13,22 @@ const consultoria = {
 
 const products = [
   {
-    title: 'Atendimento Inteligente 24/7',
+    title: 'Automação Simples',
     slug: 'atendimento-inteligente',
-    description: 'IA treinada para atender, resolver dúvidas, registrar informações e escalar seu suporte sem perder qualidade.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face',
-    
+    description: 'Implantamos agentes de IA prontos para operar no seu negócio — sem complexidade, sem obra grande.',
+    topics: [
+      'Atendimento Inteligente 24/7',
+      'Vendas & Pré-Vendas com IA',
+      'Integração & Operação Digital',
+    ],
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=400&fit=crop',
   },
   {
-    title: 'Vendas & Pré-Vendas com IA',
-    slug: 'assistente-pre-vendas',
-    description: 'Funil conversacional que qualifica leads, agenda contatos e entrega oportunidades prontas para seu time.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=face',
-    
-  },
-  {
-    title: 'Integração & Operação Digital',
-    slug: 'copiloto-de-vendas',
-    description: 'Conectamos sua IA aos seus sistemas para centralizar dados, automatizar processos e gerar controle.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=300&fit=crop&crop=face',
-    
-  },
-  {
-    title: 'IA Sob Medida',
+    title: 'Hiperautomação Personalizada',
     slug: 'suporte-turbo',
     description: 'Desenvolvemos soluções personalizadas para necessidades específicas do seu negócio.',
+    topics: [] as string[],
     image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=300&fit=crop&crop=face',
-    
   },
 ];
 
@@ -48,7 +38,7 @@ export function Products() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionBadge text="nossos produtos" className="mb-6" />
+          <SectionBadge text="Nossos produtos" className="mb-6" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
               Do atendimento
@@ -63,59 +53,60 @@ export function Products() {
           </AnimatedSection>
         </div>
 
-        {/* Consultoria — featured */}
-        <AnimatedSection className="mb-6">
-          <motion.div
-            whileHover={{ scale: 1.01, y: -4 }}
-            transition={{ duration: 0.3 }}
-            className="group bg-[#2D2D4A] rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300"
-          >
-            <div className="flex flex-col md:flex-row">
-              {/* Image */}
-              <div className="relative md:w-2/5 h-56 md:h-64 overflow-hidden flex-shrink-0">
-                <img
-                  src={consultoria.image}
-                  alt={consultoria.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#2D2D4A]/60 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D4A]/60 to-transparent md:hidden" />
-              </div>
-
-              {/* Content */}
-              <div className="p-8 flex flex-col justify-center">
-                <span className="inline-block text-xs font-semibold uppercase tracking-widest text-[#ff851b] mb-3">
-                  Serviço principal
-                </span>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {consultoria.title}
-                </h3>
-                <p className="text-white/70 mb-6 leading-relaxed text-base">
-                  {consultoria.description}
-                </p>
-                <Link
-                  to={`/servicos/${consultoria.slug}`}
-                  className="inline-flex items-center gap-2 text-[#ff851b] font-medium hover:gap-3 transition-all"
-                >
-                  Saiba mais
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatedSection>
-
         {/* Products Grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Consultoria — featured with border */}
+          <StaggerItem className="md:col-span-2">
+            <motion.div
+              whileHover={{ scale: 1.01, y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border-3 border-[#ff851b]"
+            >
+              <div className="flex flex-col md:flex-row">
+                {/* Image */}
+                <div className="relative md:w-2/5 h-56 md:h-72 overflow-hidden flex-shrink-0">
+                  <img
+                    src={consultoria.image}
+                    alt={consultoria.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 hidden md:block" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:hidden" />
+                </div>
+
+                {/* Content */}
+                <div className="p-8 flex flex-col justify-center">
+                  <span className="inline-block text-xs font-semibold uppercase tracking-widest text-[#ff851b] mb-3">
+                    Serviço principal
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#2D2D4A] mb-4">
+                    {consultoria.title}
+                  </h3>
+                  <p className="text-[#2D2D4A]/70 mb-6 leading-relaxed text-base">
+                    {consultoria.description}
+                  </p>
+                  <Link
+                    to={`/servicos/${consultoria.slug}`}
+                    className="inline-flex items-center gap-2 text-[#ff851b] font-medium hover:gap-3 transition-all"
+                  >
+                    Saiba mais
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </StaggerItem>
+
+          {/* Products */}
           {products.map((product) => (
             <StaggerItem key={product.title}>
               <motion.div
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300"
+                className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -125,13 +116,23 @@ export function Products() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-semibold text-[#2D2D4A] mb-3">
                     {product.title}
                   </h3>
-                  <p className="text-[#2D2D4A]/70 mb-4 leading-relaxed">
+                  <p className="text-[#2D2D4A]/70 mb-4 leading-relaxed flex-1">
                     {product.description}
                   </p>
+                  {product.topics.length > 0 && (
+                    <ul className="mb-4 space-y-1">
+                      {product.topics.map((topic) => (
+                        <li key={topic} className="flex items-center gap-2 text-sm text-[#2D2D4A]/60">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#ff851b] flex-shrink-0" />
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <Link
                     to={`/servicos/${product.slug}`}
                     className="inline-flex items-center gap-2 text-[#ff851b] font-medium hover:gap-3 transition-all"
