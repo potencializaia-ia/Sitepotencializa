@@ -3,6 +3,8 @@ import {Login} from "@/pages/Login";
 import {SignUp} from "@/pages/SignUp";
 import { ServicePage } from "@/pages/ServicePage";
 import { Perfil } from "@/pages/Perfil";
+import { EsqueciSenha } from "@/pages/EsqueciSenha";
+import { RedefinirSenha } from "@/pages/RedefinirSenha";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 import { Header } from '@/components/Header';
@@ -60,7 +62,22 @@ export default function App() {
 
         {/* Página de perfil */}
         <Route path="/perfil" element={<Perfil />} />
+
+        {/* Página de esqueci minha senha */}
+        <Route path="/esqueci-senha" element={<EsqueciSenha />} />
+
+        {/* Página de redefinir senha */}
+        <Route path="/redefinir-senha" element={<RedefinirSenha />} />
+
       </Routes>
+
+      <a
+        href="mailto:suporte@potencializa.ai"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#ff851b] text-white px-5 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+      >
+        💬 Suporte
+      </a>
+
     </>
   );
 }

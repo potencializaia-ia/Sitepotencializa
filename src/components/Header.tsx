@@ -20,14 +20,6 @@ const solucoesItems = [
   { title: "IA Sob Medida", href: "/servicos/suporte-turbo" },
 ];
 
-const segmentosItems = [
-  { title: "Clínicas de Saúde", href: "#" },
-  { title: "E-commerce", href: "#" },
-  { title: "Salões de Beleza", href: "#" },
-  { title: "Imobiliárias", href: "#" },
-  { title: "Academias", href: "#" },
-];
-
 const navItems = [
   { title: "Cases", href: "#cases" },
   { title: "Planos", href: "#planos" },
@@ -109,27 +101,6 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={triggerClass}>
-                    Segmentos
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-64 gap-1 p-2">
-                      {segmentosItems.map((item) => (
-                        <li key={item.title}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={item.href}
-                              className="block rounded-lg p-3 text-sm transition-colors hover:bg-black/5 text-slate-700 hover:text-slate-900"
-                            >
-                              {item.title}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -197,20 +168,6 @@ export function Header() {
                     >
                       {item.title}
                     </Link>
-                  ))}
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-gray-500 px-2">Segmentos</p>
-                  {segmentosItems.map((item) => (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      className="block px-2 py-2 text-[#2D2D4A] hover:text-slate-900 transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.title}
-                    </a>
                   ))}
                 </div>
 

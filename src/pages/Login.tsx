@@ -213,9 +213,9 @@ export function Login() {
                       />
                       <span className="text-sm text-[#2D2D4A]/60">Manter conectado</span>
                     </label>
-                    <a href="#" className="text-sm text-[#ff851b] hover:underline">
+                    <Link to="/esqueci-senha" className="text-sm text-[#ff851b] hover:underline">
                       Esqueceu a senha?
-                    </a>
+                    </Link>
                   </motion.div>
 
                   <motion.div variants={itemVariants}>
