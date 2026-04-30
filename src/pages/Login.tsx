@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Eye, EyeOff, Zap, Shield, TrendingUp } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { Eye, EyeOff, Zap, Shield, TrendingUp, ArrowRight, Cpu, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -8,30 +8,29 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { supabase } from '@/lib/supabase';
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+  },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const } },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
+  },
 };
-
-const highlights = [
-  { icon: Zap, text: 'Automação inteligente 24/7' },
-  { icon: TrendingUp, text: 'Aumente suas conversões' },
-  { icon: Shield, text: 'Segurança e privacidade' },
-];
 
 export function Login() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [loadingGoogle, setLoadingGoogle] = useState(false);
 
@@ -39,244 +38,168 @@ export function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoadingEmail(true);
-
     try {
-      const redirectPath =
-        localStorage.getItem('postLoginRedirect') || '/';
-
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        alert(error.message);
-        return;
-      }
-
+      const redirectPath = localStorage.getItem('postLoginRedirect') || '/';
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) { alert(error.message); return; }
       localStorage.removeItem('postLoginRedirect');
       navigate(redirectPath, { replace: true });
-    } finally {
-      setLoadingEmail(false);
-    }
+    } finally { setLoadingEmail(false); }
   };
 
   const handleGoogleLogin = async () => {
     setLoadingGoogle(true);
-
     try {
-      localStorage.setItem(
-        'postLoginRedirect',
-        window.location.pathname + window.location.search
-      );
-
+      localStorage.setItem('postLoginRedirect', window.location.pathname + window.location.search);
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-        },
+        options: { redirectTo: `${window.location.origin}/auth/callback` },
       });
-
-      if (error) {
-        alert(error.message);
-        setLoadingGoogle(false);
-      }
-    } catch (error) {
-      console.error(error);
-      setLoadingGoogle(false);
-      alert('Não foi possível continuar com o Google.');
-    }
+      if (error) { alert(error.message); setLoadingGoogle(false); }
+    } catch (error) { setLoadingGoogle(false); alert('Erro ao conectar com Google.'); }
   };
 
   return (
-    <div className="min-h-screen bg-footer-gradient relative overflow-hidden flex flex-col">
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ff851b]/20 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#7fdbff]/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#050505] bg-hero-gradient relative overflow-hidden flex flex-col">
+      {/* Glows de Fundo Dinâmicos */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-30" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#7fdbff]/5 blur-[120px] rounded-full opacity-20" />
+      </div>
 
       <Header />
 
-      <div className="flex-1 flex items-center justify-center px-4 pt-28 pb-12">
-        <div className="w-full max-w-5xl bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="hidden lg:flex flex-col gap-10"
-            >
-              <motion.div variants={itemVariants} className="flex items-center gap-3">
-                <img
-                  src="/dist/assets/images/logo.png"
-                  alt="Potencializa.ai"
-                  className="h-10 w-auto object-contain"
-                />
-                <span className="text-white font-bold text-xl tracking-tight">
-                  Potencializa<span className="text-[#ff851b]">.</span>ai
-                </span>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm font-medium text-white">
-                  <span className="w-2 h-2 rounded-full bg-[#ff851b]" />
-                  Plataforma de marketing com IA
-                </div>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <h1 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
-                  Marketing digital que gera{' '}
-                  <span className="text-[#ff851b]">resultados reais</span> para o seu negócio
-                  <span className="text-[#ff851b]">.</span>
-                </h1>
-                <p className="mt-4 text-lg text-white/70 leading-relaxed">
-                  Automação inteligente para atrair, converter e encantar clientes — 24/7, sem pausas.
-                </p>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="flex flex-col gap-4">
-                {highlights.map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/20">
-                      <Icon className="w-5 h-5 text-[#ff851b]" />
-                    </div>
-                    <p className="text-white/80 font-medium">{text}</p>
-                  </div>
-                ))}
-              </motion.div>
+      <main className="flex-1 flex items-center justify-center px-4 pt-28 pb-12 relative z-10">
+        <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* LADO ESQUERDO: BRAND & VISUAL NEURAL */}
+          <motion.div 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="visible"
+            className="hidden lg:flex flex-col gap-12"
+          >
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-[#ff851b]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ff851b] animate-pulse" />
+                Acesso à Plataforma
+              </div>
+              <h1 className="text-5xl xl:text-7xl font-bold text-white tracking-tighter leading-[0.95]">
+                Potencialize seus <br /> <span className="text-[#ff851b]">resultados.</span>
+              </h1>
+              <p className="text-xl text-white/40 max-w-md font-medium leading-relaxed">
+                Entre na central de inteligência e gerencie seus agentes autonômos 24/7.
+              </p>
             </motion.div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="bg-[#F5F5F7] rounded-3xl p-8 lg:p-10 border border-slate-200">
-                <motion.div variants={itemVariants} className="flex lg:hidden items-center gap-3 mb-8">
-                  <img
-                    src="/dist/assets/images/logo.png"
-                    alt="Potencializa.ai"
-                    className="h-8 w-auto object-contain"
+            {/* Ilustração Abstrata Minimalista (Nodes) */}
+            <motion.div variants={itemVariants} className="relative w-64 h-64">
+                <div className="absolute inset-0 border border-white/10 rounded-[40px] rotate-12" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-[#ff851b]/10 blur-2xl absolute animate-pulse" />
+                    <Cpu className="w-12 h-12 text-white/20" />
+                </div>
+                <div className="absolute -top-4 -right-4 p-4 bg-white/5 border border-white/10 rounded-2xl">
+                    <Sparkles className="w-5 h-5 text-[#ff851b]" />
+                </div>
+            </motion.div>
+          </motion.div>
+
+          {/* LADO DIREITO: FORMULÁRIO (GLASSMORPHISM PRETO) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="bg-[#0d0d0d]/40 backdrop-blur-3xl rounded-[40px] p-8 lg:p-12 border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)]">
+              <div className="mb-10 text-center lg:text-left">
+                <h2 className="text-3xl font-bold text-white tracking-tight mb-2">Entrar</h2>
+                <p className="text-white/40 font-medium">Bem-vindo de volta ao futuro do marketing.</p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-2">
+                  <Input
+                    type="email"
+                    placeholder="E-mail corporativo"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 focus:ring-0 transition-all"
+                    required
                   />
-                  <span className="text-[#2D2D4A] font-bold text-lg tracking-tight">
-                    Potencializa<span className="text-[#ff851b]">.</span>ai
-                  </span>
-                </motion.div>
+                </div>
 
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-3xl font-bold text-[#2D2D4A] mb-1">Entrar</h2>
-                  <p className="text-[#2D2D4A]/50 text-sm mb-8">Bem-vindo de volta! Acesse sua conta.</p>
-                </motion.div>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <motion.div variants={itemVariants}>
-                    <Input
-                      type="email"
-                      placeholder="E-mail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                  </motion.div>
-
-                  <motion.div variants={itemVariants} className="relative">
-                    <Input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="Senha"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 pr-11 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      disabled={isLoading}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
-                    >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                    </button>
-                  </motion.div>
-
-                  <motion.div variants={itemVariants} className="flex items-center justify-between">
-                    <label className="flex items-center gap-2 cursor-pointer select-none">
-                      <Checkbox
-                        id="remember"
-                        checked={rememberMe}
-                        onCheckedChange={(v) => setRememberMe(v as boolean)}
-                        disabled={isLoading}
-                        className="border-slate-300 data-[state=checked]:bg-[#ff851b] data-[state=checked]:border-[#ff851b]"
-                      />
-                      <span className="text-sm text-[#2D2D4A]/60">Manter conectado</span>
-                    </label>
-                    <Link to="/esqueci-senha" className="text-sm text-[#ff851b] hover:underline">
-                      Esqueceu a senha?
-                    </Link>
-                  </motion.div>
-
-                  <motion.div variants={itemVariants}>
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full h-12 bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white font-semibold text-base rounded-xl transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        {loadingEmail && (
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        )}
-                        {loadingEmail ? 'Entrando...' : 'Entrar'}
-                      </span>
-                    </Button>
-                  </motion.div>
-                </form>
-
-                <motion.div variants={itemVariants} className="flex items-center gap-3 my-5">
-                  <div className="flex-1 h-px bg-slate-200" />
-                  <span className="text-sm text-[#2D2D4A]/40">ou</span>
-                  <div className="flex-1 h-px bg-slate-200" />
-                </motion.div>
-
-                <motion.div variants={itemVariants}>
+                <div className="relative group">
+                  <Input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Sua senha secreta"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 focus:ring-0 transition-all"
+                    required
+                  />
                   <button
                     type="button"
-                    onClick={handleGoogleLogin}
-                    disabled={isLoading}
-                    className="w-full h-12 flex items-center justify-center gap-3 bg-white border border-slate-200 rounded-xl text-[#2D2D4A] hover:bg-gray-50 transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 hover:text-[#ff851b] transition-colors"
                   >
-                    {loadingGoogle ? (
-                      <>
-                        <span className="w-4 h-4 border-2 border-[#2D2D4A] border-t-transparent rounded-full animate-spin" />
-                        <span className="text-sm font-medium">Conectando com Google...</span>
-                      </>
-                    ) : (
-                      <>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M19.6 10.23c0-.68-.06-1.36-.18-2H10v3.79h5.39a4.6 4.6 0 01-2 3.02v2.5h3.23c1.89-1.74 2.98-4.3 2.98-7.31z" fill="#4285F4" />
-                          <path d="M10 20c2.7 0 4.96-.89 6.62-2.41l-3.23-2.5c-.9.6-2.04.96-3.39.96-2.6 0-4.81-1.76-5.6-4.12H1.07v2.58A10 10 0 0010 20z" fill="#34A853" />
-                          <path d="M4.4 11.93A5.99 5.99 0 014.08 10c0-.67.11-1.32.32-1.93V5.49H1.07A10 10 0 000 10c0 1.61.38 3.13 1.07 4.51l3.33-2.58z" fill="#FBBC05" />
-                          <path d="M10 3.96c1.47 0 2.79.5 3.82 1.5l2.86-2.86A9.95 9.95 0 0010 0 10 10 0 001.07 5.49L4.4 8.07C5.19 5.72 7.4 3.96 10 3.96z" fill="#EA4335" />
-                        </svg>
-                        <span className="text-sm font-medium">Continuar com Google</span>
-                      </>
-                    )}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
-                </motion.div>
+                </div>
 
-                <motion.p variants={itemVariants} className="text-center text-sm text-[#2D2D4A]/50 mt-6">
-                  Não tem uma conta?{' '}
-                  <Link to="/signup" className="text-[#ff851b] hover:underline font-medium">
-                    Criar conta
+                <div className="flex items-center justify-between pt-2">
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <Checkbox
+                      id="remember"
+                      checked={rememberMe}
+                      onCheckedChange={(v) => setRememberMe(v as boolean)}
+                      className="border-white/20 data-[state=checked]:bg-[#ff851b] data-[state=checked]:border-[#ff851b]"
+                    />
+                    <span className="text-sm text-white/40 group-hover:text-white/60 transition-colors">Manter conectado</span>
+                  </label>
+                  <Link to="/esqueci-senha" className="text-sm text-[#ff851b] hover:text-[#e07316] font-bold">
+                    Esqueceu?
                   </Link>
-                </motion.p>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full h-14 bg-[#ff851b] hover:bg-[#e07316] text-white font-bold text-lg rounded-2xl transition-all shadow-lg shadow-orange-500/10 active:scale-[0.98]"
+                >
+                  {loadingEmail ? 'Processando...' : 'Acessar Painel'}
+                </Button>
+              </form>
+
+              <div className="flex items-center gap-4 my-8">
+                <div className="flex-1 h-px bg-white/5" />
+                <span className="text-[10px] font-black text-white/10 uppercase tracking-widest">ou</span>
+                <div className="flex-1 h-px bg-white/5" />
               </div>
-            </motion.div>
-          </div>
+
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                disabled={isLoading}
+                className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-2xl text-white font-bold hover:bg-white/10 transition-all active:scale-[0.98]"
+              >
+                <img src="https://www.google.com/favicon.ico" className="w-5 h-5 grayscale opacity-50 group-hover:opacity-100" />
+                Continuar com Google
+              </button>
+
+              <p className="text-center text-sm text-white/30 mt-10 font-medium">
+                Novo por aqui?{' '}
+                <Link to="/signup" className="text-white hover:text-[#ff851b] transition-colors font-bold underline underline-offset-4">
+                  Criar conta gratuita
+                </Link>
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

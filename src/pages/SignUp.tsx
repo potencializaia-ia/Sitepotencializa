@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Eye, EyeOff, Zap, Shield, TrendingUp } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { Eye, EyeOff, Zap, Shield, TrendingUp, ArrowRight, Sparkles, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -8,21 +8,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { supabase } from '@/lib/supabase';
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+  },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const } },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
+  },
 };
-
-const highlights = [
-  { icon: Zap, text: 'Automação inteligente 24/7' },
-  { icon: TrendingUp, text: 'Aumente suas conversões' },
-  { icon: Shield, text: 'Segurança e privacidade' },
-];
 
 export function SignUp() {
   const navigate = useNavigate();
@@ -47,94 +48,39 @@ export function SignUp() {
 
   const isLoading = loadingEmail || loadingGoogle;
 
-  const clearErrors = () => {
-    setNameError('');
-    setEmailError('');
-    setPasswordError('');
-    setConfirmPasswordError('');
-    setTermsError('');
-    setGeneralError('');
-  };
-
   const validateForm = () => {
-    clearErrors();
+    setNameError(''); setEmailError(''); setPasswordError(''); 
+    setConfirmPasswordError(''); setTermsError(''); setGeneralError('');
     let valid = true;
 
-    if (!name.trim()) {
-      setNameError('Informe seu nome completo.');
-      valid = false;
-    }
-
-    if (!email.trim()) {
-      setEmailError('Informe seu e-mail.');
-      valid = false;
-    }
-
-    if (!password) {
-      setPasswordError('Informe uma senha.');
-      valid = false;
-    } else if (password.length < 6) {
-      setPasswordError('A senha deve ter pelo menos 6 caracteres.');
-      valid = false;
-    }
-
-    if (!confirmPassword) {
-      setConfirmPasswordError('Confirme sua senha.');
-      valid = false;
-    } else if (password !== confirmPassword) {
-      setConfirmPasswordError('As senhas não coincidem.');
-      valid = false;
-    }
-
-    if (!acceptTerms) {
-      setTermsError('Você precisa aceitar os Termos de Uso e a Política de Privacidade.');
-      valid = false;
-    }
+    if (!name.trim()) { setNameError('Informe seu nome completo.'); valid = false; }
+    if (!email.trim()) { setEmailError('Informe seu e-mail.'); valid = false; }
+    if (password.length < 6) { setPasswordError('Mínimo de 6 caracteres.'); valid = false; }
+    if (password !== confirmPassword) { setConfirmPasswordError('As senhas não coincidem.'); valid = false; }
+    if (!acceptTerms) { setTermsError('Aceite os termos para continuar.'); valid = false; }
 
     return valid;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setLoadingEmail(true);
-
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: {
-            name,
-          },
-        },
+        options: { data: { name } },
       });
 
       if (error) {
-        const message = error.message.toLowerCase();
-
-        if (
-          message.includes('already registered') ||
-          message.includes('already been registered') ||
-          message.includes('user already registered')
-        ) {
-          setEmailError('Este e-mail já está cadastrado.');
-        } else {
-          setGeneralError(error.message);
-        }
+        setGeneralError(error.message);
         return;
       }
-
-      if (!data.user) {
-        setGeneralError('Não foi possível criar sua conta.');
-        return;
-      }
-
       navigate('/login', { replace: true });
     } catch (err) {
-      setGeneralError('Ocorreu um erro ao criar a conta.');
+      setGeneralError('Erro ao criar conta.');
     } finally {
       setLoadingEmail(false);
     }
@@ -142,273 +88,186 @@ export function SignUp() {
 
   const handleGoogleSignUp = async () => {
     setLoadingGoogle(true);
-    clearErrors();
-
     try {
-      localStorage.setItem(
-        'postLoginRedirect',
-        window.location.pathname + window.location.search
-      );
-
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
-        },
+        options: { redirectTo: `${window.location.origin}/auth/callback` },
       });
-
-      if (error) {
-        setGeneralError(error.message);
-        setLoadingGoogle(false);
-      }
-    } catch (err) {
-      setGeneralError('Não foi possível continuar com o Google.');
-      setLoadingGoogle(false);
-    }
+      if (error) { setGeneralError(error.message); setLoadingGoogle(false); }
+    } catch (err) { setLoadingGoogle(false); }
   };
 
   return (
-    <div className="min-h-screen bg-footer-gradient relative overflow-hidden flex flex-col">
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#ff851b]/20 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#7fdbff]/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#050505] bg-hero-gradient relative overflow-hidden flex flex-col">
+      {/* Camada de Glows Profundos */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-30" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#7fdbff]/5 blur-[120px] rounded-full opacity-20" />
+      </div>
 
       <Header />
 
-      <div className="flex-1 flex items-center justify-center px-4 pt-28 pb-12">
-        <div className="w-full max-w-5xl bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 lg:p-12">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="hidden lg:flex flex-col gap-10"
-            >
-              <motion.div variants={itemVariants} className="flex items-center gap-3">
-                <img
-                  src="/dist/assets/images/logo.png"
-                  alt="Potencializa.ai"
-                  className="h-10 w-auto object-contain"
-                />
-                <span className="text-white font-bold text-xl tracking-tight">
-                  Potencializa<span className="text-[#ff851b]">.</span>ai
-                </span>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm font-medium text-white">
-                  <span className="w-2 h-2 rounded-full bg-[#ff851b]" />
-                  Plataforma de marketing com IA
-                </div>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <h1 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
-                  Comece a gerar{' '}
-                  <span className="text-[#ff851b]">resultados reais</span> para o seu negócio
-                  <span className="text-[#ff851b]">.</span>
-                </h1>
-                <p className="mt-4 text-lg text-white/70 leading-relaxed">
-                  Crie sua conta gratuitamente e descubra como a IA pode transformar o seu marketing.
-                </p>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="flex flex-col gap-4">
-                {highlights.map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/20">
-                      <Icon className="w-5 h-5 text-[#ff851b]" />
-                    </div>
-                    <p className="text-white/80 font-medium">{text}</p>
-                  </div>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="bg-[#F5F5F7] rounded-3xl p-8 lg:p-10 border border-slate-200">
-                <motion.div variants={itemVariants} className="flex lg:hidden items-center gap-3 mb-8">
-                  <img
-                    src="/dist/assets/images/logo.png"
-                    alt="Potencializa.ai"
-                    className="h-8 w-auto object-contain"
-                  />
-                  <span className="text-[#2D2D4A] font-bold text-lg tracking-tight">
-                    Potencializa<span className="text-[#ff851b]">.</span>ai
-                  </span>
-                </motion.div>
-
-                <motion.div variants={itemVariants}>
-                  <h2 className="text-3xl font-bold text-[#2D2D4A] mb-1">Criar conta</h2>
-                  <p className="text-[#2D2D4A]/50 text-sm mb-8">Preencha os dados abaixo para começar.</p>
-                </motion.div>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <motion.div variants={itemVariants}>
-                    <Input
-                      type="text"
-                      placeholder="Nome completo"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                    {nameError && (
-                      <p className="mt-1 text-sm text-red-500">{nameError}</p>
-                    )}
-                  </motion.div>
-
-                  <motion.div variants={itemVariants}>
-                    <Input
-                      type="email"
-                      placeholder="E-mail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                    {emailError && (
-                      <p className="mt-1 text-sm text-red-500">{emailError}</p>
-                    )}
-                  </motion.div>
-
-                  <motion.div variants={itemVariants} className="relative">
-                    <Input
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="Senha"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 pr-11 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      disabled={isLoading}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
-                    >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                    </button>
-                    {passwordError && (
-                      <p className="mt-1 text-sm text-red-500">{passwordError}</p>
-                    )}
-                  </motion.div>
-
-                  <motion.div variants={itemVariants} className="relative">
-                    <Input
-                      type={showConfirmPassword ? 'text' : 'password'}
-                      placeholder="Confirmar senha"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      disabled={isLoading}
-                      className="h-12 pr-11 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      disabled={isLoading}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
-                    >
-                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                    </button>
-                    {confirmPasswordError && (
-                      <p className="mt-1 text-sm text-red-500">{confirmPasswordError}</p>
-                    )}
-                  </motion.div>
-
-                  <motion.div variants={itemVariants}>
-                    <label className="flex items-start gap-2 cursor-pointer select-none">
-                      <Checkbox
-                        id="terms"
-                        checked={acceptTerms}
-                        onCheckedChange={(v) => setAcceptTerms(v as boolean)}
-                        disabled={isLoading}
-                        className="mt-0.5 border-slate-300 data-[state=checked]:bg-[#ff851b] data-[state=checked]:border-[#ff851b]"
-                      />
-                      <span className="text-sm text-[#2D2D4A]/60 leading-snug">
-                        Concordo com os{' '}
-                        <a href="#" className="text-[#ff851b] hover:underline">Termos de Uso</a>
-                        {' '}e a{' '}
-                        <a href="#" className="text-[#ff851b] hover:underline">Política de Privacidade</a>
-                      </span>
-                    </label>
-                    {termsError && (
-                      <p className="mt-1 text-sm text-red-500">{termsError}</p>
-                    )}
-                  </motion.div>
-
-                  {generalError && (
-                    <motion.div variants={itemVariants}>
-                      <p className="text-sm text-red-500">{generalError}</p>
-                    </motion.div>
-                  )}
-
-                  <motion.div variants={itemVariants}>
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full h-12 bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white font-semibold text-base rounded-xl transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        {loadingEmail && (
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        )}
-                        {loadingEmail ? 'Criando conta...' : 'Criar conta'}
-                      </span>
-                    </Button>
-                  </motion.div>
-                </form>
-
-                <motion.div variants={itemVariants} className="flex items-center gap-3 my-5">
-                  <div className="flex-1 h-px bg-slate-200" />
-                  <span className="text-sm text-[#2D2D4A]/40">ou</span>
-                  <div className="flex-1 h-px bg-slate-200" />
-                </motion.div>
-
-                <motion.div variants={itemVariants}>
-                  <button
-                    type="button"
-                    onClick={handleGoogleSignUp}
-                    disabled={isLoading}
-                    className="w-full h-12 flex items-center justify-center gap-3 bg-white border border-slate-200 rounded-xl text-[#2D2D4A] hover:bg-gray-50 transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
-                  >
-                    {loadingGoogle ? (
-                      <>
-                        <span className="w-4 h-4 border-2 border-[#2D2D4A] border-t-transparent rounded-full animate-spin" />
-                        <span className="text-sm font-medium">Conectando com Google...</span>
-                      </>
-                    ) : (
-                      <>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M19.6 10.23c0-.68-.06-1.36-.18-2H10v3.79h5.39a4.6 4.6 0 01-2 3.02v2.5h3.23c1.89-1.74 2.98-4.3 2.98-7.31z" fill="#4285F4" />
-                          <path d="M10 20c2.7 0 4.96-.89 6.62-2.41l-3.23-2.5c-.9.6-2.04.96-3.39.96-2.6 0-4.81-1.76-5.6-4.12H1.07v2.58A10 10 0 0010 20z" fill="#34A853" />
-                          <path d="M4.4 11.93A5.99 5.99 0 014.08 10c0-.67.11-1.32.32-1.93V5.49H1.07A10 10 0 000 10c0 1.61.38 3.13 1.07 4.51l3.33-2.58z" fill="#FBBC05" />
-                          <path d="M10 3.96c1.47 0 2.79.5 3.82 1.5l2.86-2.86A9.95 9.95 0 0010 0 10 10 0 001.07 5.49L4.4 8.07C5.19 5.72 7.4 3.96 10 3.96z" fill="#EA4335" />
-                        </svg>
-                        <span className="text-sm font-medium">Continuar com Google</span>
-                      </>
-                    )}
-                  </button>
-                </motion.div>
-
-                <motion.p variants={itemVariants} className="text-center text-sm text-[#2D2D4A]/50 mt-6">
-                  Já tem uma conta?{' '}
-                  <Link to="/login" className="text-[#ff851b] hover:underline font-medium">
-                    Entrar
-                  </Link>
-                </motion.p>
+      <main className="flex-1 flex items-center justify-center px-4 pt-32 pb-12 relative z-10">
+        <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* LADO ESQUERDO: CONVITE & BRANDING */}
+          <motion.div 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="visible"
+            className="hidden lg:flex flex-col gap-12"
+          >
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-[#ff851b]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ff851b] animate-pulse" />
+                Nova Experiência
               </div>
+              <h1 className="text-5xl xl:text-7xl font-bold text-white tracking-tighter leading-[0.95]">
+                Comece sua <br /> <span className="text-[#ff851b]">jornada hoje.</span>
+              </h1>
+              <p className="text-xl text-white/40 max-w-md font-medium leading-relaxed">
+                Crie sua conta em segundos e tenha acesso imediato à vanguarda da automação com IA.
+              </p>
             </motion.div>
-          </div>
+
+            {/* Ilustração Abstrata (Core de Expansão) */}
+            <motion.div variants={itemVariants} className="relative w-64 h-64">
+                <div className="absolute inset-0 border border-white/10 rounded-full scale-110 opacity-20 animate-pulse" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-24 h-24 bg-[#7fdbff]/10 blur-3xl absolute" />
+                    <UserPlus className="w-16 h-16 text-white/10" />
+                </div>
+                <div className="absolute bottom-0 right-0 p-5 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md">
+                    <TrendingUp className="w-6 h-6 text-[#ff851b]" />
+                </div>
+            </motion.div>
+          </motion.div>
+
+          {/* LADO DIREITO: FORMULÁRIO DE CADASTRO (Glassmorphism) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="bg-[#0d0d0d]/40 backdrop-blur-3xl rounded-[40px] p-8 lg:p-10 border border-white/10 shadow-2xl">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-white tracking-tight mb-2">Criar conta</h2>
+                <p className="text-white/40 font-medium">Junte-se a centenas de empresas que escalam com IA.</p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Nome - Full width no mobile */}
+                <div className="md:col-span-2 space-y-1">
+                  <Input
+                    placeholder="Nome completo"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 transition-all"
+                  />
+                  {nameError && <p className="text-[10px] text-red-500 font-bold uppercase ml-2 tracking-widest">{nameError}</p>}
+                </div>
+
+                {/* E-mail - Full width */}
+                <div className="md:col-span-2 space-y-1">
+                  <Input
+                    type="email"
+                    placeholder="E-mail profissional"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 transition-all"
+                  />
+                  {emailError && <p className="text-[10px] text-red-500 font-bold uppercase ml-2 tracking-widest">{emailError}</p>}
+                </div>
+
+                {/* Senha */}
+                <div className="relative space-y-1">
+                  <Input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 transition-all"
+                  />
+                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-4 text-white/20 hover:text-[#ff851b]">
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                  {passwordError && <p className="text-[10px] text-red-500 font-bold uppercase ml-2 tracking-widest">{passwordError}</p>}
+                </div>
+
+                {/* Confirmar Senha */}
+                <div className="relative space-y-1">
+                  <Input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    placeholder="Confirmar"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    disabled={isLoading}
+                    className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 transition-all"
+                  />
+                  <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-4 text-white/20 hover:text-[#ff851b]">
+                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                  {confirmPasswordError && <p className="text-[10px] text-red-500 font-bold uppercase ml-2 tracking-widest">{confirmPasswordError}</p>}
+                </div>
+
+                {/* Termos */}
+                <div className="md:col-span-2 py-2">
+                  <label className="flex items-start gap-3 cursor-pointer group">
+                    <Checkbox
+                      checked={acceptTerms}
+                      onCheckedChange={(v) => setAcceptTerms(v as boolean)}
+                      className="mt-1 border-white/20 data-[state=checked]:bg-[#ff851b] data-[state=checked]:border-[#ff851b]"
+                    />
+                    <span className="text-xs text-white/40 leading-relaxed group-hover:text-white/60 transition-colors">
+                      Eu aceito os <span className="text-white font-bold underline">Termos de Uso</span> e autorizo o processamento dos meus dados conforme a Política de Privacidade.
+                    </span>
+                  </label>
+                  {termsError && <p className="text-[10px] text-red-500 font-bold uppercase mt-2 tracking-widest">{termsError}</p>}
+                </div>
+
+                {/* Botão de Envio */}
+                <div className="md:col-span-2 pt-2">
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full h-14 bg-[#ff851b] hover:bg-[#e07316] text-white font-bold text-lg rounded-2xl shadow-xl shadow-orange-500/10 active:scale-[0.98] transition-all"
+                  >
+                    {loadingEmail ? 'Criando sua conta...' : 'Começar Agora'}
+                  </Button>
+                </div>
+              </form>
+
+              {/* Divisor */}
+              <div className="flex items-center gap-4 my-8">
+                <div className="flex-1 h-px bg-white/5" />
+                <span className="text-[10px] font-black text-white/10 uppercase tracking-widest">ou</span>
+                <div className="flex-1 h-px bg-white/5" />
+              </div>
+
+              {/* Google Sign Up */}
+              <button
+                type="button"
+                onClick={handleGoogleSignUp}
+                disabled={isLoading}
+                className="w-full h-14 flex items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-2xl text-white font-bold hover:bg-white/10 transition-all active:scale-[0.98]"
+              >
+                <img src="https://www.google.com/favicon.ico" className="w-5 h-5 grayscale opacity-50" />
+                Cadastrar com Google
+              </button>
+
+              <p className="text-center text-sm text-white/30 mt-8 font-medium">
+                Já faz parte?{' '}
+                <Link to="/login" className="text-white hover:text-[#ff851b] font-bold underline underline-offset-4 transition-colors">
+                  Fazer login
+                </Link>
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

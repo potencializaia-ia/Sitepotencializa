@@ -1,12 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import {Login} from "@/pages/Login";
-import {SignUp} from "@/pages/SignUp";
+import { useState } from "react";
+
+// Pages
+import { Login } from "@/pages/Login";
+import { SignUp } from "@/pages/SignUp";
 import { ServicePage } from "@/pages/ServicePage";
 import { Perfil } from "@/pages/Perfil";
 import { EsqueciSenha } from "@/pages/EsqueciSenha";
 import { RedefinirSenha } from "@/pages/RedefinirSenha";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import AuthCallback from "@/pages/AuthCallback"; // O elo perdido do login social
 
+// Components & Sections
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { FloatingSupport } from "@/components/FloatingSupport"; // O componente neural
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/sections/Hero';
@@ -46,38 +52,31 @@ function Home() {
 export default function App() {
   return (
     <>
+      {/* Garante que a troca de rota sempre resete o scroll */}
       <ScrollToTop />
+      
       <Routes>
-        {/* Página principal */}
+        {/* Landing Page Central */}
         <Route path="/" element={<Home />} />
 
-        {/* Página dos produtos */}
+        {/* Vertical de Serviços Dinâmica */}
         <Route path="/servicos/:slug" element={<ServicePage />} />
 
-        {/* Página de login */}
+        {/* Fluxo de Autenticação Deep Dark */}
         <Route path="/login" element={<Login />} />
-
-        {/* Página de cadastro */}
         <Route path="/signup" element={<SignUp />} />
-
-        {/* Página de perfil */}
-        <Route path="/perfil" element={<Perfil />} />
-
-        {/* Página de esqueci minha senha */}
+        <Route path="/auth/callback" element={<AuthCallback />} />
+        
+        {/* Gestão de Credenciais */}
         <Route path="/esqueci-senha" element={<EsqueciSenha />} />
-
-        {/* Página de redefinir senha */}
         <Route path="/redefinir-senha" element={<RedefinirSenha />} />
 
+        {/* Command Center (Perfil) */}
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
 
-      <a
-        href="mailto:suporte@potencializa.ai"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#ff851b] text-white px-5 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300"
-      >
-        💬 Suporte
-      </a>
-
+      {/* Interface de Suporte Neural Pulsante */}
+      <FloatingSupport />
     </>
   );
 }

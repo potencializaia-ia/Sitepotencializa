@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   UserCircle2,
   Mail,
@@ -11,6 +11,7 @@ import {
   ArrowLeft,
   Pencil,
   LockKeyhole,
+  Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
@@ -20,22 +21,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-const containerVariants = {
-  hidden: {},
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
   visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
-    },
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 18 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] as const },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -46,10 +45,7 @@ export function Perfil() {
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  const fullName =
-    user?.user_metadata?.name ||
-    user?.user_metadata?.full_name ||
-    "";
+  const fullName = user?.user_metadata?.name || user?.user_metadata?.full_name || "";
 
   const [name, setName] = useState(fullName);
   const [phone, setPhone] = useState("");
@@ -60,7 +56,6 @@ export function Perfil() {
 
   const handleLogout = async () => {
     setIsSigningOut(true);
-
     try {
       await supabase.auth.signOut();
       navigate("/", { replace: true });
@@ -72,153 +67,123 @@ export function Perfil() {
   const handleSaveProfile = async () => {
     setIsSaving(true);
     setSuccessMessage("");
-
     try {
       const { error } = await supabase.auth.updateUser({
-        data: {
-          name,
-          phone,
-          company,
-          role,
-          city,
-        },
+        data: { name, phone, company, role, city },
       });
-
-      if (!error) {
-        setSuccessMessage("Alterações salvas com sucesso.");
-      }
+      if (!error) setSuccessMessage("Alterações salvas com sucesso.");
     } finally {
       setIsSaving(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-footer-gradient relative overflow-hidden">
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,rgba(255,133,27,0.2),transparent_40%)] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#7fdbff]/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#050505] bg-hero-gradient relative overflow-hidden flex flex-col">
+      {/* Glows de Identidade */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-30" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#7fdbff]/5 blur-[120px] rounded-full opacity-20" />
+      </div>
 
       <Header />
 
-      <main className="pt-32 pb-14 px-4">
+      <main className="flex-1 pt-32 pb-14 px-4 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="max-w-6xl mx-auto"
         >
+          {/* HEADER DO PERFIL */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12"
           >
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm font-medium text-white mb-4">
-                <span className="w-2 h-2 rounded-full bg-[#ff851b]" />
-                Minha conta
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-[#ff851b]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ff851b]" />
+                Command Center
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-white">
-                Perfil de {firstName || "usuário"}
-                <span className="text-[#ff851b]">.</span>
+              <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
+                Perfil de {firstName || "Usuário"}<span className="text-[#ff851b]">.</span>
               </h1>
 
-              <p className="text-white/70 mt-3 max-w-2xl">
-                Gerencie seus dados de acesso, informações pessoais e assinatura.
+              <p className="text-white/40 font-medium max-w-xl">
+                Configurações de identidade e preferências da sua conta Neural.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex gap-4">
               <Button
-                type="button"
                 variant="outline"
                 onClick={() => navigate("/")}
-                className="rounded-xl border-white/20 bg-white/10 text-white hover:bg-white/15 hover:text-white"
+                className="h-12 rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20 transition-all"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                Voltar
+                Sair do Painel
               </Button>
 
               <Button
-                type="button"
                 onClick={handleLogout}
                 disabled={isSigningOut}
-                className="rounded-xl bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white"
+                className="h-12 rounded-2xl bg-white text-black hover:bg-gray-200 font-bold px-8 shadow-xl"
               >
-                <span className="flex items-center gap-2">
-                  {isSigningOut ? (
-                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <LogOut className="h-4 w-4" />
-                  )}
-                  {isSigningOut ? "Saindo..." : "Sair"}
-                </span>
+                {isSigningOut ? "Saindo..." : "Log out"}
               </Button>
             </div>
           </motion.div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {/* CONTA */}
+            {/* CARD: DADOS DA CONTA */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8"
+              className="lg:col-span-2 bg-[#0d0d0d]/40 backdrop-blur-3xl rounded-[40px] border border-white/10 p-8 shadow-2xl relative overflow-hidden"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#2D2D4A] text-white flex items-center justify-center shrink-0">
-                  <UserCircle2 className="h-7 w-7" />
+              <div className="flex items-center gap-5 mb-10">
+                <div className="w-14 h-14 rounded-2xl bg-[#ff851b]/10 border border-[#ff851b]/20 flex items-center justify-center shrink-0">
+                  <UserCircle2 className="h-7 w-7 text-[#ff851b]" />
                 </div>
-
                 <div>
-                  <h2 className="text-2xl font-bold text-[#2D2D4A]">
-                    Dados da conta
-                  </h2>
-                  <p className="text-sm text-[#2D2D4A]/60 mt-1">
-                    Informações principais para acesso e identificação.
-                  </p>
+                  <h2 className="text-xl font-bold text-white tracking-tight">Dados de Acesso</h2>
+                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Identidade Primária</p>
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60">Nome completo</label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Nome Completo</label>
                   <Input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="h-12 rounded-2xl"
+                    className="h-14 bg-white/5 border-white/10 text-white rounded-2xl focus:border-[#ff851b]/50 transition-all"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    E-mail
-                  </label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">E-mail de Login</label>
                   <Input
                     value={user?.email || ""}
                     disabled
-                    className="h-12 rounded-2xl opacity-80"
+                    className="h-14 bg-white/[0.02] border-white/5 text-white/30 rounded-2xl cursor-not-allowed"
                   />
                 </div>
 
-                <div className="space-y-2 md:col-span-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <LockKeyhole className="h-4 w-4" />
-                    Senha
-                  </label>
-
-                  <div className="flex gap-3">
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Senha</label>
+                  <div className="flex gap-4">
                     <Input
                       type="password"
                       value="123456789"
                       disabled
-                      className="h-12 rounded-2xl opacity-80"
+                      className="h-14 bg-white/[0.02] border-white/5 text-white/30 rounded-2xl flex-1 cursor-not-allowed"
                     />
-
                     <Button
-                      type="button"
                       variant="outline"
                       onClick={() => navigate("/esqueci-senha")}
-                      className="h-12 rounded-2xl"
+                      className="h-14 rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10"
                     >
-                      <Pencil className="h-4 w-4 mr-2" />
+                      <LockKeyhole className="h-4 w-4 mr-2" />
                       Alterar
                     </Button>
                   </div>
@@ -226,145 +191,109 @@ export function Perfil() {
               </div>
             </motion.div>
 
-            {/* PLANO */}
+            {/* CARD: PLANO ATUAL */}
             <motion.div
               variants={itemVariants}
-              className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8"
+              className="bg-[#0d0d0d]/40 backdrop-blur-3xl rounded-[40px] border border-white/10 p-8 shadow-2xl flex flex-col"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#ff851b]/10 text-[#ff851b] flex items-center justify-center shrink-0">
-                  <CreditCard className="h-6 w-6" />
+              <div className="flex items-center gap-5 mb-10">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <CreditCard className="h-6 w-6 text-white" />
                 </div>
-
                 <div>
-                  <h2 className="text-xl font-bold text-[#2D2D4A]">Plano</h2>
-                  <p className="text-sm text-[#2D2D4A]/60 mt-1">
-                    Status atual da sua assinatura.
-                  </p>
+                  <h2 className="text-xl font-bold text-white tracking-tight">Assinatura</h2>
+                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Billing Status</p>
                 </div>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5">
-                <p className="text-sm text-[#2D2D4A]/50">Plano atual</p>
-                <p className="text-lg font-semibold text-[#2D2D4A] mt-1">
-                  Nenhum plano contratado
-                </p>
-
-                <p className="text-sm text-[#2D2D4A]/60 mt-3 leading-relaxed">
-                  Ao contratar um plano, você poderá acompanhar os detalhes da assinatura aqui.
-                </p>
-
+              <div className="flex-1 bg-white/[0.03] border border-dashed border-white/10 rounded-3xl p-6 flex flex-col justify-center text-center">
+                <p className="text-xs font-black text-white/20 uppercase tracking-[0.2em] mb-2">Plano Ativo</p>
+                <p className="text-lg font-bold text-white mb-6">Nenhum contrato ativo</p>
+                
                 <Button
-                  type="button"
                   onClick={() => {
                     navigate("/");
-                    setTimeout(() => {
-                      const element = document.getElementById("planos");
-                      if (element) {
-                        element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }, 100);
+                    setTimeout(() => document.getElementById("planos")?.scrollIntoView({ behavior: "smooth" }), 100);
                   }}
-                  className="mt-5 w-full rounded-xl bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white"
+                  className="w-full h-12 bg-[#ff851b] hover:bg-[#e07316] text-white font-bold rounded-xl shadow-lg shadow-orange-500/10"
                 >
-                  Ver planos
+                  Ver Planos Disponíveis
                 </Button>
               </div>
             </motion.div>
 
-            {/* INFORMAÇÕES PESSOAIS */}
+            {/* CARD: INFORMAÇÕES PESSOAIS (FULL WIDTH) */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-3 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8"
+              className="lg:col-span-3 bg-[#0d0d0d]/40 backdrop-blur-3xl rounded-[40px] border border-white/10 p-8 lg:p-12 shadow-2xl"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#7fdbff]/20 text-[#001f3f] flex items-center justify-center shrink-0">
-                  <UserCircle2 className="h-6 w-6" />
+              <div className="flex items-center gap-5 mb-12">
+                <div className="w-14 h-14 rounded-2xl bg-[#7fdbff]/10 border border-[#7fdbff]/20 flex items-center justify-center shrink-0">
+                  <Sparkles className="h-6 w-6 text-[#7fdbff]" />
                 </div>
-
                 <div>
-                  <h2 className="text-xl font-bold text-[#2D2D4A]">
-                    Informações pessoais
-                  </h2>
-                  <p className="text-sm text-[#2D2D4A]/60 mt-1">
-                    Complete seus dados para personalizar melhor sua experiência.
-                  </p>
+                  <h2 className="text-xl font-bold text-white tracking-tight">Preferências de Experiência</h2>
+                  <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Personalização de Dados</p>
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Telefone
-                  </label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Telefone</label>
                   <Input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(00) 00000-0000"
-                    className="h-12 rounded-2xl"
+                    className="h-14 bg-white/5 border-white/10 text-white rounded-2xl focus:border-[#ff851b]/50 transition-all"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <Building2 className="h-4 w-4" />
-                    Empresa
-                  </label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Empresa</label>
                   <Input
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    placeholder="Nome da empresa"
-                    className="h-12 rounded-2xl"
+                    placeholder="Nome da organização"
+                    className="h-14 bg-white/5 border-white/10 text-white rounded-2xl focus:border-[#ff851b]/50 transition-all"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <Briefcase className="h-4 w-4" />
-                    Cargo
-                  </label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Cargo</label>
                   <Input
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    placeholder="Seu cargo"
-                    className="h-12 rounded-2xl"
+                    placeholder="Título profissional"
+                    className="h-14 bg-white/5 border-white/10 text-white rounded-2xl focus:border-[#ff851b]/50 transition-all"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm text-[#2D2D4A]/60 flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    Cidade
-                  </label>
+                  <label className="text-xs font-black text-white/20 uppercase tracking-widest ml-1">Localização</label>
                   <Input
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    placeholder="Sua cidade"
-                    className="h-12 rounded-2xl"
+                    placeholder="Cidade"
+                    className="h-14 bg-white/5 border-white/10 text-white rounded-2xl focus:border-[#ff851b]/50 transition-all"
                   />
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                {successMessage && (
-                  <p className="text-sm text-emerald-600">{successMessage}</p>
-                )}
+              <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-3">
+                  {successMessage && (
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-[#7fdbff] font-bold">
+                      ● {successMessage}
+                    </motion.p>
+                  )}
+                </div>
 
                 <Button
-                  type="button"
                   onClick={handleSaveProfile}
                   disabled={isSaving}
-                  className="rounded-xl bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white sm:ml-auto"
+                  className="h-14 px-12 rounded-2xl bg-[#ff851b] hover:bg-[#e07316] text-white font-black text-lg shadow-2xl shadow-orange-500/20 active:scale-95 transition-all w-full sm:w-auto"
                 >
-                  <span className="flex items-center gap-2">
-                    {isSaving ? (
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    ) : (
-                      <Pencil className="h-4 w-4" />
-                    )}
-                    {isSaving ? "Salvando..." : "Salvar alterações"}
-                  </span>
+                  {isSaving ? "Sincronizando..." : "Salvar Configurações"}
                 </Button>
               </div>
             </motion.div>

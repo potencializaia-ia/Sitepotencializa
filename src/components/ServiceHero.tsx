@@ -1,250 +1,150 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SectionBadge } from "@/components/SectionBadge";
-import {
-  ArrowRight,
-  PlayCircle,
-  CheckCircle2,
-  MessageCircle,
-  TrendingUp,
-  Clock,
-} from "lucide-react";
+import { ArrowRight, Cpu, Sparkles, Zap } from "lucide-react";
+import logotracado from "@/images/logotracado.png";
 
 type ServiceHeroProps = {
-  badgeText?: string;
+  badgeText: string;
   title: string;
   subtitle: string;
   ctaText: string;
   ctaHref?: string;
-  imageSrc: string;
-  imageAlt?: string;
-  messageUser?: string;
-  messageBot?: string;
+  activeService: number;
 };
 
 export function ServiceHero({
-  badgeText = "atendimento inteligente",
+  badgeText,
   title,
   subtitle,
   ctaText,
   ctaHref = "/#contato",
-  imageSrc,
-  imageAlt = "Imagem do serviço",
-  messageUser,
-  messageBot,
+  activeService = 0,
 }: ServiceHeroProps) {
-  const containerVariants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 18 },
+  
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
-  const userMsg = messageUser ?? "Quero automatizar meu atendimento no WhatsApp.";
-  const botMsg =
-    messageBot ?? "Entendi! Vamos automatizar seu atendimento no WhatsApp com IA.";
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 15 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
+
+  const nodes = [
+    { id: 0, icon: <Cpu className="w-5 h-5" />, label: "Consultoria", pos: "top-[-10%] left-1/2 -translate-x-1/2" },
+    { id: 1, icon: <Zap className="w-5 h-5" />, label: "Automação", pos: "bottom-[10%] right-[-5%]" },
+    { id: 2, icon: <Sparkles className="w-5 h-5" />, label: "Hiperautomação", pos: "bottom-[10%] left-[-5%]" },
+  ];
 
   return (
-    <section className="relative min-h-screen bg-hero-gradient overflow-hidden">
-      {/* Fundo / Gradiente */}
+    <section className="relative h-[800px] bg-[#050505] bg-hero-gradient flex items-center overflow-hidden pt-12">
+      
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-25" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#7fdbff]/5 blur-[120px] rounded-full opacity-15" />
+      </div>
 
-      {/* blobs suaves */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#ff851b]/20 rounded-full blur-3xl opacity-50" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-300/15 rounded-full blur-3xl opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-y-12" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-start"> {/* Mudado para items-start para travar o topo */}
+          
+          {/* LADO ESQUERDO: TEXTO COM ANCORAGEM FIXA */}
+          <motion.div 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="show" 
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 sm:pt-44 pb-10 sm:pb-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Texto */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="text-center lg:text-left space-y-8"
+            className="lg:h-[500px] flex flex-col items-center lg:items-start text-center lg:text-left pt-12"
           >
-            <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
-              <SectionBadge text={badgeText} />
-            </motion.div>
-
-            <motion.h1
-              variants={itemVariants}
-              className="text-5xl md:text-7xl font-bold leading-tight text-white"
-            >
-              {title}
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-white/85 max-w-lg mx-auto lg:mx-0 leading-relaxed"
-            >
-              {subtitle}
-            </motion.p>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <a href={ctaHref} className="inline-flex">
-                <Button
-                  size="lg"
-                  className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-8 py-6 text-base font-semibold rounded-full shadow-lg"
-                >
-                  <span>{ctaText}</span>
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </a>
-
-              <Button
-                variant="outline"
-                size="lg"
-                className="px-8 py-6 text-base font-semibold rounded-full bg-white/70 backdrop-blur-sm border border-white/50 hover:bg-white"
+            {/* Box do Título e Subtítulo com altura mínima para "segurar" o espaço */}
+            <div className="min-h-[320px] flex flex-col items-center lg:items-start space-y-6">
+              <motion.div variants={itemVariants}>
+                <SectionBadge text={badgeText} className="bg-white/10 border-white/60 text-[#ff851b]" />
+              </motion.div>
+              
+              <motion.h1 
+                variants={itemVariants}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.1]"
               >
-                <PlayCircle className="w-5 h-5 mr-2" />
-                Ver demonstração
+                {title}<span className="text-[#ff851b]">.</span>
+              </motion.h1>
+              
+              <motion.p 
+                variants={itemVariants}
+                className="text-base md:text-lg text-white/40 max-w-sm leading-relaxed font-medium"
+              >
+                {subtitle}
+              </motion.p>
+            </div>
+
+            {/* O botão agora fica sempre na mesma distância do topo porque o box acima tem min-h fixo */}
+            <motion.div variants={itemVariants} className="pt-6">
+              <Button size="lg" className="h-16 px-10 rounded-2xl bg-[#ff851b] hover:bg-[#e07316] text-white font-black shadow-2xl shadow-orange-500/20 transition-all hover:scale-105 group">
+                {ctaText}
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-white/80"
-            >
-              {["Setup rápido", "Sem compromisso", "Cancela quando quiser"].map((t) => (
-                <div key={t} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-[#ff851b]" />
-                  <span>{t}</span>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
-          {/* Visual */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] as const }}
-            className="relative"
-          >
-            {/* GLASS WRAPPER (deixa os floaters vazarem) */}
-            <div className="relative bg-white/35 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50 overflow-visible">
-              {/* INNER CLIP (segura cantos do conteúdo do chat) */}
-              <div className="relative rounded-3xl overflow-hidden">
-                {/* CHAT CARD */}
-                <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden">
-                  {/* header mock */}
-                  <div className="bg-gradient-to-r from-[#001f3f] to-sky-500 p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                      <MessageCircle className="text-white w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-white font-semibold">Assistente Virtual</h3>
-                      <p className="text-white/80 text-xs">Online agora</p>
-                    </div>
-                  </div>
-
-                  {/* ÁREA DAS MENSAGENS COM WALLPAPER */}
-                  <div className="relative h-72 sm:h-80 overflow-hidden">
-                    {/* wallpaper */}
-                    <div className="absolute inset-0">
-                      <img
-                        src={imageSrc}
-                        alt={imageAlt}
-                        className="w-full h-full object-cover opacity-25 blur-sm"
-                      />
-                      {/* overlay pra leitura */}
-                      <div className="absolute inset-0 bg-white/25" />
-                    </div>
-
-                    {/* mensagens */}
-                    <div className="relative p-6 pt-8 pb-20 space-y-4 h-full overflow-y-auto">
-                      {/* Bot */}
-                      <div className="flex items-start gap-2">
-                        <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center shrink-0">
-                          <MessageCircle className="w-4 h-4 text-sky-600" />
-                        </div>
-
-                        <div className="bg-white/90 backdrop-blur-sm p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 max-w-[82%]">
-                          Olá! 👋 Como posso ajudar você hoje?
-                        </div>
-                      </div>
-
-                      {/* Usuário */}
-                      <div className="flex items-start gap-2 justify-end">
-                        <div className="bg-[#2D2D4A] p-3 rounded-2xl rounded-tr-none shadow-sm text-sm text-white max-w-[82%]">
-                          {userMsg}
-                        </div>
-                      </div>
-
-                      {/* Bot */}
-                      <div className="flex items-start gap-2">
-                        <div className="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center shrink-0">
-                          <MessageCircle className="w-4 h-4 text-sky-600" />
-                        </div>
-
-                        <div className="bg-white/90 backdrop-blur-sm p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 max-w-[82%]">
-                          {botMsg}
-                        </div>
-                      </div>
-
-                      {/* digitando */}
-                      <div className="flex items-center justify-center gap-1 pt-1">
-                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce" />
-                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce [animation-delay:0.1s]" />
-                        <span className="w-2 h-2 bg-[#7fdbff] rounded-full animate-bounce [animation-delay:0.2s]" />
-                      </div>
-
-                      {/* espaço extra pra não “colar” no input */}
-                      <div className="h-2" />
-                    </div>
-                  </div>
-
-                  {/* input */}
-                  <div className="p-4 border-t border-slate-100 bg-white">
-                    <div className="flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2">
-                      <div className="text-sm text-slate-500 flex-1">Digite sua mensagem…</div>
-                      <div className="w-8 h-8 bg-[#ff851b] rounded-full flex items-center justify-center">
-                        <ArrowRight className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* LADO DIREITO: ILUSTRAÇÃO (TRAVADA NO MESMO PONTO DO TEXTO) */}
+          <div className="relative flex justify-center items-center h-[400px] lg:h-[500px] pt-12">
+            <div className="relative w-72 h-72 lg:w-80 lg:h-80">
+              
+              {/* Linhas Brancas Fortes */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 border-[2px] border-white/40 rounded-[60px]" 
+              />
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-6 border-[1.5px] border-white/30 rounded-[50px]" 
+              />
+              
+              {/* Core Central */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  animate={{ opacity: [0.1, 0.4, 0.1], scale: [1, 1.2, 1] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  className="w-24 h-24 bg-[#ff851b]/30 blur-2xl absolute"
+                />
+                <img
+                  src={logotracado}
+                  alt="Potencializa"
+                  className="w-30 h-30 object-contain z-10"
+                />
               </div>
 
-              {/* Tempo de resposta (FLOATER) — fora do card, dentro do wrapper */}
-              <div className="absolute -left-4 bottom-32 z-20">
-                <div className="bg-white rounded-xl p-4 shadow-xl border border-slate-100 w-[210px]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-sky-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-slate-500">Tempo de resposta</p>
-                      <p className="text-lg font-bold text-slate-900">&lt; 1s</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Conversões (FLOATER) — fora do card, dentro do wrapper */}
-              <div className="absolute -right-3 top-16 z-20 bg-white rounded-xl p-4 shadow-xl border border-slate-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500">Conversões</p>
-                    <p className="text-lg font-bold text-slate-900">+147%</p>
-                  </div>
-                </div>
-              </div>
+              {/* Nodos */}
+              {nodes.map((node, i) => {
+                const isActive = activeService === node.id;
+                return (
+                  <motion.div
+                    key={node.id}
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
+                    className={`absolute ${node.pos} p-4 rounded-2xl border-[2px] transition-all duration-700 backdrop-blur-xl flex flex-col items-center gap-2
+                      ${isActive 
+                        ? "bg-[#ff851b]/20 border-[#ff851b] text-[#ff851b] shadow-[0_0_50px_rgba(255,133,27,0.3)] scale-110 z-20" 
+                        : "bg-white/5 border-white/60 text-white shadow-[0_0_15px_rgba(255,255,255,0.05)] scale-95 z-10 opacity-80"
+                      }`}
+                  >
+                    {node.icon}
+                  </motion.div>
+                );
+              })}
             </div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

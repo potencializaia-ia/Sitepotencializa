@@ -53,7 +53,7 @@ export function Testimonials() {
           <SectionBadge text="Resultados incríveis" className="mb-6 bg-white/10 border-white/20 text-white" />
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Quem simplifica cresce<span className="text-[--laranja]">.</span>
+              Quem potencializa cresce<span className="text-[--laranja]">.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>

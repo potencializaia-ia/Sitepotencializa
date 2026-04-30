@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Check, X } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { Check, X, Zap, Crown, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { SectionBadge } from '@/components/SectionBadge';
@@ -9,92 +9,71 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/Ani
 const plans = [
   {
     name: 'Consultoria',
+    icon: Zap,
     subtitle: 'Configure você mesmo!',
     price: '390',
     priceMonthly: '490',
     setup: '990',
     setupOptional: true,
     setupNote: 'E nós configuramos para você!',
-    cta: 'Comece agora',
-    ctaStyle: 'pink' as const,
+    cta: 'Começar agora',
     highlighted: false,
     features: [
       { text: '1 agente incluso', included: true },
       { text: 'Respostas instantâneas em qualquer canal', included: true },
       { text: 'Agendamentos automáticos', included: true },
-      { text: 'Personalização do tom de voz da sua marca', included: true },
-      { text: 'Resolução automática de dúvidas frequentes', included: true },
-      { text: 'Disponibilidade contínua sem interrupções', included: true },
-      { text: 'Enviar arquivos para clientes', included: false },
-      { text: 'Enviar links de pagamentos', included: false },
-      { text: 'Enviar lembretes', included: false },
-      { text: 'Alimentar banco de dados', included: false },
-      { text: 'Diagnóstico exclusivo para o seu negócio', included: false },
-      { text: 'Desenvolvimento de solução costumizada', included: false },
-      { text: 'Novas funcionalidades sob medida', included: false },
-      { text: 'Integração com sistemas já existentes', included: false },
-      { text: 'Prova de teste e ajustes', included: false },
-      { text: 'Lançamento e acompanhamento', included: false },
+      { text: 'Personalização do tom de voz', included: true },
+      { text: 'Resolução de dúvidas frequentes', included: true },
+      { text: 'Disponibilidade contínua 24/7', included: true },
+      { text: 'Enviar ficheiros e lembretes', included: false },
+      { text: 'Alimentar base de dados externa', included: false },
+      { text: 'Desenvolvimento customizado', included: false },
     ],
   },
   {
     name: 'Automação Simples',
-    subtitle: 'Nós configuramos pra você.',
+    icon: Rocket,
+    subtitle: 'Nós configuramos para si.',
     price: '690',
     priceMonthly: '870',
     setup: '2.000',
     setupOptional: false,
-    setupNote: 'Para a configuração inicial',
-    cta: 'Fale com um Consultor',
-    ctaStyle: 'dark' as const,
+    setupNote: 'Taxa de configuração inicial',
+    cta: 'Falar com um Consultor',
     highlighted: true,
     features: [
       { text: '1 agente incluso', included: true },
       { text: 'Respostas instantâneas em qualquer canal', included: true },
       { text: 'Agendamentos automáticos', included: true },
-      { text: 'Personalização do tom de voz da sua marca', included: true },
-      { text: 'Resolução automática de dúvidas frequentes', included: true },
-      { text: 'Disponibilidade contínua sem interrupções', included: true },
-      { text: 'Enviar arquivos para clientes', included: true },
+      { text: 'Personalização do tom de voz', included: true },
+      { text: 'Enviar ficheiros para clientes', included: true },
       { text: 'Enviar links de pagamentos', included: true },
-      { text: 'Enviar lembretes', included: true },
+      { text: 'Enviar lembretes automáticos', included: true },
       { text: 'Alimentar banco de dados', included: true },
-      { text: 'Diagnóstico exclusivo para o seu negócio', included: false },
-      { text: 'Desenvolvimento de solução costumizada', included: false },
-      { text: 'Novas funcionalidades sob medida', included: false },
-      { text: 'Integração com sistemas já existentes', included: false },
-      { text: 'Prova de teste e ajustes', included: false },
-      { text: 'Lançamento e acompanhamento', included: false },
+      { text: 'Desenvolvimento customizado', included: false },
     ],
   },
   {
     name: 'Hiperautomação',
-    subtitle: 'Vamos desenvolver a solução perfeita!',
+    icon: Crown,
+    subtitle: 'A solução perfeita para escala.',
     price: 'Sob consulta',
     priceMonthly: 'Sob consulta',
     setup: '',
     setupOptional: false,
     setupNote: 'Diagnóstico personalizado',
-    setupNote2: 'Agendaremos uma reunião inicial!',
+    setupNote2: 'Agendaremos uma reunião inicial',
     cta: 'Fale com um Consultor',
-    ctaStyle: 'dark' as const,
     highlighted: false,
     features: [
-      { text: 'Múltiplos agentes', included: true },
-      { text: 'Respostas instantâneas em qualquer canal', included: true },
+      { text: 'Múltiplos agentes inteligentes', included: true },
+      { text: 'Respostas instantâneas omnichannel', included: true },
       { text: 'Agendamentos automáticos', included: true },
-      { text: 'Personalização do tom de voz da sua marca', included: true },
-      { text: 'Resolução automática de dúvidas frequentes', included: true },
-      { text: 'Disponibilidade contínua sem interrupções', included: true },
-      { text: 'Enviar arquivos para clientes', included: true },
-      { text: 'Enviar links de pagamentos', included: true },
-      { text: 'Enviar lembretes', included: true },
+      { text: 'Personalização profunda da marca', included: true },
       { text: 'Alimentar banco de dados', included: true },
-      { text: 'Diagnóstico exclusivo para o seu negócio', included: true },
-      { text: 'Desenvolvimento de solução costumizada', included: true },
-      { text: 'Novas funcionalidades sob medida', included: true },
-      { text: 'Integração com sistemas já existentes', included: true },
-      { text: 'Prova de teste e ajustes', included: true },
+      { text: 'Diagnóstico exclusivo de negócio', included: true },
+      { text: 'Desenvolvimento costumizado', included: true },
+      { text: 'Integração com sistemas legados', included: true },
       { text: 'Lançamento e acompanhamento', included: true },
     ],
   },
@@ -104,132 +83,114 @@ export function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
-    <section id="planos" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="planos" className="py-24 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionBadge text="Planos e Preços" className="mb-6" />
+          <SectionBadge text="Investimento" className="mb-6" />
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
-              Planos inteligentes para cada objetivo<span className="text-[#ff851b]">.</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#2D2D4A] mb-6 tracking-tight">
+              Planos para cada <span className="text-[#ff851b]">objetivo.</span>
             </h2>
           </AnimatedSection>
+          
+          {/* Billing Toggle Customizado */}
           <AnimatedSection delay={0.1}>
-            <p className="text-lg text-[#2D2D4A]/70 max-w-2xl mx-auto">
-              Escolha a solução ideal para transformar seu negócio com a potência da IA.
-            </p>
-          </AnimatedSection>
-
-          {/* Billing Toggle */}
-          <AnimatedSection delay={0.2}>
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <span className={`text-sm font-medium ${!isAnnual ? 'text-[#2D2D4A]' : 'text-[#2D2D4A]/50'}`}>
-                Mensal
-              </span>
-              <Switch
-                checked={isAnnual}
-                onCheckedChange={setIsAnnual}
-                className="[&[data-state=checked]]:bg-[#ff851b] [&[data-state=unchecked]]:bg-gray-300"
-              />
-              <span className={`text-sm font-medium ${isAnnual ? 'text-[#2D2D4A]' : 'text-[#2D2D4A]/50'}`}>
-                Anual
-                <span className="ml-2 text-xs bg-[#ff851b] text-white px-2 py-0.5 rounded-full">
-                  Economize 20%
+            <div className="flex items-center justify-center gap-6 mt-10">
+              <span className={`text-sm font-bold transition-colors ${!isAnnual ? 'text-[#2D2D4A]' : 'text-gray-300'}`}>Mensal</span>
+              <div className="flex items-center gap-3 bg-[#F5F5F7] p-1.5 rounded-full border border-gray-200">
+                <Switch
+                  checked={isAnnual}
+                  onCheckedChange={setIsAnnual}
+                  className="data-[state=checked]:bg-[#ff851b] data-[state=unchecked]:bg-gray-400"
+                />
+              </div>
+              <span className={`text-sm font-bold transition-colors ${isAnnual ? 'text-[#2D2D4A]' : 'text-gray-300'}`}>
+                Anual 
+                <span className="ml-2 inline-block px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-[10px] rounded-md font-black uppercase">
+                  -20% OFF
                 </span>
               </span>
             </div>
           </AnimatedSection>
         </div>
 
-        {/* Pricing Cards */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        {/* Pricing Cards Grid */}
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan) => (
-            <StaggerItem key={plan.name}>
+            <StaggerItem key={plan.name} className="h-full">
               <motion.div
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
-                className={`bg-white rounded-2xl p-6 sm:p-8 border-2 transition-all duration-300 ${
-                  plan.highlighted
-                    ? 'border-[#7fdbff] shadow-xl'
-                    : 'border-gray-100 shadow-card hover:shadow-card-hover'
+                whileHover={{ y: -10 }}
+                className={`relative flex flex-col h-full bg-white rounded-[40px] p-8 md:p-10 border transition-all duration-500 ${
+                  plan.highlighted 
+                    ? 'border-[#ff851b] shadow-[0_30px_60px_rgba(255,133,27,0.1)]' 
+                    : 'border-gray-100 shadow-sm hover:shadow-xl'
                 }`}
               >
-                {/* Plan Header */}
-                <div className="flex items-center mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-3 h-3 rounded-full ${plan.name === 'Essencial' ? 'border-2 border-[#ff851b]' : 'bg-[#ff851b]'}`} />
-                    <h3 className="text-xl font-semibold text-[#2D2D4A]">{plan.name}</h3>
+                {plan.highlighted && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ff851b] text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                    Mais Escolhido
                   </div>
+                )}
+
+                {/* Plan Header */}
+                <div className="mb-8">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${plan.highlighted ? 'bg-[#ff851b] text-white' : 'bg-gray-100 text-[#2D2D4A]'}`}>
+                    <plan.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#2D2D4A] mb-2">{plan.name}</h3>
+                  <p className="text-sm text-gray-400 font-medium">{plan.subtitle}</p>
                 </div>
 
-                <p className="text-sm text-[#2D2D4A]/70 mb-4">{plan.subtitle}</p>
-
                 {/* Price */}
-                <div className="mb-4">
+                <div className="mb-8">
                   {plan.price === 'Sob consulta' ? (
-                    <span className="text-3xl font-bold text-[#2D2D4A]">{plan.price}</span>
+                    <div className="h-[60px] flex items-center">
+                       <span className="text-3xl font-black text-[#2D2D4A]">{plan.price}</span>
+                    </div>
                   ) : (
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-sm text-[#2D2D4A]/70">Apenas</span>
-                      <span className="text-4xl font-bold text-[#2D2D4A]">
-                        R$ {isAnnual ? plan.price : plan.priceMonthly}
-                      </span>
-                      <span className="text-sm text-[#2D2D4A]/70">/mês</span>
+                    <div className="flex flex-col">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-4xl font-black text-[#2D2D4A]">
+                          R$ {isAnnual ? plan.price : plan.priceMonthly}
+                        </span>
+                        <span className="text-gray-400 font-medium">/mês</span>
+                      </div>
+                      {plan.setup && (
+                        <p className="text-[11px] text-[#ff851b] font-bold mt-2 uppercase tracking-wider">
+                          + R$ {plan.setup} Setup {plan.setupOptional ? '(Opcional)' : '(Inicial)'}
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>
 
-                {/* Setup */}
-                {plan.setup && (
-                  <div className="mb-2">
-                    <p className="text-sm text-[#2D2D4A]">
-                      + Setup R$ {plan.setup} {plan.setupOptional ? '(opcional)' : '(obrigatório)'}
-                    </p>
-                  </div>
-                )}
-
-                {plan.setupNote && (
-                  <p className="text-sm text-[#2D2D4A]/70 mb-6">{plan.setupNote}</p>
-                )}
-                {plan.setupNote2 && (
-                  <p className="text-sm text-[#2D2D4A]/70 mb-6">{plan.setupNote2}</p>
-                )}
-
-                {/* CTA Button */}
+                {/* CTA */}
                 <Button
-                  className={`w-full mb-6 py-6 font-medium ${
-                    plan.ctaStyle === 'pink'
-                      ? 'bg-[#ff851b] hover:bg-[#e07316] text-white'
-                      : 'bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white'
+                  className={`w-full py-7 rounded-2xl font-bold text-base mb-10 transition-all ${
+                    plan.highlighted 
+                      ? 'bg-[#ff851b] hover:bg-[#e07316] text-white shadow-lg shadow-orange-500/20' 
+                      : 'bg-[#2D2D4A] hover:bg-[#1a1a2e] text-white'
                   }`}
                 >
                   {plan.cta}
                 </Button>
 
-                {/* Secondary CTA for Essencial */}
-                {plan.name === 'Essencial' && (
-                  <Button
-                    variant="outline"
-                    className="w-full mb-6 border-[#2D2D4A] text-[#2D2D4A] hover:bg-[#2D2D4A] hover:text-white"
-                  >
-                    Fale com um consultor
-                  </Button>
-                )}
-
-                {/* Features */}
-                <div className="space-y-3">
-                  {plan.features.map((feature) => (
-                    <div key={feature.text} className="flex items-center gap-3">
+                {/* Features List */}
+                <div className="space-y-4 flex-1">
+                  {plan.features.map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3">
                       {feature.included ? (
-                        <div className="w-5 h-5 rounded-full bg-[#2D2D4A] flex items-center justify-center flex-shrink-0">
-                          <Check className="w-3 h-3 text-white" />
+                        <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-emerald-600" />
                         </div>
                       ) : (
-                        <div className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0">
+                        <div className="mt-0.5 w-5 h-5 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0">
                           <X className="w-3 h-3 text-gray-300" />
                         </div>
                       )}
-                      <span className={`text-sm ${feature.included ? 'text-[#2D2D4A]' : 'text-[#2D2D4A]/40'}`}>
+                      <span className={`text-sm ${feature.included ? 'text-[#2D2D4A] font-medium' : 'text-gray-300 line-through'}`}>
                         {feature.text}
                       </span>
                     </div>

@@ -1,99 +1,120 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
+import { Search, Layout, Code2, LineChart, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionBadge } from '@/components/SectionBadge';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
 
 const steps = [
   {
-    number: '1',
+    number: '01',
     label: 'Diagnóstico',
     title: 'Entendemos seu negócio a fundo',
-    description:
-      'Analisamos seus processos, canais, funil, público e objetivos para identificar oportunidades reais de automação e crescimento.',
+    description: 'Analisamos seus processos, canais, funil e objetivos para identificar oportunidades reais de automação.',
+    icon: Search,
   },
   {
-    number: '2',
+    number: '02',
     label: 'Estratégia',
     title: 'Desenhamos a solução ideal',
-    description:
-      'Criamos a arquitetura da IA, os fluxos conversacionais, integrações e automações alinhadas ao seu modelo de negócio.',
+    description: 'Criamos a arquitetura da IA, os fluxos conversacionais e as integrações alinhadas ao seu modelo.',
+    icon: Layout,
   },
   {
-    number: '3',
+    number: '03',
     label: 'Implementação',
     title: 'Construímos e integramos tudo',
-    description:
-      'Desenvolvemos, treinamos e conectamos a IA aos seus sistemas, garantindo estabilidade, segurança e performance.',
+    description: 'Desenvolvemos e conectamos a IA aos seus sistemas, garantindo segurança e performance máxima.',
+    icon: Code2,
   },
   {
-    number: '4',
+    number: '04',
     label: 'Otimização',
     title: 'Aprimoramos com dados reais',
-    description:
-      'Ajustamos a solução com base em métricas, comportamento dos usuários e resultados obtidos.',
+    description: 'Ajustamos a solução com base em métricas e comportamento real dos usuários para escala contínua.',
+    icon: LineChart,
   },
 ];
 
 export function Methodology() {
   return (
-    <section className="py-24 bg-[#F5F5F7]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#F5F5F7] relative overflow-hidden">
+      {/* Linha de Conexão (Workflow Path) - Visível apenas em Desktop */}
+      <div className="absolute top-[60%] left-0 w-full h-[2px] border-t-2 border-dashed border-[#ff851b]/20 hidden xl:block z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
-        <div className="text-center mb-16">
-          <SectionBadge text="Como trabalhamos" className="mb-6" />
+        <div className="text-center mb-20">
+          <SectionBadge text="Workflow de Sucesso" className="mb-6" />
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2D4A] mb-4">
-              Modelo de operação<span className="text-[#ff851b]">.</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#2D2D4A] mb-6 tracking-tight">
+              Modelo de <span className="text-[#ff851b]">operação.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <p className="text-lg text-[#2D2D4A]/70 max-w-2xl mx-auto">
-              Da análise inicial à evolução contínua, estruturamos cada etapa para transformar atendimento em resultado.
+            <p className="text-lg text-[#2D2D4A]/60 max-w-2xl mx-auto leading-relaxed">
+              Da análise inicial à evolução contínua, estruturamos cada etapa para transformar sua tecnologia em faturamento.
             </p>
           </AnimatedSection>
         </div>
 
         {/* Steps Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {steps.map((step) => (
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          {steps.map((step, idx) => (
             <StaggerItem key={step.number}>
               <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.25 }}
-                className="h-full bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+                whileHover={{ y: -10 }}
+                className="relative h-full bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group"
               >
-                {/* Number */}
-                <div className="w-14 h-14 bg-[#ff851b] rounded-full flex items-center justify-center mb-6 shadow-sm">
-                  <span className="text-xl font-bold text-white">{step.number}</span>
+                {/* Connector Dot (Desktop) */}
+                <div className="absolute top-1/2 -right-4 w-8 h-8 hidden xl:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                   {idx < steps.length - 1 && <ArrowRight className="text-[#ff851b] w-5 h-5" />}
                 </div>
 
-                {/* Label */}
-                <p className="text-sm font-semibold uppercase tracking-wide text-[#ff851b] mb-3">
-                  {step.label}
-                </p>
+                {/* Step Header */}
+                <div className="flex justify-between items-start mb-8">
+                  <div className="w-14 h-14 bg-[#2D2D4A] group-hover:bg-[#ff851b] rounded-2xl flex items-center justify-center transition-colors duration-500 shadow-lg shadow-blue-900/10 group-hover:shadow-orange-500/30">
+                    <step.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <span className="text-4xl font-black text-gray-100 group-hover:text-[#ff851b]/10 transition-colors duration-500">
+                    {step.number}
+                  </span>
+                </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-[#2D2D4A] mb-4 leading-snug">
-                  {step.title}
-                </h3>
+                {/* Content */}
+                <div className="space-y-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#ff851b]">
+                    {step.label}
+                  </p>
+                  <h3 className="text-xl font-bold text-[#2D2D4A] leading-tight group-hover:text-[#ff851b] transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-[#2D2D4A]/60 text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
 
-                {/* Description */}
-                <p className="text-[#2D2D4A]/70 leading-relaxed">
-                  {step.description}
-                </p>
+                {/* Hover Glow */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#ff851b] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
 
         {/* CTA */}
-        <AnimatedSection delay={0.4} className="text-center mt-12">
-          <Button
-            size="lg"
-            className="bg-[#2D2D4A] hover:bg-[#3D3D5A] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:scale-105"
-          >
-            Fale com um consultor
-          </Button>
+        <AnimatedSection delay={0.4} className="text-center mt-20">
+          <div className="inline-flex flex-col items-center">
+            <Button
+              size="lg"
+              className="bg-[#2D2D4A] hover:bg-[#1a1a2e] text-white px-10 py-7 text-lg font-bold rounded-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/10"
+            >
+              Iniciar meu projeto
+            </Button>
+            <p className="mt-6 text-sm text-[#2D2D4A]/40 flex items-center gap-2 font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Processo de implementação ágil (2-4 semanas)
+            </p>
+          </div>
         </AnimatedSection>
       </div>
     </section>

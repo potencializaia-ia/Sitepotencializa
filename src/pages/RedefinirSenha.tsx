@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,8 @@ export function RedefinirSenha() {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -76,14 +79,14 @@ export function RedefinirSenha() {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-md rounded-[32px] border border-white/15 bg-white/[0.08] backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.25)] p-6 lg:p-8 relative overflow-hidden"
+          className="w-full max-w-md rounded-3xl border border-white/15 bg-white/[0.08] backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.25)] p-4 sm:p-6 lg:p-8 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_30%)] pointer-events-none" />
 
-          <div className="bg-white/95 rounded-[28px] p-8 border border-white/60 shadow-[0_12px_40px_rgba(15,23,42,0.12)] relative">
+          <div className="bg-white/95 rounded-3xl p-6 sm:p-8 border border-white/60 shadow-[0_12px_40px_rgba(15,23,42,0.12)] relative">
             <div className="w-14 h-1.5 rounded-full bg-gradient-to-r from-[#7fdbff] to-[#ff851b] mb-6" />
 
-            <h1 className="text-3xl font-bold text-[#1E2235] mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#1E2235] mb-2">
               Redefinir senha
             </h1>
 
@@ -96,30 +99,54 @@ export function RedefinirSenha() {
             )}
 
             {successMessage && (
-              <p className="text-sm text-emerald-600 mb-4">{successMessage}</p>
+              <div className="rounded-xl bg-[#7fdbff]/10 border border-[#7fdbff]/20 p-4 mb-4">
+                <p className="text-sm text-[#7fdbff] font-medium">
+                  ✓ {successMessage}
+                </p>
+              </div>
             )}
 
             {ready && (
               <form onSubmit={handleUpdatePassword} className="space-y-4">
-                <Input
-                  type="password"
-                  placeholder="Nova senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={loading}
-                  className="h-12 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Nova senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading}
+                    className="h-12 pr-11 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    disabled={loading}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
 
-                <Input
-                  type="password"
-                  placeholder="Confirmar nova senha"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  disabled={loading}
-                  className="h-12 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirmar nova senha"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    disabled={loading}
+                    className="h-12 pr-11 bg-white border-slate-200 text-[#2D2D4A] placeholder:text-gray-400 focus-visible:border-[#7fdbff] focus-visible:ring-[#7fdbff]/25 disabled:opacity-60"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    disabled={loading}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
 
                 <Button
                   type="submit"
