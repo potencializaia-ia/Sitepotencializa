@@ -1,9 +1,9 @@
 export const services = [
   {
-    title: "Consultoria em IA",
+    title: "Imersão Potencializa",
     slug: "consultoria-ia",
-    badge: "consultoria",
-    subtitle: "Do diagnóstico ao plano de ação — com clareza e resultado",
+    badge: "Imersão",
+    subtitle: "Do diagnóstico ao treinamento: tudo para sua equipe dominar a IA",
     description:
       "Analisamos seu negócio, mapeamos onde a IA gera mais impacto e entregamos um plano personalizado para você implementar com segurança e velocidade.",
     image:

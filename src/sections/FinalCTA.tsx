@@ -16,11 +16,12 @@ export function FinalCTA() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           
-          <SectionBadge text="O Poder do Simples" className="mb-10 bg-white/5 border-white/10 text-white/50" />
+          <SectionBadge text="O Futuro do Seu Negócio" className="mb-10 bg-white/5 border-white/10 text-white/50" />
 
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight max-w-5xl mb-10">
-              Simplificar não é reduzir. É <span className="text-[#ff851b]">ampliar</span>, abrir portas para mais <span className="text-[#71d7ff]">resultados</span> e encantamento.
+              Potencializar é transformar o esforço em <span className="text-[#ff851b]">eficiência</span>. 
+              <br />É elevar o padrão da sua empresa para um novo nível de <span className="text-[#7fdbff]">performance</span>.
             </h2>
           </AnimatedSection>
 
@@ -30,13 +31,13 @@ export function FinalCTA() {
                 size="lg"
                 className="h-16 px-12 rounded-2xl bg-[#ff851b] hover:bg-[#e07316] text-white text-lg font-bold shadow-[0_20px_50px_rgba(255,133,27,0.3)] transition-all hover:scale-105 active:scale-95 group"
               >
-                Falar com um consultor
+                Quero potencializar meu negócio
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <div className="flex items-center gap-3 text-white/30 text-xs font-bold uppercase tracking-[0.2em]">
                 <Zap className="w-4 h-4 text-[#ff851b]" />
-                Sua empresa no próximo nível com IA
+                Sua empresa pronta para o próximo nível
               </div>
             </div>
           </AnimatedSection>

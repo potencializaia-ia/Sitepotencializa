@@ -14,9 +14,9 @@ const steps = [
   },
   {
     number: '02',
-    label: 'Estratégia',
-    title: 'Desenhamos a solução ideal',
-    description: 'Criamos a arquitetura da IA, os fluxos conversacionais e as integrações alinhadas ao seu modelo.',
+    label: 'Imersão',
+    title: 'Estratégia e Treinamento',
+    description: 'Desenhamos o ecossistema ideal para o seu negócio e capacitamos sua equipe para dominar com eficiência as melhores ferramentas de IA.',
     icon: Layout,
   },
   {

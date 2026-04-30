@@ -87,11 +87,11 @@ function HeroIllustration() {
 
             <div className="space-y-3">
               <h3 className="text-white text-2xl font-bold tracking-tight">
-                Potencializa Agentic Engine
+                Potencializa Agente Comercial
               </h3>
               <p className="text-white/50 text-sm max-w-sm leading-relaxed">
-                Orquestração multi-agente processando dados e executando vendas
-                em tempo real.
+                Orquestração multi-agente comercial processando dados, executando vendas, fazendo follow-ups
+                 em tempo real.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export function Hero() {
           <motion.div variants={itemVariants}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/90 text-sm font-medium mb-8">
               <Sparkles className="w-4 h-4 text-[#ff851b]" />
-              Crescimento previsível com IA
+              Bem-vindo a Potencializa
             </div>
           </motion.div>
 
@@ -180,8 +180,8 @@ export function Hero() {
             variants={itemVariants}
             className="text-white text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] max-w-5xl"
           >
-            Transforme atendimento em uma
-            <span className="block text-[#ff851b]">máquina de crescimento.</span>
+             <span className="block text-[#ff851b]">Potencialize</span>sua empresa sem sacrificar sua  
+            <span className="block text-[#71d7ff]"> liberdade.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -189,8 +189,7 @@ export function Hero() {
             variants={itemVariants}
             className="mt-8 text-white/70 text-lg sm:text-xl max-w-3xl leading-relaxed"
           >
-            Mapeamos processos e implementamos agentes de IA que operam 24/7 no
-            WhatsApp, site e Instagram com precisão humana e escala infinita.
+            Mapeamos seus processos, treinamos seu time, criamos sistemas e inteligências que rodam na sua empresa 24 horas e trazemos os dados que você precisa para crescer com previsibilidade e estratégia. 
           </motion.p>
 
           {/* CTAs */}
@@ -202,7 +201,7 @@ export function Hero() {
               size="lg"
               className="h-14 px-10 rounded-2xl bg-[#ff851b] hover:bg-[#e07316] text-white text-base font-bold shadow-[0_20px_40px_rgba(255,133,27,0.3)] transition-all hover:scale-105 active:scale-95"
             >
-              Falar com um consultor
+              Falar com um especialista
             </Button>
 
             <Button
@@ -220,11 +219,11 @@ export function Hero() {
             variants={itemVariants}
             className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-sm font-medium text-white/40 uppercase tracking-widest"
           >
-            <span>Atendimento 24/7</span>
+            <span>Processos automatizados</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
-            <span>Recuperação de leads</span>
+            <span>Equipe treinada</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
-            <span>Integração Omnichannel</span>
+            <span>crescimento previsivel</span>
           </motion.div>
 
           {/* Ilustração Customizada Potencializa */}

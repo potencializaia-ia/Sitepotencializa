@@ -31,7 +31,7 @@ export function Footer() {
               Potencializa<span className="text-[#ff851b]">.</span>ia
             </a>
             <p className="text-white/40 text-sm max-w-xs leading-relaxed">
-              Mapeamos processos e implementamos inteligência para escalar negócios que buscam o estado da arte em eficiência.
+              Transformando empresas com IA: soluções personalizadas, implementação ágil e treinamento especializado para resultados reais.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -73,6 +73,7 @@ export function Footer() {
             <div className="text-sm text-white/50 space-y-2">
               <p>Passo Fundo - RS</p>
               <p className="pt-4 text-white font-bold">+55 54 99141-2254</p>
+              <p className="pt-4 text-white/80"> Potencializa.ia@gmail.com</p>
             </div>
           </div>
         </div>
