@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionBadge } from '@/components/SectionBadge';
@@ -21,7 +20,7 @@ export function FinalCTA() {
 
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight max-w-5xl mb-10">
-              Simplificar não é reduzir. É <span className="text-[#ff851b]">ampliar</span>, abrir portas para mais resultados e encantamento.
+              Simplificar não é reduzir. É <span className="text-[#ff851b]">ampliar</span>, abrir portas para mais <span className="text-[#71d7ff]">resultados</span> e encantamento.
             </h2>
           </AnimatedSection>
 

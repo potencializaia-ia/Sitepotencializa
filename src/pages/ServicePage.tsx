@@ -206,7 +206,7 @@ export function ServicePage() {
                 {/* Lista de Passos estilo "Workflow Nodes" */}
                 <div className="relative space-y-8">
                   {/* Linha vertical conectando os passos (vibe n8n) */}
-                  <div className="absolute left-[22px] top-4 bottom-4 w-[1px] bg-gradient-to-b from-[#ff851b] via-[#ff851b]/20 to-transparent" />
+                  <div className="absolute left-[22px] top-4 bottom-4 w-[1px] bg-gradient-to-b from-[#71d7ff]/50 via-[#71d7ff]/20 to-transparent" />
 
                   <StaggerContainer className="space-y-10">
                     {service.whatItDoesSteps.map((s, idx) => (
@@ -270,9 +270,9 @@ export function ServicePage() {
                       <div className="flex items-center justify-between relative z-10">
                         <div className="flex items-center gap-4">
                           <div className="relative w-12 h-12 flex items-center justify-center">
-                            <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping" />
-                            <div className="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center border border-emerald-500/30">
-                              <Activity className="w-5 h-5 text-emerald-400" />
+                            <div className="absolute inset-0 bg-[#71d7ff]/20 rounded-full animate-ping" />
+                            <div className="w-10 h-10 bg-[#71d7ff]/10 rounded-full flex items-center justify-center border border-[#71d7ff]/30">
+                              <Activity className="w-5 h-5 text-[#71d7ff]" />
                             </div>
                           </div>
                           <div>
@@ -281,7 +281,7 @@ export function ServicePage() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <span className="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-[10px] font-black uppercase tracking-widest">
+                          <span className="inline-block px-3 py-1 bg-[#71d7ff]/10 border border-[#71d7ff]/20 rounded-lg text-[#71d7ff] text-[10px] font-black uppercase tracking-widest">
                             ● 100% Online
                           </span>
                           <p className="text-[9px] text-white/20 mt-2 font-mono">LATENCY: 0.2ms</p>
@@ -434,7 +434,7 @@ export function ServicePage() {
                 <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A] tracking-tighter mb-4">
                   O que a IA <span className="text-[#ff851b]">potencializa</span> no seu negócio.
                 </h2>
-                <div className="w-16 h-1 bg-[#ff851b] mx-auto rounded-full opacity-20" />
+                <div className="w-16 h-1 bg-[#71d7ff] mx-auto rounded-full opacity-70" />
               </AnimatedSection>
             </div>
 
@@ -493,7 +493,7 @@ export function ServicePage() {
             <div className="mt-20 text-center">
               <AnimatedSection delay={0.4}>
                   <p className="text-[#2D2D4A]/30 text-xs font-black uppercase tracking-[0.2em]">
-                    Tecnologia proprietária • Integração Nativa • Segurança LGPD
+                    Tecnologia proprietária <span className="text-[#71d7ff]">•</span> Integração Nativa <span className="text-[#71d7ff]">•</span> Segurança LGPD
                   </p>
               </AnimatedSection>
             </div>
@@ -536,7 +536,7 @@ export function ServicePage() {
                 </div>
                 
                 <div className="mt-10 flex items-center justify-center gap-2 text-white/30 text-xs font-black uppercase tracking-[0.2em]">
-                   <ShieldCheck className="w-4 h-4 text-[#ff851b]" />
+                   <ShieldCheck className="w-4 h-4 text-[#71d7ff]" />
                    Setup em tempo recorde • Sem fidelidade
                 </div>
               </AnimatedSection>

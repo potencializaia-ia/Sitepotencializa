@@ -119,7 +119,7 @@ export function Products() {
                   <ul className="grid grid-cols-2 gap-3 mb-8">
                     {product.topics.map((topic, i) => (
                       <li key={i} className="flex items-center gap-3 text-sm font-medium text-[#2D2D4A]/70">
-                        <CheckCircle2 className="w-4 h-4 text-[#ff851b]" />
+                        <CheckCircle2 className="w-4 h-4 text-[#71d7ff]" />
                         {topic}
                       </li>
                     ))}

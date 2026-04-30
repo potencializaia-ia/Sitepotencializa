@@ -108,7 +108,7 @@ export function Pricing() {
               </div>
               <span className={`text-sm font-bold transition-colors ${isAnnual ? 'text-[#2D2D4A]' : 'text-gray-300'}`}>
                 Anual 
-                <span className="ml-2 inline-block px-2 py-0.5 bg-emerald-500/10 text-emerald-600 text-[10px] rounded-md font-black uppercase">
+                <span className="ml-2 inline-block px-2 py-0.5 bg-[#71d7ff]/30 text-[#2D2D4A] text-[10px] rounded-md font-black uppercase">
                   -20% OFF
                 </span>
               </span>
@@ -182,8 +182,8 @@ export function Pricing() {
                   {plan.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       {feature.included ? (
-                        <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                          <Check className="w-3 h-3 text-emerald-600" />
+                        <div className="mt-0.5 w-5 h-5 rounded-full bg-[#71d7ff]/20 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-[#2D2D4A]" />
                         </div>
                       ) : (
                         <div className="mt-0.5 w-5 h-5 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0">

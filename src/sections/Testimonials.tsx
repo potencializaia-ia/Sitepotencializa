@@ -46,8 +46,86 @@ export function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="cases" className="py-20 bg-section-gradient">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="cases" className="py-20 bg-section-gradient relative overflow-hidden">
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <svg
+          className="w-full h-full opacity-80" // Antes era 0.4
+          viewBox="0 0 1440 900"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            {/* Gradiente para a linha Cyan - Focamos em opacidade total */}
+            <linearGradient id="highPerfCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#7fdbff" stopOpacity="0" />
+              <stop offset="20%" stopColor="#7fdbff" stopOpacity="1" /> // Curva de nitidez mais rápida
+              <stop offset="80%" stopColor="#7fdbff" stopOpacity="1" /> // Segura a nitidez
+              <stop offset="100%" stopColor="#7fdbff" stopOpacity="0" />
+            </linearGradient>
+
+            {/* Gradiente para a linha Laranja - AJUSTE 2: Aumentamos a opacidade total (de 0.8 para 1.0) */}
+            <linearGradient id="highPerfOrange" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#ff851b" stopOpacity="0" />
+              <stop offset="50%" stopColor="#ff851b" stopOpacity="1.0" /> // Antes era 0.8
+              <stop offset="100%" stopColor="#ff851b" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          {/* Linha Neural 1 (Cyan) */}
+          <motion.path
+            d="M-100 200 C 200 400, 500 0, 800 300 S 1200 600, 1600 400"
+            stroke="url(#highPerfCyan)"
+            // AJUSTE 3: Aumentamos a espessura da linha (de 1.5 para 3.0)
+            strokeWidth="3.0"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: [0, 1], 
+              opacity: [0, 1, 0],
+              //strokeDashoffset: [0, -100] // Removido para simplificar e focar na velocidade pura
+            }}
+            transition={{
+              // AJUSTE 4: Diminuímos a duração (de 12s para 5s) - MUITO MAIS RÁPIDO
+              duration: 5, // Antes era 12
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+
+          {/* Linha Neural 2 (Laranja) */}
+          <motion.path
+            d="M1600 800 C 1200 600, 900 900, 600 600 S 200 300, -200 500"
+            stroke="url(#highPerfOrange)"
+            // AJUSTE 3: Aumentamos a espessura da linha (de 1.5 para 3.0)
+            strokeWidth="3.0"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: [0, 1], 
+              opacity: [0, 1, 0], // Intensidade máxima
+            }}
+            transition={{
+              // AJUSTE 4: Diminuímos a duração (de 15s para 6s) - MUITO MAIS RÁPIDO
+              duration: 6, // Antes era 15
+              repeat: Infinity,
+              ease: "linear",
+              delay: 1 // Delay reduzido
+            }}
+          />
+
+          {/* Pontos de conexão (Nodos) - Ajustados para acompanhar a intensidade */}
+          <motion.circle
+            cx="800" cy="300" r="3" fill="#7fdbff" // Raio maior
+            animate={{ opacity: [0, 1, 0], scale: [1, 1.5, 1] }}
+            transition={{ duration: 2, repeat: Infinity }} // Mais rápido
+          />
+          <motion.circle
+            cx="600" cy="600" r="3" fill="#ff851b" // Raio maior
+            animate={{ opacity: [0, 1, 0], scale: [1, 1.5, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }} // Mais rápido
+          />
+        </svg>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <SectionBadge text="Resultados incríveis" className="mb-6 bg-white/10 border-white/20 text-white" />

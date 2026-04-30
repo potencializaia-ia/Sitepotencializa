@@ -76,10 +76,13 @@ export function Benefits() {
           <StaggerContainer className="space-y-12">
             {benefits.filter(b => b.side === 'left').map((benefit) => (
               <StaggerItem key={benefit.title}>
-                <motion.div 
+                <motion.div
                   whileHover={{ x: 10 }}
-                  className="group flex gap-6 text-right flex-row-reverse lg:flex-row"
+                  className="group flex flex-col items-center gap-6 text-center"
                 >
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#F9F9FB] rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-orange-500/10 transition-all duration-300">
+                    <benefit.icon className="w-6 h-6 text-[#ff851b]" />
+                  </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-[#2D2D4A] mb-2 group-hover:text-[#ff851b] transition-colors">
                       {benefit.title}
@@ -87,9 +90,6 @@ export function Benefits() {
                     <p className="text-[#2D2D4A]/65 leading-relaxed text-sm">
                       {benefit.description}
                     </p>
-                  </div>
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#F9F9FB] rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-orange-500/10 transition-all duration-300">
-                    <benefit.icon className="w-6 h-6 text-[#ff851b]" />
                   </div>
                 </motion.div>
               </StaggerItem>
@@ -118,7 +118,7 @@ export function Benefits() {
                   </div>
                   <span className="text-white font-bold tracking-tighter text-xl">SISTEMA ATIVO</span>
                   <div className="mt-2 flex gap-1">
-                    {[1,2,3].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />)}
+                    {[1,2,3].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/80 animate-pulse" />)}
                   </div>
                 </div>
               </motion.div>
@@ -129,9 +129,9 @@ export function Benefits() {
           <StaggerContainer className="space-y-12">
             {benefits.filter(b => b.side === 'right').map((benefit) => (
               <StaggerItem key={benefit.title}>
-                <motion.div 
+                <motion.div
                   whileHover={{ x: -10 }}
-                  className="group flex gap-6 text-left"
+                  className="group flex flex-col items-center gap-6 text-center"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-[#F9F9FB] rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-orange-500/10 transition-all duration-300">
                     <benefit.icon className="w-6 h-6 text-[#ff851b]" />
@@ -160,7 +160,7 @@ export function Benefits() {
               Começar minha transformação
             </Button>
             <p className="mt-4 text-sm text-[#2D2D4A]/40 font-medium flex items-center gap-2">
-              <Zap className="w-3 h-3 text-[#ff851b]" /> 
+              <Zap className="w-3 h-3 text-[#71d7ff]" /> 
               Diagnóstico inicial gratuíto disponível!
             </p>
           </div>

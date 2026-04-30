@@ -4,7 +4,6 @@ import {
   MessageCircle,
   Instagram,
   Globe,
-  Phone,
   ArrowRight,
   Sparkles,
   Cpu,
@@ -99,9 +98,9 @@ function HeroIllustration() {
             {/* Status Live Feed */}
             <div className="w-full space-y-3">
               {[
-                { label: "WhatsApp: Lead detectado", color: "text-emerald-400" },
+                { label: "WhatsApp: Lead detectado", color: "text-[#71d7ff]" },
                 { label: "RAG: Consultando base", color: "text-[#ff851b]" },
-                { label: "CRM: Cadastro atualizado", color: "text-blue-400" },
+                { label: "CRM: Cadastro atualizado", color: "text-[#71d7ff]" },
               ].map((status, i) => (
                 <div
                   key={i}
@@ -137,7 +136,7 @@ function HeroIllustration() {
                   {node.name}
                 </h4>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                  <CheckCircle2 className="w-3 h-3 text-[#71d7ff]" />
                   <span className="text-white/40 text-[9px] font-bold uppercase tracking-wider">
                     {node.stats}
                   </span>
@@ -222,9 +221,9 @@ export function Hero() {
             className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 justify-center text-sm font-medium text-white/40 uppercase tracking-widest"
           >
             <span>Atendimento 24/7</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff851b]/40" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
             <span>Recuperação de leads</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff851b]/40" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
             <span>Integração Omnichannel</span>
           </motion.div>
 

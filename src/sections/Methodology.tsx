@@ -39,7 +39,7 @@ export function Methodology() {
   return (
     <section className="py-24 bg-[#F5F5F7] relative overflow-hidden">
       {/* Linha de Conexão (Workflow Path) - Visível apenas em Desktop */}
-      <div className="absolute top-[60%] left-0 w-full h-[2px] border-t-2 border-dashed border-[#ff851b]/20 hidden xl:block z-0" />
+      <div className="absolute top-[60%] left-0 w-full h-[2px] border-t-2 border-dashed border-[#71d7ff]/80 hidden xl:block z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -111,7 +111,7 @@ export function Methodology() {
               Iniciar meu projeto
             </Button>
             <p className="mt-6 text-sm text-[#2D2D4A]/40 flex items-center gap-2 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#71d7ff] animate-pulse" />
               Processo de implementação ágil (2-4 semanas)
             </p>
           </div>
