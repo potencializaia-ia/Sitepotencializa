@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
 
 // Pages
 import { Login } from "@/pages/Login";
@@ -8,6 +7,7 @@ import { ServicePage } from "@/pages/ServicePage";
 import { Perfil } from "@/pages/Perfil";
 import { EsqueciSenha } from "@/pages/EsqueciSenha";
 import { RedefinirSenha } from "@/pages/RedefinirSenha";
+import { SaaS } from "@/pages/SaaS"; // Nova página para o produto SaaS
 import AuthCallback from "@/pages/AuthCallback"; // O elo perdido do login social
 
 // Components & Sections
@@ -73,6 +73,9 @@ export default function App() {
 
         {/* Command Center (Perfil) */}
         <Route path="/perfil" element={<Perfil />} />
+
+        {/* Nova Rota para o SaaS */}
+        <Route path="/saas" element={<SaaS />} />
       </Routes>
 
       {/* Interface de Suporte Neural Pulsante */}
