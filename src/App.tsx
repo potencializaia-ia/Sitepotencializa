@@ -23,7 +23,6 @@ import { Testimonials } from '@/sections/Testimonials';
 import { Methodology } from '@/sections/Methodology';
 import { Pricing } from '@/sections/Pricing';
 import { FAQ } from '@/sections/FAQ';
-import { Blog } from '@/sections/Blog';
 import { Marquee } from '@/sections/Marquee';
 import { FinalCTA } from '@/sections/FinalCTA';
 
@@ -40,7 +39,6 @@ function Home() {
         <Methodology />
         <Pricing />
         <FAQ />
-        <Blog />
         <Marquee />
         <FinalCTA />
       </main>

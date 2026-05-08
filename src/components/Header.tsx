@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, } from "framer-motion";
 import { 
   Menu, 
-  UserCircle2, 
   Cpu, 
   MessageSquare, 
   Settings, 
-  Sparkles, 
   ChevronDown 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import {
   Popover,
   PopoverContent,
@@ -51,13 +41,27 @@ const solucoesItems = [
 const navItems = [
   { title: "Cases", href: "#cases" },
   { title: "Planos", href: "#planos" },
-  { title: "Blog", href: "#blog" },
   { title: "SaaS", href: "/saas", isPage: true },
   { title: "Contato", href: "#contato" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openSolutions = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+    }
+    setIsSolutionsOpen(true);
+  };
+
+  const closeSolutions = () => {
+    closeTimer.current = setTimeout(() => {
+      setIsSolutionsOpen(false);
+    }, 120);
+  };
   const navigate = useNavigate();
   const { isAuthenticated, firstName, loading } = useAuth();
 
@@ -73,6 +77,53 @@ export function Header() {
     : "bg-white/90 border border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.08)]";
 
   const textColor = isScrolled ? "text-[#1a2d4a] hover:text-[#0d1f35]" : "text-slate-700 hover:text-slate-900";
+  const popoverTextColor = isScrolled
+  ? "text-[#1a2d4a]"
+  : "text-white/85";
+
+const popoverMutedTextColor = isScrolled
+  ? "text-[#1a2d4a]/70"
+  : "text-white/70";
+
+const popoverCardTextColor = isScrolled
+  ? "text-[#1a2d4a]/90 group-hover:text-[#1a2d4a]"
+  : "text-white/85 group-hover:text-white";
+
+const popoverBorderColor = isScrolled
+  ? "border-[#1a2d4a]/10"
+  : "border-white/10";
+
+const popoverCardBg = isScrolled
+  ? "bg-white/15 hover:bg-white/55"
+  : "bg-white/5 hover:bg-white/10";
+
+const mobileMenuIconColor = isScrolled
+  ? "text-[#1a2d4a]"
+  : "text-black";
+
+const mobileMutedTextColor = isScrolled
+  ? "text-[#1a2d4a]/50"
+  : "text-white/20";
+
+const mobileCardTextColor = isScrolled
+  ? "text-[#1a2d4a]/80 group-hover:text-[#1a2d4a]"
+  : "text-white/80 group-hover:text-white";
+
+const mobileNavTextColor = isScrolled
+  ? "text-[#1a2d4a]/55 hover:text-[#ff851b]"
+  : "text-white/40 hover:text-[#ff851b]";
+
+const mobileCardBg = isScrolled
+  ? "bg-white/15 hover:bg-white/55"
+  : "bg-white/5 hover:bg-white/10";
+
+const mobileBorderColor = isScrolled
+  ? "border-[#1a2d4a]/10"
+  : "border-white/5";
+
+const mobileIconBg = isScrolled
+  ? "bg-[#1a2d4a]/5"
+  : "bg-white/5";
 
   return (
     <motion.header
@@ -96,34 +147,60 @@ export function Header() {
 
         {/* NAVEGAÇÃO DESKTOP */}
         <div className="hidden lg:flex items-center gap-2">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className={`bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent font-bold text-sm ${textColor}`}>
+          <Popover open={isSolutionsOpen} onOpenChange={setIsSolutionsOpen}>
+            <div onMouseEnter={openSolutions} onMouseLeave={closeSolutions}>
+              <PopoverTrigger asChild>
+                <button
+                  className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-bold transition-all hover:bg-white/60 ${textColor}`}
+                >
                   Soluções
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[300px] gap-2 p-4 bg-[#0d0d0d]/98 backdrop-blur-3xl border border-white/10 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                  <ChevronDown 
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      isSolutionsOpen ? "rotate-180" : ""
+                    }`} 
+                  />
+                </button>
+              </PopoverTrigger>
+
+              <PopoverContent
+                align="start"
+                sideOffset={10}
+                onMouseEnter={openSolutions}
+                onMouseLeave={closeSolutions}
+                className="w-[255px] p-3 !bg-white/5 backdrop-blur-3xl border border-white/5 rounded-[22px] shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
+              >
+                <div className="space-y-3">
+                  <p className={`text-[9px] font-black uppercase tracking-[0.18em] ml-1 ${popoverMutedTextColor}`}>
+                    Soluções Inteligentes
+                  </p>
+
+                  <div className="grid gap-2">
                     {solucoesItems.map((item) => (
-                      <li key={item.title}>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to={item.href}
-                            className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-[#ff851b]/30 transition-all group"
-                          >
-                            <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-white/5 group-hover:text-[#ff851b]">
-                              {item.icon}
-                            </div>
-                            <span className="text-xs font-bold text-white/80 group-hover:text-white">{item.title}</span>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
+                      <Link
+                        key={item.title}
+                        to={item.href}
+                        className={`flex items-center gap-3 p-3 rounded-xl border hover:border-[#ff851b]/40 transition-all group ${popoverCardBg} ${popoverBorderColor}`}
+                      >
+                        <div
+                          className={`h-8 w-8 flex items-center justify-center rounded-lg transition-colors ${
+                            isScrolled
+                              ? "bg-[#1a2d4a]/5 group-hover:bg-[#ff851b]/15"
+                              : "bg-white/5 group-hover:bg-[#ff851b]/15"
+                          }`}
+                        >
+                          {item.icon}
+                        </div>
+
+                        <span className={`text-[11px] font-bold leading-tight ${popoverCardTextColor}`}>
+                          {item.title}
+                        </span>
+                      </Link>
                     ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                  </div>
+                </div>
+              </PopoverContent>
+            </div>
+          </Popover>
 
           {navItems.map((item) => (
             <Link 
@@ -164,42 +241,49 @@ export function Header() {
           {/* MENU MOBILE (POPOVER - CONTAINER DISCRETO) */}
           <Popover>
             <PopoverTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className={isScrolled ? "text-white" : "text-slate-900"}>
+              <Button variant="ghost" size="icon" className={mobileMenuIconColor}>
                 <Menu className="h-6 w-6" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent 
-              align="end" 
+            <PopoverContent
+              align="end"
               sideOffset={15}
-              className="w-[300px] p-4 bg-[#0d0d0d]/98 backdrop-blur-3xl border border-white/10 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              className={`w-[300px] p-4 !bg-white/5 backdrop-blur-3xl rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border ${mobileBorderColor}`}
             >
               <div className="space-y-6">
+                
                 {/* Seção de Soluções no Mobile */}
                 <div className="space-y-3">
-                  <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] ml-1">Soluções Inteligentes</p>
+                  <p className={`text-[10px] font-black uppercase tracking-[0.2em] ml-1 ${mobileMutedTextColor}`}>
+                    Soluções Inteligentes
+                  </p>
+
                   <div className="grid gap-2">
                     {solucoesItems.map((item) => (
                       <Link
                         key={item.title}
                         to={item.href}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-[#ff851b]/30 transition-all group"
+                        className={`flex items-center gap-3 p-3 rounded-xl border hover:border-[#ff851b]/30 transition-all group ${mobileCardBg} ${mobileBorderColor}`}
                       >
-                        <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-white/5 group-hover:text-[#ff851b]">
+                        <div className={`h-8 w-8 flex items-center justify-center rounded-lg group-hover:text-[#ff851b] ${mobileIconBg}`}>
                           {item.icon}
                         </div>
-                        <span className="text-xs font-bold text-white/80 group-hover:text-white">{item.title}</span>
+
+                        <span className={`text-xs font-bold ${mobileCardTextColor}`}>
+                          {item.title}
+                        </span>
                       </Link>
                     ))}
                   </div>
                 </div>
 
                 {/* Links de Navegação */}
-                <div className="space-y-1 border-t border-white/5 pt-4">
+                <div className={`space-y-1 border-t pt-4 ${mobileBorderColor}`}>
                   {navItems.map((item) => (
                     <Link
                       key={item.title}
                       to={item.href}
-                      className="block px-2 py-2.5 text-sm font-medium text-white/40 hover:text-[#ff851b] transition-colors"
+                      className={`block px-2 py-2.5 text-sm font-medium transition-colors ${mobileNavTextColor}`}
                     >
                       {item.title}
                     </Link>
@@ -212,7 +296,11 @@ export function Header() {
                     isAuthenticated ? (
                       <Button 
                         onClick={() => navigate("/perfil")}
-                        className="w-full h-12 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10"
+                        className={`w-full h-12 rounded-xl ${
+                          isScrolled
+                            ? "bg-[#1a2d4a]/5 border border-[#1a2d4a]/10 text-[#1a2d4a] hover:bg-[#1a2d4a]/10"
+                            : "bg-white/5 border border-white/10 text-white hover:bg-white/10"
+                        }`}
                       >
                         Meu Perfil
                       </Button>
@@ -225,7 +313,7 @@ export function Header() {
                     )
                   )}
                 </div>
-                
+
               </div>
             </PopoverContent>
           </Popover>

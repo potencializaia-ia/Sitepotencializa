@@ -46,7 +46,7 @@ export function ServiceHero({
   ];
 
   return (
-    <section className="relative h-[800px] bg-[#050505] bg-hero-gradient flex items-center overflow-hidden pt-12">
+    <section className="relative min-h-screen lg:h-[800px] bg-[#050505] bg-hero-gradient flex items-start lg:items-center overflow-hidden pt-32 sm:pt-36 lg:pt-12 pb-20 lg:pb-0">
       
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-25" />
@@ -54,7 +54,7 @@ export function ServiceHero({
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-start"> {/* Mudado para items-start para travar o topo */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center"> {/* Mudado para items-start para travar o topo */}
           
           {/* LADO ESQUERDO: TEXTO COM ANCORAGEM FIXA */}
           <motion.div 
@@ -62,17 +62,17 @@ export function ServiceHero({
             initial="hidden" 
             animate="show" 
 
-            className="lg:h-[500px] flex flex-col items-center lg:items-start text-center lg:text-left pt-12"
+            className="lg:h-[500px] flex flex-col items-center lg:items-start text-center lg:text-left pt-0 lg:pt-12"
           >
             {/* Box do Título e Subtítulo com altura mínima para "segurar" o espaço */}
-            <div className="min-h-[320px] flex flex-col items-center lg:items-start space-y-6">
+            <div className="lg:min-h-[320px] flex flex-col items-center lg:items-start space-y-5 lg:space-y-6">
               <motion.div variants={itemVariants}>
                 <SectionBadge text={badgeText} className="bg-white/10 border-white/60 text-[#ff851b]" />
               </motion.div>
               
               <motion.h1 
                 variants={itemVariants}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.1]"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.08]"
               >
                 {title}<span className="text-[#ff851b]">.</span>
               </motion.h1>
@@ -95,8 +95,8 @@ export function ServiceHero({
           </motion.div>
 
           {/* LADO DIREITO: ILUSTRAÇÃO (TRAVADA NO MESMO PONTO DO TEXTO) */}
-          <div className="relative flex justify-center items-center h-[400px] lg:h-[500px] pt-12">
-            <div className="relative w-72 h-72 lg:w-80 lg:h-80">
+          <div className="relative flex justify-center items-center h-[340px] sm:h-[380px] lg:h-[500px] pt-8 lg:pt-12 pb-8 lg:pb-0">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
               
               {/* Linhas Brancas Fortes */}
               <motion.div 

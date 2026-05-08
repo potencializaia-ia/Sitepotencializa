@@ -61,7 +61,7 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] bg-hero-gradient relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-[#ff851b] bg-hero-gradient relative overflow-hidden flex flex-col">
       {/* Glows de Fundo Dinâmicos */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff851b]/10 blur-[140px] rounded-full opacity-30" />
@@ -127,7 +127,6 @@ export function Login() {
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={isLoading}
                     className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 focus:ring-0 transition-all"
-                    required
                   />
                 </div>
 
@@ -139,7 +138,6 @@ export function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     disabled={isLoading}
                     className="h-14 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl focus:border-[#ff851b]/50 focus:ring-0 transition-all"
-                    required
                   />
                   <button
                     type="button"

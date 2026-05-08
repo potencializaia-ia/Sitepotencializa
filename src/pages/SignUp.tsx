@@ -155,7 +155,7 @@ export function SignUp() {
                 <p className="text-white/40 font-medium">Junte-se a centenas de empresas que escalam com IA.</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4" noValidate>
                 {/* Nome - Full width no mobile */}
                 <div className="md:col-span-2 space-y-1">
                   <Input

@@ -4,7 +4,7 @@ const navLinks = [
   { title: 'Soluções', href: '#produtos' },
   { title: 'Planos', href: '#planos' },
   { title: 'Cases', href: '#cases' },
-  { title: 'Blog', href: '#blog' },
+  { title: 'SaaS', href: '#saas' },
   { title: 'Contato', href: '#contato' },
 ];
 

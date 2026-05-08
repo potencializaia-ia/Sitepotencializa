@@ -9,7 +9,7 @@ export function Marquee() {
   ];
 
   return (
-    <section className="py-16 bg-[#F5F5F7] overflow-hidden border-y border-gray-100">
+    <section className="py-16 bg-white overflow-hidden border-y border-gray-100">
       <motion.div
         animate={{ x: ['0%', '-50%'] }}
         transition={{
