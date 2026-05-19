@@ -33,35 +33,11 @@ const faqItems = [
     question: 'A IA é personalizada para o meu negócio?',
     answer: 'Sim. Todas as soluções são desenvolvidas sob medida, com fluxos, linguagem, regras e processos adaptados à realidade da sua empresa.',
   },
-  {
-    question: 'Quanto tempo leva para implementar uma solução?',
-    answer: 'O prazo varia conforme o projeto, mas normalmente a implementação leva entre 7 e 30 dias, incluindo diagnóstico, desenvolvimento, testes e validação.',
-  },
-  {
-    question: 'A Potencializa oferece suporte?',
-    answer: 'Sim. Oferecemos suporte, acompanhamento e orientações durante o período estabelecido em contrato, garantindo a correta implementação, adaptação da solução e capacitação da equipe.',
-  },
-  {
-    question: 'É necessário ter conhecimento técnico para usar?',
-    answer: 'Não. Toda a parte técnica é desenvolvida pela Potencializa. As soluções são entregues prontas para uso, com interfaces simples e suporte especializado.',
-  },
-  {
-    question: 'Como posso acompanhar os resultados da IA?',
-    answer: 'Disponibilizamos dashboards com métricas em tempo real, como volume de atendimentos, conversões, agendamentos, satisfação do cliente, tempo de resposta e desempenho geral.',
-  },
-  {
-    question: 'Como a IA pode reduzir meus custos operacionais?',
-    answer: 'A automação reduz a necessidade de grandes equipes, elimina retrabalho, acelera processos e aumenta a eficiência, permitindo escalar operações com menor custo.',
-  },
-  {
-    question: 'A comunicação com a IA é natural para o cliente?',
-    answer: 'Nossa IA é treinada para manter uma comunicação humanizada, contextual e alinhada ao perfil do seu público, proporcionando uma experiência fluida, profissional e confiável.',
-  },
 ];
 
 export function FAQ() {
   return (
-    <section className="pt-20 pb-8 bg-[#F5F5F7]">
+    <section className="pt-20 pb-20 bg-[#F5F5F7]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left Column - Header */}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { Eye, EyeOff, Zap, Shield, TrendingUp, ArrowRight, Cpu, Sparkles } from 'lucide-react';
+import { Eye, EyeOff, Cpu, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';

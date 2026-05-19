@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Linkedin, MessageCircle, ArrowUp } from 'lucide-react';
+import { Instagram, Linkedin, ArrowUp } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 const navLinks = [
   { title: 'Soluções', href: '#produtos' },
@@ -9,7 +10,7 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: MessageCircle, href: 'https://wa.me/555491412254', label: 'WhatsApp' },
+  { icon: WhatsAppIcon, href: 'https://wa.me/555491412254', label: 'WhatsApp' },
   { icon: Instagram, href: 'https://www.instagram.com/potencializa.ia/', label: 'Instagram' },
   { icon: Linkedin, href: 'https://www.linkedin.com/company/potencializa-ia', label: 'LinkedIn' },
 ];

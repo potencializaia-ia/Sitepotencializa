@@ -77,9 +77,6 @@ export function Header() {
     : "bg-white/90 border border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.08)]";
 
   const textColor = isScrolled ? "text-[#1a2d4a] hover:text-[#0d1f35]" : "text-slate-700 hover:text-slate-900";
-  const popoverTextColor = isScrolled
-  ? "text-[#1a2d4a]"
-  : "text-white/85";
 
 const popoverMutedTextColor = isScrolled
   ? "text-[#1a2d4a]/70"

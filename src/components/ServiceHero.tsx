@@ -18,7 +18,6 @@ export function ServiceHero({
   title,
   subtitle,
   ctaText,
-  ctaHref = "/#contato",
   activeService = 0,
 }: ServiceHeroProps) {
   
