@@ -1,0 +1,73 @@
+// Dados coletados no formulário
+export interface FormData {
+  // Etapa 1 – Contato
+  nome:     string;
+  email:    string;
+  telefone: string;
+
+  // Etapa 2 – Empresa
+  empresa: string;
+  setor:   string;
+  tamanho: string;
+
+  // Etapa 3 – Processos atuais
+  ferramentas:      string[];   // ferramentas que a empresa já usa
+  outraFerramenta?: string;     // ferramenta não listada, digitada livremente
+  tarefasManuais:   string[];   // tarefas manuais que mais consomem tempo (máx 3)
+  outraTarefa?:     string;     // tarefa manual não listada, digitada livremente
+
+  // Etapa 4 – Contexto e objetivo
+  jaAutomatizados:    string[];  // processos que já estão automatizados
+  volumeMensal:       string;    // volume de operações por mês
+  objetivo:           string[];  // objetivos principais com automação (múltipla seleção)
+  contextoAdicional?: string;    // campo livre opcional
+  orcamento:          string;    // faixa de orçamento disponível
+}
+
+// Uma automação sugerida pela IA
+export interface Automacao {
+  titulo:          string;   // ex: "Triagem automática de emails"
+  descricao:       string;   // o que automatizar e como
+  tipoAgente:      string;   // chatbot, processador de documentos, etc.
+  horasMes:        number;   // horas economizadas por mês
+  economiaMes:     number;   // R$ economizados por mês
+  roi12meses:      number;   // R$ economizados em 12 meses
+  complexidade:    "Fácil" | "Médio" | "Complexo";
+  prioridade:      number;   // 1 = maior prioridade
+  produtosPotencializa: string[]; // ex: ["Treinamento IA", "Agente Customizado"]
+}
+
+// Resposta completa da análise
+export interface AnalysisResult {
+  automacoes:               Automacao[];
+  totalHorasMes:            number;
+  totalEconomiaMes:         number;
+  totalRoi12meses:          number;
+  resumoGeral:              string;
+  totalAutomacoesCatalogo?: number; // total de automações identificadas no catálogo para o setor
+}
+
+// Automação do catálogo real (tabela automacoes_catalogo no Supabase)
+export interface AutomacaoCatalogo {
+  id:                   number;
+  nome:                 string;
+  categoria:            string;
+  setores:              string;  // pipe-separated
+  descricao:            string;
+  complexidade:         "Fácil" | "Médio" | "Complexo";
+  horas_mes:            number;
+  roi_12meses:          number;
+  custo_implementacao:  number;
+}
+
+// Payload salvo no Supabase
+export interface LeadPayload {
+  nome:       string;
+  email:      string;
+  telefone:   string;
+  empresa:    string;
+  setor:      string;
+  tamanho:    string;
+  resultado:  AnalysisResult;
+  created_at: string;
+}

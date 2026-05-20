@@ -41,7 +41,7 @@ const solucoesItems = [
 const navItems = [
   { title: "Cases", href: "#cases" },
   { title: "Planos", href: "#planos" },
-  { title: "SaaS", href: "/saas", isPage: true },
+  { title: "SaaS", href: "/diagnostico", isPage: true },
   { title: "Contato", href: "#contato" },
 ];
 

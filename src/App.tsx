@@ -8,6 +8,8 @@ import { Perfil } from "@/pages/Perfil";
 import { EsqueciSenha } from "@/pages/EsqueciSenha";
 import { RedefinirSenha } from "@/pages/RedefinirSenha";
 import { SaaS } from "@/pages/SaaS"; // Nova página para o produto SaaS
+import { Diagnostico } from "@/pages/Diagnostico"; // SaaS - Diagnóstico
+import { Resultado } from "@/pages/Resultado"; // SaaS - Resultado
 import AuthCallback from "@/pages/AuthCallback"; // O elo perdido do login social
 
 // Components & Sections
@@ -74,6 +76,10 @@ export default function App() {
 
         {/* Nova Rota para o SaaS */}
         <Route path="/saas" element={<SaaS />} />
+
+        {/* SaaS - Diagnóstico */}
+        <Route path="/diagnostico" element={<Diagnostico />} />
+        <Route path="/resultado" element={<Resultado />} />
       </Routes>
 
       {/* Interface de Suporte Neural Pulsante */}
