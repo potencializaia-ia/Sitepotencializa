@@ -1,10 +1,8 @@
+import "./loadEnv";
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import { analyzeProcesses } from "./src/api/analyze";
 import type { FormData } from "./src/types/saas";
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.API_PORT || 3001;

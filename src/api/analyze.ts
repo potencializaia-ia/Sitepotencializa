@@ -30,6 +30,36 @@ const objetivoLabel: Record<string, string> = {
   "liberar-equipe":        "Liberar equipe para tarefas estratégicas",
 };
 
+const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'-][A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function telefoneDigitos(valor: string): string {
+  const digits = (valor ?? "").replace(/\D/g, "");
+  return digits.startsWith("55") && digits.length > 11 ? digits.slice(2) : digits;
+}
+
+function detectarContatoInvalido(data: FormData): string | null {
+  const nome = (data.nome ?? "").trim();
+  if (!nomeRegex.test(nome) || /(.)\1{3,}/.test(nome)) {
+    return "Informe um nome completo válido (nome e sobrenome).";
+  }
+
+  const email = (data.email ?? "").trim();
+  if (!emailRegex.test(email)) {
+    return "Informe um e-mail válido.";
+  }
+
+  const tel = telefoneDigitos(data.telefone ?? "");
+  const dddOk = parseInt(tel.slice(0, 2), 10) >= 11;
+  const lenOk = tel.length === 10 || tel.length === 11;
+  const celOk = tel.length !== 11 || tel[2] === "9";
+  if (!lenOk || !dddOk || !celOk) {
+    return "Informe um telefone válido com DDD.";
+  }
+
+  return null;
+}
+
 function detectarConteudoInvalido(data: FormData): string | null {
   if (!data.contextoAdicional || data.contextoAdicional.trim().length === 0) return null;
 
@@ -200,6 +230,11 @@ ${buildContextoEmpresa(data)}
 
 export async function analyzeProcesses(data: FormData): Promise<AnalysisResult | { erro: string; mensagem: string }> {
   try {
+    const erroContato = detectarContatoInvalido(data);
+    if (erroContato) {
+      return { erro: "dados_insuficientes", mensagem: erroContato };
+    }
+
     const erroValidacao = detectarConteudoInvalido(data);
     if (erroValidacao) {
       return { erro: "dados_insuficientes", mensagem: erroValidacao };

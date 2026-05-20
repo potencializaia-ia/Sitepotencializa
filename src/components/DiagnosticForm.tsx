@@ -9,10 +9,44 @@ import { LoadingAnalysis } from "@/components/LoadingAnalysis";
 
 // ─── Validação Zod ────────────────────────────────────────────────────────────
 
+// Nome e sobrenome, apenas letras (com acentos), espaços, hífen e apóstrofo
+const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'-][A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+
+// Normaliza telefone BR para apenas dígitos, removendo DDI 55 se presente
+function telefoneDigitos(valor: string): string {
+  const digits = valor.replace(/\D/g, "");
+  return digits.startsWith("55") && digits.length > 11 ? digits.slice(2) : digits;
+}
+
 const schema = z.object({
-  nome:             z.string().min(2, "Nome obrigatório"),
-  email:            z.string().email("Email inválido"),
-  telefone:         z.string().min(10, "Telefone inválido"),
+  nome: z
+    .string()
+    .trim()
+    .min(2, "Nome obrigatório")
+    .refine((v) => nomeRegex.test(v), "Digite seu nome completo (nome e sobrenome)")
+    .refine((v) => !/(.)\1{3,}/.test(v), "Nome inválido — evite caracteres repetidos"),
+  email: z
+    .string()
+    .trim()
+    .min(1, "Email obrigatório")
+    .email("Email inválido")
+    .refine((v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v), "Email inválido"),
+  telefone: z
+    .string()
+    .trim()
+    .min(1, "Telefone obrigatório")
+    .refine((v) => {
+      const d = telefoneDigitos(v);
+      return d.length === 10 || d.length === 11;
+    }, "Telefone inválido — inclua DDD + número")
+    .refine((v) => {
+      const ddd = parseInt(telefoneDigitos(v).slice(0, 2), 10);
+      return ddd >= 11 && ddd <= 99;
+    }, "DDD inválido")
+    .refine((v) => {
+      const d = telefoneDigitos(v);
+      return d.length !== 11 || d[2] === "9";
+    }, "Celular inválido — o número deve começar com 9 após o DDD"),
   empresa:          z.string().min(2, "Nome da empresa obrigatório"),
   setor:            z.string().min(2, "Setor obrigatório"),
   tamanho:          z.string().min(1, "Tamanho obrigatório"),
@@ -194,8 +228,7 @@ export function DiagnosticForm() {
     setLoading(true);
     setError(null);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
-      const res = await fetch(`${apiUrl}/api/analyze`, {
+      const res = await fetch("/api/analyze", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify(data),
