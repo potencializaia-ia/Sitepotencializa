@@ -56,36 +56,31 @@ export function ServiceHero({
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center"> {/* Mudado para items-start para travar o topo */}
           
           {/* LADO ESQUERDO: TEXTO COM ANCORAGEM FIXA */}
-          <motion.div 
-            variants={containerVariants} 
-            initial="hidden" 
-            animate="show" 
-
-            className="lg:h-[500px] flex flex-col items-center lg:items-start text-center lg:text-left pt-0 lg:pt-12"
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8"
           >
-            {/* Box do Título e Subtítulo com altura mínima para "segurar" o espaço */}
-            <div className="lg:min-h-[320px] flex flex-col items-center lg:items-start space-y-5 lg:space-y-6">
-              <motion.div variants={itemVariants}>
-                <SectionBadge text={badgeText} className="bg-white/10 border-white/60 text-[#ff851b]" />
-              </motion.div>
-              
-              <motion.h1 
-                variants={itemVariants}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.08]"
-              >
-                {title}<span className="text-[#ff851b]">.</span>
-              </motion.h1>
-              
-              <motion.p 
-                variants={itemVariants}
-                className="text-base md:text-lg text-white/40 max-w-sm leading-relaxed font-medium"
-              >
-                {subtitle}
-              </motion.p>
-            </div>
+            <motion.div variants={itemVariants}>
+              <SectionBadge text={badgeText} className="bg-white/10 border-white/60 text-[#ff851b]" />
+            </motion.div>
 
-            {/* O botão agora fica sempre na mesma distância do topo porque o box acima tem min-h fixo */}
-            <motion.div variants={itemVariants} className="pt-6">
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter leading-[1.08]"
+            >
+              {title}<span className="text-[#ff851b]">.</span>
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg text-white/40 max-w-sm leading-relaxed font-medium"
+            >
+              {subtitle}
+            </motion.p>
+
+            <motion.div variants={itemVariants}>
               <Button size="lg" className="h-16 px-10 rounded-2xl bg-[#ff851b] hover:bg-[#e07316] text-white font-black shadow-2xl shadow-orange-500/20 transition-all hover:scale-105 group">
                 {ctaText}
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

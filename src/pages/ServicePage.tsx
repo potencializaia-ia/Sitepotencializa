@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
+import { useState, useRef } from "react";
 import { motion } from 'framer-motion';
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, RotateCcw } from "lucide-react";
 
 import {
   MessageCircle,
@@ -14,6 +15,19 @@ import {
   ShieldCheck,
   Users,
   Activity,
+  Compass,
+  Layers,
+  Unlock,
+  ClipboardList,
+  GitBranch,
+  GraduationCap,
+  Target,
+  Cpu,
+  Shuffle,
+  Navigation,
+  HelpCircle,
+  AlertTriangle,
+  TrendingDown,
 } from "lucide-react";
 
 import { services } from "../data/services";
@@ -30,6 +44,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+// Ícones fixos por posição — pareados por índice com os cards vindos de services.ts.
+// A ordem importa: o card N usa o ícone N. Mantenha a mesma quantidade de cards nos dados.
+const PROBLEMA_ICONS = [Clock, TrendingUp, ShieldCheck, Activity, MessageCircle, Wallet];
+const PROBLEMA_ICONS_CONSULTORIA = [Cpu, Shuffle, Navigation, HelpCircle, AlertTriangle, TrendingDown];
+const CANAL_ICONS = [MessageCircle, Globe, Instagram, Phone];
+const CANAL_ICONS_CONSULTORIA = [ClipboardList, GitBranch, GraduationCap, Target];
+const BENEFICIO_ICONS = [Wallet, CalendarCheck, ShieldCheck, Users];
+const BENEFICIO_ICONS_CONSULTORIA = [Compass, Layers, TrendingUp, Unlock];
 
 export function ServicePage() {
   const { slug } = useParams();
@@ -78,101 +101,67 @@ export function ServicePage() {
             
             {/* Cabeçalho de Impacto */}
             <div className="text-center mb-20">
-              <SectionBadge text="Diagnóstico de Perdas" className="mb-6" />
+              <SectionBadge text={service.problemas.badge} className="mb-6" />
               <AnimatedSection>
                 <h2 className="text-4xl md:text-6xl font-bold text-[#2D2D4A] tracking-tighter leading-[1.1]">
-                  O custo invisível da <br />
-                  <span className="text-[#ff851b]">ineficiência operacional.</span>
+                  {service.problemas.title} <br />
+                  <span className="text-[#ff851b]">{service.problemas.titleHighlight}</span>
                 </h2>
               </AnimatedSection>
               <AnimatedSection delay={0.1}>
                 <p className="mt-6 text-xl text-[#2D2D4A]/50 max-w-3xl mx-auto font-medium">
-                  No mercado atual, a velocidade de resposta não é um diferencial, é sobrevivência. 
-                  Cada minuto de espera é uma porta aberta para o seu concorrente.
+                  {service.problemas.intro}
                 </p>
               </AnimatedSection>
             </div>
 
             {/* Grid de Problemas Estruturados */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "O Lead que Esfria",
-                  desc: "78% dos clientes compram de quem responde primeiro. Se você demora mais de 5 minutos, sua chance de conversão cai 10x.",
-                  icon: <Clock className="w-6 h-6 text-red-500" />,
-                  tag: "Vazamento de Vendas"
-                },
-                {
-                  title: "Escala Impossível",
-                  desc: "Equipes humanas não escalam sem aumentar custos fixos. Quando o volume sobe, a qualidade cai e o time sobrecarrega.",
-                  icon: <TrendingUp className="w-6 h-6 text-red-500" />,
-                  tag: "Gargalo de Crescimento"
-                },
-                {
-                  title: "Inconsistência Fatal",
-                  desc: "Respostas diferentes para o mesmo problema geram desconfiança. A falta de um padrão técnico mata a autoridade da sua marca.",
-                  icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
-                  tag: "Risco de Branding"
-                },
-                {
-                  title: "Ponto Cego de Dados",
-                  desc: "Conversas humanas são difíceis de metrificar. Sem dados reais, você toma decisões baseadas em 'achismo', não em performance.",
-                  icon: <Activity className="w-6 h-6 text-red-500" />,
-                  tag: "Falta de Inteligência"
-                },
-                {
-                  title: "Horário Limitado",
-                  desc: "Seu cliente quer comprar às 22h, mas sua empresa só abre às 09h. Você está deixando dinheiro na mesa 16 horas por dia.",
-                  icon: <MessageCircle className="w-6 h-6 text-red-500" />,
-                  tag: "Oportunidade Perdida"
-                },
-                {
-                  title: "Dreno Financeiro",
-                  desc: "Custos altíssimos com suporte de primeiro nível que poderia ser resolvido instantaneamente por uma IA treinada.",
-                  icon: <Wallet className="w-6 h-6 text-red-500" />,
-                  tag: "Custo de Oportunidade"
-                },
-              ].map((item) => (
+              {service.problemas.cards.map((item, i) => {
+                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : PROBLEMA_ICONS;
+                const Icon = problemaIcons[i] ?? problemaIcons[0];
+                return (
                 <StaggerItem key={item.title}>
                   <div className="group h-full bg-white rounded-[32px] p-8 border border-gray-200 hover:border-red-500/20 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
                     {/* Indicador de "Atenção" sutil */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/[0.02] rounded-full -mr-16 -mt-16 group-hover:bg-red-500/[0.05] transition-colors" />
-                    
+
                     <div className="relative z-10">
                       <div className="flex items-center justify-between mb-6">
                         <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center border border-red-100">
-                          {item.icon}
+                          <Icon className="w-6 h-6 text-red-500" />
                         </div>
                         <span className="text-[10px] font-black uppercase tracking-widest text-red-500/50 bg-red-50 px-3 py-1 rounded-full">
                           {item.tag}
                         </span>
                       </div>
-                      
+
                       <h3 className="text-xl font-bold text-[#2D2D4A] mb-3 group-hover:text-red-600 transition-colors">
                         {item.title}
                       </h3>
-                      
+
                       <p className="text-[#2D2D4A]/60 text-sm leading-relaxed font-medium">
                         {item.desc}
                       </p>
                     </div>
                   </div>
                 </StaggerItem>
-              ))}
+                );
+              })}
             </StaggerContainer>
 
             {/* Resumo de Impacto */}
             <AnimatedSection delay={0.3} className="mt-20 py-10 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="max-w-md">
-                <h4 className="text-2xl font-bold text-[#2D2D4A]">O diagnóstico é claro:</h4>
+                <h4 className="text-2xl font-bold text-[#2D2D4A]">{service.problemas.resumoTitle}</h4>
                 <p className="text-[#2D2D4A]/60 font-medium">
-                  Sua empresa está operando abaixo do potencial tecnológico disponível.
+                  {service.problemas.resumoText}
                 </p>
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-sm font-bold text-red-500 uppercase tracking-widest">Prejuízo Estimado</p>
-                  <p className="text-3xl font-black text-[#2D2D4A]">Até 40% ao ano</p>
+                  <p className="text-sm font-bold text-red-500 uppercase tracking-widest">{service.problemas.prejuizoLabel}</p>
+                  <p className="text-3xl font-black text-[#2D2D4A]">{service.problemas.prejuizoValue}</p>
                 </div>
                 <div className="w-12 h-12 rounded-full border-4 border-red-500/20 border-t-red-500 animate-spin" />
               </div>
@@ -193,8 +182,8 @@ export function ServicePage() {
               {/* LADO ESQUERDO: O FLUXO DE INTELIGÊNCIA */}
               <div>
                 <AnimatedSection>
-                  <SectionBadge text="A Orquestração" className="mb-6 bg-white/5 border-white/10 text-[#ff851b]" />
-                  <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">
+                  <SectionBadge text={service.orquestracao.badge} className="mb-6 bg-white/5 border-white/10 text-[#ff851b]" />
+                  <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight leading-tight">
                     {service.whatItDoesTitle}
                     <span className="text-[#ff851b]">.</span>
                   </h2>
@@ -205,8 +194,6 @@ export function ServicePage() {
 
                 {/* Lista de Passos estilo "Workflow Nodes" */}
                 <div className="relative space-y-8">
-                  {/* Linha vertical conectando os passos (vibe n8n) */}
-                  <div className="absolute left-[22px] top-4 bottom-4 w-[1px] bg-gradient-to-b from-[#71d7ff]/50 via-[#71d7ff]/20 to-transparent" />
 
                   <StaggerContainer className="space-y-10">
                     {service.whatItDoesSteps.map((s, idx) => (
@@ -243,12 +230,10 @@ export function ServicePage() {
                     
                     {/* Grid de Canais */}
                     <div className="grid grid-cols-2 gap-5 mb-10">
-                      {[
-                        { icon: MessageCircle, title: "WhatsApp", desc: "Fluxo Oficial" },
-                        { icon: Globe, title: "Web Widget", desc: "Inteligência On-site" },
-                        { icon: Instagram, title: "Instagram", desc: "Direct Sales" },
-                        { icon: Phone, title: "Voice Agent", desc: "Atendimento por Voz" },
-                      ].map(({ icon: Icon, title, desc }, idx) => (
+                      {service.orquestracao.canais.map((canal, idx) => {
+                        const canalIcons = slug === "consultoria-ia" ? CANAL_ICONS_CONSULTORIA : CANAL_ICONS;
+                        const Icon = canalIcons[idx] ?? canalIcons[0];
+                        return (
                         <div
                           key={idx}
                           className="group bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-[#ff851b]/30 transition-all duration-500"
@@ -256,10 +241,11 @@ export function ServicePage() {
                           <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#ff851b]/10 transition-all">
                             <Icon className="w-6 h-6 text-[#ff851b]" />
                           </div>
-                          <h4 className="font-bold text-white mb-1 tracking-tight">{title}</h4>
-                          <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">{desc}</p>
+                          <h4 className="font-bold text-white mb-1 tracking-tight">{canal.title}</h4>
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">{canal.desc}</p>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
 
                     {/* Dashboard Status (Premium) */}
@@ -276,15 +262,15 @@ export function ServicePage() {
                             </div>
                           </div>
                           <div>
-                            <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Status Global</p>
-                            <p className="text-sm font-bold text-white tracking-tight">Potencializa Agentic Mesh</p>
+                            <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">{service.orquestracao.statusLabel}</p>
+                            <p className="text-sm font-bold text-white tracking-tight">{service.orquestracao.statusTitle}</p>
                           </div>
                         </div>
                         <div className="text-right">
                           <span className="inline-block px-3 py-1 bg-[#71d7ff]/10 border border-[#71d7ff]/20 rounded-lg text-[#71d7ff] text-[10px] font-black uppercase tracking-widest">
-                            ● 100% Online
+                            {service.orquestracao.statusBadge}
                           </span>
-                          <p className="text-[9px] text-white/20 mt-2 font-mono">LATENCY: 0.2ms</p>
+                          <p className="text-[9px] text-white/20 mt-2 font-mono">{service.orquestracao.latencia}</p>
                         </div>
                       </div>
                     </div>
@@ -306,11 +292,11 @@ export function ServicePage() {
             
             {/* Header com foco em Metodologia */}
             <div className="text-center mb-24">
-              <SectionBadge text="Metodologia Ágil" className="mb-6" />
+              <SectionBadge text={service.roadmap.badge} className="mb-6" />
               <AnimatedSection>
                 <h2 className="text-4xl md:text-6xl font-bold text-[#2D2D4A] tracking-tighter leading-tight">
-                  A jornada para a sua <br />
-                  <span className="text-[#ff851b]">autonomia tecnológica.</span>
+                  {service.roadmap.title} <br />
+                  <span className="text-[#ff851b]">{service.roadmap.titleHighlight}</span>
                 </h2>
               </AnimatedSection>
             </div>
@@ -320,16 +306,15 @@ export function ServicePage() {
               <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#ff851b] via-[#d8d8e2] to-transparent hidden md:block -translate-x-1/2 opacity-30" />
 
               <StaggerContainer className="space-y-20 md:space-y-32">
-                {service.timelineSteps.map((text, index) => {
+                {service.timelineSteps.map((step, index) => {
                   const isLeft = index % 2 === 0;
-
                   return (
                     <StaggerItem key={index}>
                       <div className="relative flex flex-col md:flex-row items-center">
-                        
+
                         {/* Indicador de Etapa (O "Nodo") */}
                         <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:block">
-                          <motion.div 
+                          <motion.div
                             whileHover={{ scale: 1.2, rotate: 90 }}
                             className="w-12 h-12 bg-white border-4 border-[#F5F5F7] rounded-2xl flex items-center justify-center shadow-xl shadow-orange-500/10 group"
                           >
@@ -337,24 +322,9 @@ export function ServicePage() {
                           </motion.div>
                         </div>
 
-                        {/* Conteúdo Esquerda */}
+                        {/* Card com flip */}
                         <div className={`w-full md:w-1/2 flex ${isLeft ? "md:justify-end md:pr-20" : "md:justify-start md:pl-20 md:order-2"}`}>
-                          <div className={`relative p-8 rounded-[32px] bg-white shadow-sm border border-gray-100 hover:shadow-2xl hover:border-[#ff851b]/20 transition-all duration-500 group ${isLeft ? "text-right" : "text-left"}`}>
-                            
-                            {/* Badge do Número */}
-                            <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#ff851b] mb-4 bg-orange-50 px-3 py-1 rounded-full">
-                              Fase 0{index + 1}
-                            </span>
-
-                            <p className="text-2xl md:text-3xl font-bold text-[#2D2D4A] leading-tight group-hover:text-[#ff851b] transition-colors duration-300">
-                              {text}
-                            </p>
-                            
-                            {/* Linha de progresso interna do card */}
-                            <div className={`mt-6 h-1 w-12 bg-gray-100 rounded-full overflow-hidden ${isLeft ? "ml-auto" : "mr-auto"}`}>
-                              <div className="h-full bg-[#ff851b] w-1/3 group-hover:w-full transition-all duration-700" />
-                            </div>
-                          </div>
+                          <TimelineCard step={step} isLeft={isLeft} />
                         </div>
 
                         {/* Espaçador Lado Oposto (Desktop) */}
@@ -368,16 +338,38 @@ export function ServicePage() {
                 })}
               </StaggerContainer>
 
+              {/* Card extra opcional (ex: acompanhamento) */}
+              {service.timelineExtra && (
+                <AnimatedSection delay={0.1}>
+                  <div className="mt-20 relative flex flex-col md:flex-row items-center">
+                    {/* Conector pontilhado acima, alinhado à linha central */}
+                    <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full hidden md:flex flex-col items-center gap-1 pb-2">
+                      {[0,1,2,3].map(i => (
+                        <div key={i} className="w-px h-3 bg-[#ff851b]/30 rounded-full" />
+                      ))}
+                      <span className="mt-1 text-[9px] font-black uppercase tracking-[0.25em] text-[#ff851b]/50">opcional</span>
+                    </div>
+
+                    {/* Card alinhado à esquerda, igual aos cards 1, 3 e 5 */}
+                    <div className="w-full md:w-1/2 flex md:justify-end md:pr-20">
+                      <TimelineCard step={service.timelineExtra} isLeft={true} isExtra />
+                    </div>
+
+                    <div className="hidden md:block md:w-1/2" />
+                  </div>
+                </AnimatedSection>
+              )}
+
               {/* Botão de Fechamento da Timeline */}
               <div className="text-center mt-24 relative z-10">
                 <AnimatedSection delay={0.2}>
                   <div className="inline-flex flex-col items-center">
                     <Button className="bg-[#2D2D4A] hover:bg-[#1a1a2e] text-white px-10 py-7 text-lg font-bold rounded-2xl transition-all hover:scale-105 shadow-2xl shadow-blue-900/10 group">
-                      Iniciar meu setup agora
+                      {service.roadmap.ctaText}
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <p className="mt-6 text-xs text-[#2D2D4A]/40 font-bold uppercase tracking-widest">
-                      Garantia de implementação em contrato
+                      {service.roadmap.ctaSubtext}
                     </p>
                   </div>
                 </AnimatedSection>
@@ -394,12 +386,7 @@ export function ServicePage() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-y-12 items-center">
-              {[
-                { value: "98%", label: "Satisfação" },
-                { value: "3x", label: "Conversões" },
-                { value: "-40%", label: "Custos" },
-                { value: "< 1s", label: "Resposta" },
-              ].map((s, idx) => (
+              {service.stats.map((s, idx) => (
                 <StaggerItem key={s.label} className="relative">
                   <div className="flex flex-col items-center text-center px-4">
                     {/* Valor: Black Weight + Tight Tracking para look SaaS Premium */}
@@ -429,10 +416,10 @@ export function ServicePage() {
             
             {/* Header */}
             <div className="text-center mb-20">
-              <SectionBadge text="Vantagem Competitiva" className="mb-6" />
+              <SectionBadge text={service.beneficios.badge} className="mb-6" />
               <AnimatedSection>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#2D2D4A] tracking-tighter mb-4">
-                  O que a IA <span className="text-[#ff851b]">potencializa</span> no seu negócio.
+                  {service.beneficios.titlePre}<span className="text-[#ff851b]">{service.beneficios.titleHighlight}</span>{service.beneficios.titlePost}
                 </h2>
                 <div className="w-16 h-1 bg-[#71d7ff] mx-auto rounded-full opacity-70" />
               </AnimatedSection>
@@ -441,42 +428,24 @@ export function ServicePage() {
             {/* A SOLUÇÃO: Envolver o StaggerContainer em um AnimatedSection funcional */}
             <AnimatedSection delay={0.2}>
               <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  { 
-                    icon: Wallet, 
-                    title: "Redução de Custos", 
-                    desc: "Substitua processos manuais lentos por automações que rodam com custo fixo e escalabilidade infinita." 
-                  },
-                  { 
-                    icon: CalendarCheck, 
-                    title: "Conversão 24/7", 
-                    desc: "Sua empresa nunca dorme. Capture leads e feche agendamentos enquanto sua equipe descansa." 
-                  },
-                  { 
-                    icon: ShieldCheck, 
-                    title: "Padronização Total", 
-                    desc: "Elimine o erro humano e garanta que cada cliente receba o atendimento perfeito, todas as vezes." 
-                  },
-                  { 
-                    icon: Users, 
-                    title: "Foco Estratégico", 
-                    desc: "Liberte seus talentos de tarefas repetitivas para que eles foquem no que realmente traz faturamento." 
-                  },
-                ].map(({ icon: Icon, title, desc }) => (
-                  <StaggerItem key={title}>
+                {service.beneficios.cards.map((item, i) => {
+                  const beneficioIcons = slug === "consultoria-ia" ? BENEFICIO_ICONS_CONSULTORIA : BENEFICIO_ICONS;
+                  const Icon = beneficioIcons[i] ?? beneficioIcons[0];
+                  return (
+                  <StaggerItem key={item.title}>
                     <div className="group h-full bg-white rounded-[40px] p-10 border border-gray-100 shadow-sm hover:shadow-2xl hover:border-[#ff851b]/20 transition-all duration-500 flex flex-col items-start text-left">
-                      
+
                       {/* Icon Container Style "SaaS" */}
                       <div className="w-16 h-16 bg-[#F5F5F7] group-hover:bg-[#ff851b] rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-inner">
                         <Icon className="w-7 h-7 text-[#2D2D4A] group-hover:text-white transition-colors duration-500" />
                       </div>
 
                       <h3 className="text-xl font-bold text-[#2D2D4A] mb-4 group-hover:text-[#ff851b] transition-colors">
-                        {title}
+                        {item.title}
                       </h3>
-                      
+
                       <p className="text-[#2D2D4A]/50 text-sm leading-relaxed font-medium">
-                        {desc}
+                        {item.desc}
                       </p>
 
                       {/* Detalhe Decorativo */}
@@ -485,7 +454,8 @@ export function ServicePage() {
                       </div>
                     </div>
                   </StaggerItem>
-                ))}
+                  );
+                })}
               </StaggerContainer>
             </AnimatedSection>
 
@@ -493,7 +463,12 @@ export function ServicePage() {
             <div className="mt-20 text-center">
               <AnimatedSection delay={0.4}>
                   <p className="text-[#2D2D4A]/30 text-xs font-black uppercase tracking-[0.2em]">
-                    Tecnologia proprietária <span className="text-[#71d7ff]">•</span> Integração Nativa <span className="text-[#71d7ff]">•</span> Segurança LGPD
+                    {service.beneficios.rodape.split(" • ").map((parte, i, arr) => (
+                      <span key={i}>
+                        {parte}
+                        {i < arr.length - 1 && <span className="text-[#71d7ff]"> • </span>}
+                      </span>
+                    ))}
                   </p>
               </AnimatedSection>
             </div>
@@ -515,29 +490,29 @@ export function ServicePage() {
             <div className="text-center max-w-4xl mx-auto mb-32">
               <AnimatedSection>
                 <SectionBadge
-                  text="Vamos Conversar"
+                  text={service.fechamento.badge}
                   className="mb-8 bg-white/5 border-white/10 text-[#ff851b]"
                 />
                 <h2 className="text-4xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1]">
-                  Sua operação está pronta para a <span className="text-[#ff851b]">escala da IA?</span>
+                  {service.fechamento.title} <span className="text-[#ff851b]">{service.fechamento.titleHighlight}</span>
                 </h2>
                 <p className="text-xl text-white/50 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-                  Não deixe sua empresa no passado. Implemente hoje os agentes que vão trabalhar por você 24/7.
+                  {service.fechamento.intro}
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <Button className="bg-[#ff851b] hover:bg-[#e07316] text-white px-12 py-8 rounded-2xl text-lg font-bold transition-all hover:scale-105 shadow-[0_20px_50px_rgba(255,133,27,0.3)] group">
-                    Solicitar Diagnóstico Gratuito
+                    {service.fechamento.ctaPrimary}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                   <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10 px-12 py-8 rounded-2xl text-lg font-bold transition-all">
-                    Falar com Engenheiro
+                    {service.fechamento.ctaSecondary}
                   </Button>
                 </div>
-                
+
                 <div className="mt-10 flex items-center justify-center gap-2 text-white/30 text-xs font-black uppercase tracking-[0.2em]">
                    <ShieldCheck className="w-4 h-4 text-[#71d7ff]" />
-                   Setup em tempo recorde • Sem fidelidade
+                   {service.fechamento.rodape}
                 </div>
               </AnimatedSection>
             </div>
@@ -551,11 +526,11 @@ export function ServicePage() {
                     className="mb-6 bg-white/10 border-white/20 text-white"
                   />
                   <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                    Perguntas frequentes
+                    {service.fechamento.faqTitle}
                     <span className="text-[#ff851b]">.</span>
                   </h2>
                   <p className="mt-3 text-lg text-white/70">
-                    Tire suas dúvidas sobre atendimento com IA.
+                    {service.fechamento.faqSubtitle}
                   </p>
                 </div>
 
@@ -583,8 +558,105 @@ export function ServicePage() {
 
           </div>
         </section>
-        
+
       </main>
     </>
+  );
+}
+
+// ─── Timeline Card com flip ────────────────────────────────────────────────────
+function TimelineCard({
+  step,
+  isLeft,
+  isExtra = false,
+}: {
+  step: { badge: string; text: string; detail?: string };
+  isLeft: boolean;
+  isExtra?: boolean;
+}) {
+  const [flipped, setFlipped] = useState(false);
+  const [filling, setFilling] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasDetail = Boolean(step.detail);
+
+  function handleMouseEnter() {
+    if (!hasDetail) return;
+    setFilling(true);
+    timerRef.current = setTimeout(() => setFlipped(true), 500);
+  }
+
+  function handleMouseLeave() {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setFilling(false);
+    setFlipped(false);
+  }
+
+  return (
+    <div
+      className="relative w-full max-w-md cursor-default"
+      style={{ perspective: "1000px", minHeight: "180px" }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => hasDetail && setFlipped((f) => !f)}
+    >
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full h-full"
+      >
+        {/* ── Frente ── */}
+        <div
+          style={{ backfaceVisibility: "hidden" }}
+          className={`p-8 rounded-[32px] bg-white transition-shadow duration-500 ${isLeft ? "text-right" : "text-left"} ${isExtra ? "border-2 border-dashed border-[#ff851b]/40 hover:border-[#ff851b]/70 hover:shadow-xl hover:shadow-orange-500/10" : "shadow-sm border border-gray-100 hover:shadow-2xl hover:border-[#ff851b]/20"}`}
+        >
+          <div className={`flex items-center gap-2 mb-4 ${isLeft && !isExtra ? "justify-end" : "justify-start"}`}>
+            <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#ff851b] bg-orange-50 px-3 py-1 rounded-full">
+              {step.badge}
+            </span>
+            {isExtra && (
+              <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-white bg-[#ff851b] px-3 py-1 rounded-full">
+                Opcional
+              </span>
+            )}
+          </div>
+
+          <p className="text-2xl md:text-3xl font-bold text-[#2D2D4A] leading-tight">
+            {step.text}
+          </p>
+
+          <div className={`mt-6 h-1 w-12 bg-gray-100 rounded-full overflow-hidden ${isLeft ? "ml-auto" : "mr-auto"}`}>
+            <div className={`h-full bg-[#ff851b] transition-all ${filling ? "duration-500 w-full" : "duration-150 w-1/3"}`} />
+          </div>
+
+          {/* Indicador sutil de flip */}
+          {hasDetail && (
+            <div className={`absolute bottom-4 ${isLeft ? "left-4" : "right-4"} flex items-center gap-1 text-[#ff851b]/40 hover:text-[#ff851b]/70 transition-colors`}>
+              <RotateCcw className="w-3 h-3" />
+              <span className="text-[9px] font-bold uppercase tracking-widest">ver mais</span>
+            </div>
+          )}
+        </div>
+
+        {/* ── Verso ── */}
+        <div
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className="absolute inset-0 p-8 rounded-[32px] bg-[#ff851b] text-white text-left flex flex-col justify-between"
+        >
+          <div>
+            <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-4 bg-white/10 px-3 py-1 rounded-full">
+              {step.badge}
+            </span>
+            <p className="text-base leading-relaxed font-medium text-white/90">
+              {step.detail}
+            </p>
+          </div>
+          <div className="mt-6 flex items-center gap-1 text-white/40 text-[9px] font-bold uppercase tracking-widest justify-start">
+            <RotateCcw className="w-3 h-3" />
+            voltar
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
