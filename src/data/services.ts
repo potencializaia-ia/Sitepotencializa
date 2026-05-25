@@ -191,12 +191,11 @@ export const services = [
       },
     ],
   },
-
   {
-    title: "Atendimento Inteligente 24/7",
+    title: "Seu comercial ativo 24 horas por dia",
     slug: "atendimento-inteligente",
-    badge: "atendimento inteligente",
-    subtitle: "Atenda seus clientes 24h com velocidade e consistência",
+    badge: "Comercial Inteligente 24 horas",
+    subtitle: "A Automação Comercial da Potencializa estrutura agentes personalizados para atender leads, qualificar oportunidades, fazer follow-ups, organizar informações no CRM e manter sua empresa disponível em todos os canais, mesmo fora do horário comercial.",
     description:
       "Automatize seu atendimento com IA treinada para responder com contexto, reduzir filas e manter o padrão da sua marca.",
     image:
@@ -222,9 +221,45 @@ export const services = [
       "Relatórios e insights",
     ],
 
-    whatItDoesTitle: "O que faz",
+    // ── Seção "Diagnóstico de Perdas" ──
+    problemas: {
+      badge: "Diagnóstico de Perdas",
+      title: "Seus clientes não esperam ",
+      titleHighlight: "sua equipe estar disponível.",
+      intro:
+        "Enquanto sua equipe está ocupada, em reunião ou fora do horário comercial, novas oportunidades continuam chegando. O problema é que, se sua empresa não estiver preparada para atender seus clientes quando eles te procuram e querem comprar de você muitos leads esfriam, follow-ups são esquecidos e vendas potenciais se perdem.",
+      cards: [
+        { tag: "Leads esfriam rápido", title: "Seu cliente não te espera", desc: "Quando um cliente demonstra interesse, cada minuto conta. 78% dos clientes compram de quem responde primeiro, se você demora mais de 5 minutos sua chance de conversão cai drasticamente" },
+        { tag: "Horário limitado", title: "Oportunidades chegam a todo momento", desc: "Mais de 60% das compras, agendamentos e contatos acontecem fora do horário comercial. Quando sua empresa não responde nesse momento, seu concorrente já sai na frente." },
+        { tag: "Falha no acompanhamento", title: "Oportunidades ficam paradas", desc: "Muitas vendas não acontecem no primeiro contato. Sem uma rotina clara de follow-up e agendamento, leads interessados deixam de ser acompanhados e acabam esquecidos no funil." },
+        { tag: "Dados comerciais dispersos", title: "Seu CRM não mostra tudo que acontece no comercial", desc: "Conversas, históricos e informações importantes ficam perdidos entre canais, planilhas e anotações manuais. Com isso, o funil deixa de refletir a realidade da operação." },
+        { tag: "Gestão sem visão", title: "Decisões comerciais viram tentativa e erro", desc: "Quando a liderança não enxerga os dados do comercial com clareza, fica difícil saber onde estão os gargalos, quais canais performam melhor e quais ações realmente merecem prioridade." },
+        { tag: "Relacionamento genérico", title: "Todos os seus clientes são únicos", desc: "Cada cliente chega com uma necessidade, um momento e uma intenção diferente. Quando a abordagem é personalizada, a conversa fica mais relevante, o relacionamento ganha força e as chances de avanço aumentam." },
+      ],
+      resumoTitle: "O diagnóstico é claro:",
+      resumoText: "Sua empresa pode estar perdendo oportunidades não por falta de demanda, mas por falta de velocidade, constância e clareza no processo comercial.",
+      prejuizoLabel: "Prejuízo Estimado",
+      prejuizoValue: "Oportunidades perdidas todos os dias",
+    },
+
+    // ── Lado direito da seção "O que faz" (A Orquestração) ──
+    orquestracao: {
+      badge: "A Orquestração",
+      canais: [
+        { title: "WhatsApp", desc: "Fluxo Oficial" },
+        { title: "Web Widget", desc: "Inteligência On-site" },
+        { title: "Instagram", desc: "Direct Sales" },
+        { title: "Voice Agent", desc: "Atendimento por Voz" },
+      ],
+      statusLabel: "Status Global",
+      statusTitle: "Potencializa Agentic Mesh",
+      statusBadge: "● 100% Online",
+      latencia: "LATENCY: 0.2ms",
+    },
+
+    whatItDoesTitle: "Para quem é a Automação Comercial",
     whatItDoesIntro:
-      "Seu atendimento pode ser ótimo no horário comercial, mas muita gente procura contato fora desse período.",
+      "A Automação Comercial é para empresas que já têm demanda, mas sentem que estão deixando oportunidades escaparem por falta de tempo, acompanhamento, organização ou disponibilidade nos canais de venda.",
     whatItDoesHighlight:
       "Nossa IA não substitui sua equipe — potencializa seu alcance e garante que nenhuma oportunidade seja perdida.",
     whatItDoesSteps: [
@@ -274,42 +309,6 @@ export const services = [
         a: "Sim. A operação é 24/7.",
       },
     ],
-
-    // ── Seção "Diagnóstico de Perdas" ──
-    problemas: {
-      badge: "Diagnóstico de Perdas",
-      title: "O custo invisível da",
-      titleHighlight: "ineficiência operacional.",
-      intro:
-        "No mercado atual, a velocidade de resposta não é um diferencial, é sobrevivência. Cada minuto de espera é uma porta aberta para o seu concorrente.",
-      cards: [
-        { tag: "Vazamento de Vendas", title: "O Lead que Esfria", desc: "78% dos clientes compram de quem responde primeiro. Se você demora mais de 5 minutos, sua chance de conversão cai 10x." },
-        { tag: "Gargalo de Crescimento", title: "Escala Impossível", desc: "Equipes humanas não escalam sem aumentar custos fixos. Quando o volume sobe, a qualidade cai e o time sobrecarrega." },
-        { tag: "Risco de Branding", title: "Inconsistência Fatal", desc: "Respostas diferentes para o mesmo problema geram desconfiança. A falta de um padrão técnico mata a autoridade da sua marca." },
-        { tag: "Falta de Inteligência", title: "Ponto Cego de Dados", desc: "Conversas humanas são difíceis de metrificar. Sem dados reais, você toma decisões baseadas em 'achismo', não em performance." },
-        { tag: "Oportunidade Perdida", title: "Horário Limitado", desc: "Seu cliente quer comprar às 22h, mas sua empresa só abre às 09h. Você está deixando dinheiro na mesa 16 horas por dia." },
-        { tag: "Custo de Oportunidade", title: "Dreno Financeiro", desc: "Custos altíssimos com suporte de primeiro nível que poderia ser resolvido instantaneamente por uma IA treinada." },
-      ],
-      resumoTitle: "O diagnóstico é claro:",
-      resumoText: "Sua empresa está operando abaixo do potencial tecnológico disponível.",
-      prejuizoLabel: "Prejuízo Estimado",
-      prejuizoValue: "Até 40% ao ano",
-    },
-
-    // ── Lado direito da seção "O que faz" (A Orquestração) ──
-    orquestracao: {
-      badge: "A Orquestração",
-      canais: [
-        { title: "WhatsApp", desc: "Fluxo Oficial" },
-        { title: "Web Widget", desc: "Inteligência On-site" },
-        { title: "Instagram", desc: "Direct Sales" },
-        { title: "Voice Agent", desc: "Atendimento por Voz" },
-      ],
-      statusLabel: "Status Global",
-      statusTitle: "Potencializa Agentic Mesh",
-      statusBadge: "● 100% Online",
-      latencia: "LATENCY: 0.2ms",
-    },
 
     // ── Seção "Como funciona" (Roadmap) ──
     roadmap: {
