@@ -259,41 +259,63 @@ export const services = [
 
     whatItDoesTitle: "Para quem é a Automação Comercial",
     whatItDoesIntro:
-      "A Automação Comercial é para empresas que já têm demanda, mas sentem que estão deixando oportunidades escaparem por falta de tempo, acompanhamento, organização ou disponibilidade nos canais de venda.",
+      "Para empresas que já têm demanda, mas sentem que ainda perdem oportunidades por falta de disponibilidade, personalização, acompanhamento ou capacidade comercial para atender cada cliente no momento certo.",
     whatItDoesHighlight:
       "Nossa IA não substitui sua equipe — potencializa seu alcance e garante que nenhuma oportunidade seja perdida.",
     whatItDoesSteps: [
       {
         n: "1",
-        title: "Atende em múltiplos canais",
-        desc: "WhatsApp, Instagram, site e outros pontos de contato em um único fluxo.",
+        title: "Para empresas que não querem perder oportunidades por não estarem disponíveis",
+        desc: "Se sua empresa quer estar sempre disponível para atender o cliente no momento em que ele procura, essa solução ajuda a manter o comercial ativo, rápido e preparado para transformar interesse em oportunidade.",
       },
       {
         n: "2",
-        title: "Responde com contexto",
-        desc: "Usa informações reais da sua empresa para dar respostas mais precisas.",
+        title: "Para empresas que poderiam vender mais com a equipe que já têm",
+        desc: "Quando o time precisa responder dúvidas repetidas, lembrar follow-ups e organizar dados manualmente, sobra menos tempo para negociações estratégicas, relacionamento e planos de fechamento realmente conectados à dor do cliente.",
       },
       {
         n: "3",
-        title: "Qualifica e direciona",
-        desc: "Entende a intenção do cliente e encaminha para o fluxo ou pessoa certa.",
+        title: "Para empresas que já têm oportunidades entrando",
+        desc: "Receber leads é importante, mas não basta. Sem velocidade, organização e acompanhamento, parte da demanda gerada pelo marketing ou pelos canais comerciais pode se perder no caminho.",
       },
       {
         n: "4",
-        title: "Registra e organiza tudo",
-        desc: "Coleta dados, histórico e insights para sua operação ganhar clareza.",
+        title: "Para empresas que sabem que cada cliente é especial",
+        desc: "Cada cliente chega com uma necessidade, uma urgência e um momento diferente. Quanto mais personalizada for a abordagem, mais relevante a conversa se torna e maiores são as chances de avanço comercial.",
       },
     ],
 
+    // ── Seção "Como funciona" (Roadmap) ──
+    roadmap: {
+      badge: "A jornada",
+      title: "A jornada para a sua",
+      titleHighlight: "autonomia tecnológica.",
+      ctaText: "Iniciar meu setup agora",
+      ctaSubtext: "Garantia de implementação em contrato",
+    },
+
     timelineSteps: [
-      { badge: "Fase 01", text: "Cliente entra em contato por qualquer canal", detail: "" },
-      { badge: "Fase 02", text: "Agente responde instantaneamente com a voz da sua marca", detail: "" },
-      { badge: "Fase 03", text: "Resolve dúvidas, faz agendamentos ou coleta informações", detail: "" },
-      { badge: "Fase 04", text: "Envia lembretes e confirmações automaticamente", detail: "" },
-      { badge: "Fase 05", text: "Centraliza tudo em um painel de controle simples", detail: "" },
+      { badge: "Fase 01 - Diagnóstico comercial", text: "Analisamos todo o comercial da sua empresa e entendemos como ele funciona", detail: "Entendemos seus canais de venda, funil comercial, rotina da equipe, CRM, formas de atendimento e principais pontos onde oportunidades estão sendo perdidas. " },
+      { badge: "Fase 02 - Criação dos Fluxos", text: "Mapeamos a jornada do cliente e definimos como cada etapa deve funcionar.", detail: "Desenhamos os caminhos de atendimento, qualificação, agendamento, follow-up, reativação e passagem para o time humano, sempre com base na operação real da empresa." },
+      { badge: "Fase 03 - Validação", text: "Apresentamos o plano e alinhamos os detalhes junto com você.", detail: "Validamos fluxos, regras comerciais, tom de comunicação, critérios de qualificação e pontos de contato antes da implementação, garantindo mais segurança na entrega." },
+      { badge: "Fase 04 - Criação dos agentes", text: "Construímos agentes comerciais personalizados para a sua empresa.", detail: "Cada agente é criado com uma função específica e treinado com dados reais do negócio, como serviços, produtos, objeções, linguagem, regras e etapas do funil." },
+      { badge: "Fase 05 - Integração", text: "Conectamos os agentes aos canais e sistemas que sua empresa já utiliza no dia a dia.", detail: "Nossa solução se adapta às ferramentas que sua empresa já utiliza, como WhatsApp, Instagram, site, e-mail, CRM e outros sistemas integráveis, sem exigir troca de tecnologia ou novas contratações desnecessárias." },
+      { badge: "Fase 06 - Testes e entrega", text: "Testamos, ajustamos e entregamos a estrutura pronta para operar.", detail: "Validamos respostas, registros, encaminhamentos e integrações antes da entrega final, garantindo que a automação entre em operação com mais controle e clareza." },
     ],
 
-    timelineExtra: null,
+    timelineExtra: {
+      badge: "Evolução Contínua",
+      text: "Depois da entrega sua automação pode continuar evoluindo",
+      detail: "Sua empresa pode contar com acompanhamento mensal para revisar fluxos, aplicar melhorias, analisar dados comerciais e criar novas automações conforme a operação evolui.",
+    },
+    
+    // ── Faixa de Stats ──
+    stats: [
+      { value: "98%", label: "Satisfação" },
+      { value: "3x", label: "Conversões" },
+      { value: "100%", label: "de tempo ativo" },
+      { value: "- 1s", label: "Resposta" },
+    ],
 
     faq: [
       {
@@ -310,29 +332,12 @@ export const services = [
       },
     ],
 
-    // ── Seção "Como funciona" (Roadmap) ──
-    roadmap: {
-      badge: "Metodologia Ágil",
-      title: "A jornada para a sua",
-      titleHighlight: "autonomia tecnológica.",
-      ctaText: "Iniciar meu setup agora",
-      ctaSubtext: "Garantia de implementação em contrato",
-    },
-
-    // ── Faixa de Stats ──
-    stats: [
-      { value: "98%", label: "Satisfação" },
-      { value: "3x", label: "Conversões" },
-      { value: "-40%", label: "Custos" },
-      { value: "< 1s", label: "Resposta" },
-    ],
-
     // ── Seção "Benefícios" ──
     beneficios: {
-      badge: "Vantagem Competitiva",
-      titlePre: "O que a IA ",
-      titleHighlight: "potencializa",
-      titlePost: " no seu negócio.",
+      badge: "Ganhos comerciais",
+      titlePre: "O que sua empresa ",
+      titleHighlight: "ganha da prática.",
+      titlePost: "",
       cards: [
         { title: "Redução de Custos", desc: "Substitua processos manuais lentos por automações que rodam com custo fixo e escalabilidade infinita." },
         { title: "Conversão 24/7", desc: "Sua empresa nunca dorme. Capture leads e feche agendamentos enquanto sua equipe descansa." },
@@ -416,14 +421,18 @@ export const services = [
     ],
 
     timelineSteps: [
-      { badge: "Fase 01", text: "Cliente abre contato com uma dúvida ou problema", detail: "" },
-      { badge: "Fase 02", text: "IA identifica o tipo de chamado e busca a melhor resposta", detail: "" },
-      { badge: "Fase 03", text: "Orienta a resolução com passos simples e claros", detail: "" },
-      { badge: "Fase 04", text: "Escala para o time técnico quando necessário", detail: "" },
-      { badge: "Fase 05", text: "Registra padrões para evoluir a base de conhecimento", detail: "" },
+      { badge: "Fase 01", text: "Cliente abre contato com uma dúvida ou problema", detail: "O cliente inicia o contato com uma dúvida ou problema pelo canal de preferência — WhatsApp, Web Widget, Instagram ou Voz. Nenhum chamado fica sem registro." },
+      { badge: "Fase 02", text: "IA identifica o tipo de chamado e busca a melhor resposta", detail: "A IA analisa a mensagem, identifica a intenção e busca na base de conhecimento a resposta mais adequada para aquele tipo específico de chamado." },
+      { badge: "Fase 03", text: "Orienta a resolução com passos simples e claros", detail: "O cliente recebe instruções claras, passo a passo, que permitem resolver o problema com autonomia — reduzindo a necessidade de intervenção humana em chamados de nível 1." },
+      { badge: "Fase 04", text: "Escala para o time técnico quando necessário", detail: "Quando o chamado exige análise técnica especializada ou ação manual, a IA encaminha para o time com todo o contexto da conversa já registrado, evitando repetição de informações." },
+      { badge: "Fase 05", text: "Registra padrões para evoluir a base de conhecimento", detail: "Cada interação alimenta a base de conhecimento: dúvidas recorrentes, causas raízes e padrões identificados são registrados para melhorar continuamente a eficiência do suporte." },
     ],
 
-    timelineExtra: null,
+    timelineExtra: {
+      badge: "Base Viva",
+      text: "Sua base de conhecimento evolui com o uso",
+      detail: "Com o tempo, a IA aprende com os chamados reais da sua empresa, amplia as respostas disponíveis e reduz progressivamente o volume de tickets que chegam ao time técnico.",
+    },
 
     faq: [
       {
