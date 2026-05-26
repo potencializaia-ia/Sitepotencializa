@@ -28,6 +28,12 @@ import {
   HelpCircle,
   AlertTriangle,
   TrendingDown,
+  Zap,
+  Calendar,
+  UserX,
+  Database,
+  EyeOff,
+  Fingerprint,
 } from "lucide-react";
 
 import { services } from "../data/services";
@@ -49,6 +55,7 @@ import {
 // A ordem importa: o card N usa o ícone N. Mantenha a mesma quantidade de cards nos dados.
 const PROBLEMA_ICONS = [Clock, TrendingUp, ShieldCheck, Activity, MessageCircle, Wallet];
 const PROBLEMA_ICONS_CONSULTORIA = [Cpu, Shuffle, Navigation, HelpCircle, AlertTriangle, TrendingDown];
+const PROBLEMA_ICONS_ATENDIMENTO = [Zap, Calendar, UserX, Database, EyeOff, Fingerprint];
 const CANAL_ICONS = [MessageCircle, Globe, Instagram, Phone];
 const CANAL_ICONS_CONSULTORIA = [ClipboardList, GitBranch, GraduationCap, Target];
 const BENEFICIO_ICONS = [Wallet, CalendarCheck, ShieldCheck, Users];
@@ -118,7 +125,7 @@ export function ServicePage() {
             {/* Grid de Problemas Estruturados */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {service.problemas.cards.map((item, i) => {
-                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : PROBLEMA_ICONS;
+                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : slug === "atendimento-inteligente" ? PROBLEMA_ICONS_ATENDIMENTO : PROBLEMA_ICONS;
                 const Icon = problemaIcons[i] ?? problemaIcons[0];
                 return (
                 <StaggerItem key={item.title}>

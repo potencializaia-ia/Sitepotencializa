@@ -246,15 +246,15 @@ export const services = [
     orquestracao: {
       badge: "A Orquestração",
       canais: [
-        { title: "WhatsApp", desc: "Fluxo Oficial" },
-        { title: "Web Widget", desc: "Inteligência On-site" },
-        { title: "Instagram", desc: "Direct Sales" },
-        { title: "Voice Agent", desc: "Atendimento por Voz" },
+        { title: "WhatsApp", desc: "Respotas em segundos 24 horas por dia" },
+        { title: "Agente Qualificador", desc: "Seus vendendores recebem apenas quem quer comprar de você" },
+        { title: "Instagram", desc: "Qualifica no momento do interesse" },
+        { title: "Agente Personalizado", desc: "Treinado com os dados e costumes da sua empresa" },
       ],
-      statusLabel: "Status Global",
-      statusTitle: "Potencializa Agentic Mesh",
+      statusLabel: "Oportunidades Comerciais",
+      statusTitle: "Potencializa Agente Comercial",
       statusBadge: "● 100% Online",
-      latencia: "LATENCY: 0.2ms",
+      latencia: "RESPOSTA: - 1 segundo",
     },
 
     whatItDoesTitle: "Para quem é a Automação Comercial",
@@ -317,48 +317,69 @@ export const services = [
       { value: "- 1s", label: "Resposta" },
     ],
 
-    faq: [
-      {
-        q: "Preciso trocar meus sistemas atuais?",
-        a: "Não. Integramos com o que você já usa sempre que houver API disponível.",
-      },
-      {
-        q: "E quando o cliente precisa de um humano?",
-        a: "A IA transfere com todo o contexto para sua equipe.",
-      },
-      {
-        q: "Funciona fora do horário comercial?",
-        a: "Sim. A operação é 24/7.",
-      },
-    ],
-
     // ── Seção "Benefícios" ──
     beneficios: {
       badge: "Ganhos comerciais",
-      titlePre: "O que sua empresa ",
-      titleHighlight: "ganha da prática.",
+      titlePre: "Sua empresa depois da ",
+      titleHighlight: "automação comercial.",
       titlePost: "",
       cards: [
-        { title: "Redução de Custos", desc: "Substitua processos manuais lentos por automações que rodam com custo fixo e escalabilidade infinita." },
-        { title: "Conversão 24/7", desc: "Sua empresa nunca dorme. Capture leads e feche agendamentos enquanto sua equipe descansa." },
-        { title: "Padronização Total", desc: "Elimine o erro humano e garanta que cada cliente receba o atendimento perfeito, todas as vezes." },
-        { title: "Foco Estratégico", desc: "Liberte seus talentos de tarefas repetitivas para que eles foquem no que realmente traz faturamento." },
+        { title: "Atendimento comercial sempre ativo", desc: "Sua empresa passa a atender, responder e direcionar oportunidades em diferentes canais, mesmo fora do horário comercial. Fazendo com que sua empresa esteja sempre de portas abertas para atender quem quer comprar de você" },
+        { title: "Relacionamento constante com seus clientes", desc: "Sua empresa atende cada cliente de forma personalizada, fazendo com que cada relacionamento seja mais lucrativo e duradouro. Seus clientes passam a se sentir acolhidos e recomendam sua marca." },
+        { title: "Gestão com mais clareza comercial", desc: "Informações, históricos e etapas do funil ficam mais organizados, ajudando gestores a entenderem o que está acontecendo no comercial e tomarem decisões com mais segurança." },
+        { title: "Equipe focada no que gera resultado", desc: "A automação assume etapas operacionais do comercial, como triagem, registros e acompanhamentos, para que seu time tenha mais tempo para negociar, criar relacionamento e fechar oportunidades com mais qualidade." },
       ],
-      rodape: "Tecnologia proprietária • Integração Nativa • Segurança LGPD",
+      rodape: "Agentes personalizados • Integração com seus canais • Dados comerciais mais claros",
     },
 
     // ── Seção "CTA + FAQ" (Fechamento) ──
     fechamento: {
       badge: "Vamos Conversar",
-      title: "Sua operação está pronta para a",
-      titleHighlight: "escala da IA?",
-      intro: "Não deixe sua empresa no passado. Implemente hoje os agentes que vão trabalhar por você 24/7.",
-      ctaPrimary: "Solicitar Diagnóstico Gratuito",
-      ctaSecondary: "Falar com Engenheiro",
-      rodape: "Setup em tempo recorde • Sem fidelidade",
+      title: "Sua empresa está pronta para responder quando",
+      titleHighlight: "seu cliente quer comprar?",
+      intro: "Agora é a sua vez de potencializar o seu negócio!",
+      ctaPrimary: "Potencializar meu negócio",
+      ctaSecondary: "Falar com Especialista",
+      rodape: "Agentes personalizados • Integração com seus canais • Comercial ativo 24h",
       faqTitle: "Perguntas frequentes",
       faqSubtitle: "Tire suas dúvidas sobre atendimento com IA.",
     },
+
+    faq: [
+      {
+        q: "A Automação Comercial traz mais clientes?",
+        a: "Não diretamente. A Automação Comercial não substitui estratégias de marketing ou geração de demanda. O que fazemos é ajudar sua empresa a aproveitar melhor os leads, contatos e clientes que já chegam até você, reduzindo perdas por demora, falta de acompanhamento, desorganização ou ausência de resposta.",
+      },
+      {
+        q: "A automação substitui minha equipe comercial?",
+        a: "Não. O objetivo não é substituir vendedores, SDRs ou atendentes, mas potencializar o trabalho deles. A automação assume etapas repetitivas, como primeiras respostas, qualificação, registros, follow-ups e organização de dados, para que sua equipe tenha mais tempo para negociações, relacionamento e fechamento.",
+      },
+      {
+        q: "O atendimento fica 100% automático?",
+        a: "Depende do que sua empresa deseja automatizar. A automação pode conduzir o lead até o agendamento de uma reunião, até uma etapa de qualificação ou até o fechamento, quando isso fizer sentido. O nível de automação é definido junto com a empresa, sempre com possibilidade de supervisão e passagem para o time humano.",
+      },
+      {
+        q: "A automação é personalizada para minha empresa?",
+        a: "Sim. A estrutura é criada com base nas informações reais do seu negócio, incluindo produtos, serviços, tom de comunicação, forma de atendimento, funil comercial, objeções, critérios de qualificação e regras comerciais.",
+      },
+      {
+        q: "Preciso trocar meu CRM ou contratar novas ferramentas?",
+        a: "Na maioria dos casos, não. Nossa solução se adapta às ferramentas que sua empresa já utiliza. Quando falamos de CRM ou outros sistemas, a integração depende da disponibilidade técnica, como API ou recursos de conexão oferecidos pela própria plataforma.",
+      },
+      {
+        q: "O sistema faz follow-up e agendamentos automaticamente?",
+        a: "Sim. Podemos estruturar fluxos para acompanhar leads, enviar lembretes, retomar conversas, agendar reuniões e manter oportunidades em movimento. Isso ajuda a reduzir esquecimentos e torna o relacionamento comercial mais constante.",
+      },
+      {
+        q: "Minha equipe recebe treinamento para usar a automação?",
+        a: "O treinamento da equipe pode ser contratado à parte. Quando incluído no projeto, capacitamos seu time para acompanhar os fluxos, assumir conversas, interpretar informações e usar a automação no dia a dia com mais segurança.",
+      },
+      {
+        q: "Vocês oferecem acompanhamento depois da implementação?",
+        a: "Sim, mas o acompanhamento contínuo é um serviço opcional contratado à parte. Nele, revisamos fluxos, analisamos dados comerciais, aplicamos melhorias, criamos novas automações e ajustamos a operação conforme a empresa evolui.",
+      },
+      
+    ],
   },
 
   {
