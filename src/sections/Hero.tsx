@@ -223,7 +223,7 @@ export function Hero() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
             <span>Equipe treinada</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/40" />
-            <span>crescimento previsivel</span>
+            <span>Crescimento previsível</span>
           </motion.div>
 
           {/* Ilustração Customizada Potencializa */}

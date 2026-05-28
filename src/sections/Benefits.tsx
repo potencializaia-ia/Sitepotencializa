@@ -161,7 +161,7 @@ export function Benefits() {
             </Button>
             <p className="mt-4 text-sm text-[#2D2D4A]/40 font-medium flex items-center gap-2">
               <Zap className="w-3 h-3 text-[#71d7ff]" /> 
-              Diagnóstico inicial gratuíto disponível!
+              Diagnóstico inicial gratuito disponível!
             </p>
           </div>
         </AnimatedSection>

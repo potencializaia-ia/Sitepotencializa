@@ -3,7 +3,7 @@ export const services = [
     //Seção - Header
     title: "Imersão Potencializa",
     slug: "consultoria-ia",
-    badge: "Bem-Vindo a Imersão Potencializa",
+    badge: "Bem-vindo à Imersão Potencializa",
     subtitle: "A Imersão Potencializa ajuda sua empresa a sair do improviso operacional. Em aproximadamente 1 mês, analisamos processos, organizamos prioridades e treinamos sua equipe para construir uma rotina mais eficiente, previsível e menos dependente da presença constante dos líderes.",
     // A descrição não aparece também
     description:
@@ -14,7 +14,7 @@ export const services = [
     messageUser: "Quero entender como a IA pode ajudar meu negócio.",
     messageBot: "Ótimo! Vamos fazer um diagnóstico completo e montar um plano sob medida para você.",
 
-    cta: "Diagnóstico inicial gratuíto",
+    cta: "Diagnóstico inicial gratuito",
     ctaHref: "/#contato",
     // Essa parte não existe no site
     benefits: [
@@ -33,11 +33,11 @@ export const services = [
 
      // ── Seção "Diagnóstico de Perdas" ──
     problemas: {
-      badge: "Porque seu faturmento não cresce",
+      badge: "Por que seu faturamento não cresce",
       title: "O custo invisível da",
-      titleHighlight: "infeniciência operacional.",
+      titleHighlight: "ineficiência operacional.",
       intro:
-        "Você já se pergunto aonde sua empresa perde todos os dias e você não percebeu?",
+        "Você já se perguntou onde sua empresa perde todos os dias e você não percebeu?",
       cards: [
         { tag: "Tecnologia Desconectada", title: "Tecnologia sem estratégia", desc: "Ferramentas novas entram na empresa, mas não se conectam com a rotina real do time. Em vez de simplificar o trabalho, viram mais uma camada de complexidade." },
         { tag: "Rotina sem Fluxo", title: "Falta de processos", desc: "Atividades importantes acontecem de forma solta, sem fluxo definido, registro claro ou sequência bem estabelecida. Isso torna a rotina mais lenta, confusa e difícil de acompanhar." },
@@ -53,7 +53,7 @@ export const services = [
     },
 
     // Seção - Para quem é a Imersão Potencializa
-    whatItDoesTitle: "Para quem é a imersão Potencializa",
+    whatItDoesTitle: "Para quem é a Imersão Potencializa",
     whatItDoesIntro:
       "A Imersão é para empresas que já estão em movimento, mas sentem que a operação ainda depende demais de esforço manual, decisões centralizadas e processos pouco claros para crescer com segurança.",
     whatItDoesHighlight:
@@ -135,7 +135,7 @@ export const services = [
       titleHighlight: " minha empresa ganha na prática?",
       titlePost: "",
       cards: [
-        { title: "Clareza operacional", desc: "Sua empresa passa a ter uma visão mais clara da própria rotina, com prioridades bem definidas, mais produtividade e entendimento sobre quais tarefas devem ser realizadas por primeiro o quais devem ser automatizadas." },
+        { title: "Clareza operacional", desc: "Sua empresa passa a ter uma visão mais clara da própria rotina, com prioridades bem definidas, mais produtividade e entendimento sobre quais tarefas devem ser realizadas primeiro e quais devem ser automatizadas." },
         { title: "Processos mais organizados", desc: "As rotinas ficam mais estruturadas, padronizadas e fáceis de acompanhar, tornando a operação mais previsível para a equipe e para a liderança." },
         { title: "Equipe mais produtiva", desc: "Seu time ganha direcionamento prático para usar melhor o tempo, executar tarefas com mais consistência e concentrar energia nas atividades que realmente movem o negócio e colocam dinheiro no seu bolso." },
         { title: "Mais liberdade para o dono", desc: "Com processos mais claros e uma equipe mais preparada, o negócio passa a funcionar com mais autonomia, reduzindo a dependência da sua presença constante na operação." },
@@ -229,7 +229,7 @@ export const services = [
       intro:
         "Enquanto sua equipe está ocupada, em reunião ou fora do horário comercial, novas oportunidades continuam chegando. O problema é que, se sua empresa não estiver preparada para atender seus clientes quando eles te procuram e querem comprar de você muitos leads esfriam, follow-ups são esquecidos e vendas potenciais se perdem.",
       cards: [
-        { tag: "Leads esfriam rápido", title: "Seu cliente não te espera", desc: "Quando um cliente demonstra interesse, cada minuto conta. 78% dos clientes compram de quem responde primeiro, se você demora mais de 5 minutos sua chance de conversão cai drasticamente" },
+        { tag: "Leads esfriam rápido", title: "Seu cliente não te espera", desc: "Quando um cliente demonstra interesse, cada minuto conta. 78% dos clientes compram de quem responde primeiro. Se você demora mais de 5 minutos, sua chance de conversão cai drasticamente." },
         { tag: "Horário limitado", title: "Oportunidades chegam a todo momento", desc: "Mais de 60% das compras, agendamentos e contatos acontecem fora do horário comercial. Quando sua empresa não responde nesse momento, seu concorrente já sai na frente." },
         { tag: "Falha no acompanhamento", title: "Oportunidades ficam paradas", desc: "Muitas vendas não acontecem no primeiro contato. Sem uma rotina clara de follow-up e agendamento, leads interessados deixam de ser acompanhados e acabam esquecidos no funil." },
         { tag: "Dados comerciais dispersos", title: "Seu CRM não mostra tudo que acontece no comercial", desc: "Conversas, históricos e informações importantes ficam perdidos entre canais, planilhas e anotações manuais. Com isso, o funil deixa de refletir a realidade da operação." },
@@ -246,15 +246,15 @@ export const services = [
     orquestracao: {
       badge: "Para a sua empresa",
       canais: [
-        { title: "WhatsApp", desc: "Respotas em segundos 24 horas por dia" },
-        { title: "Agente Qualificador", desc: "Seus vendendores recebem apenas quem quer comprar de você" },
+        { title: "WhatsApp", desc: "Respostas em segundos 24 horas por dia" },
+        { title: "Agente Qualificador", desc: "Seus vendedores recebem apenas quem quer comprar de você" },
         { title: "Instagram", desc: "Qualifica no momento do interesse" },
         { title: "Agente Personalizado", desc: "Treinado com os dados e costumes da sua empresa" },
       ],
       statusLabel: "Oportunidades Comerciais",
       statusTitle: "Potencializa Agente Comercial",
       statusBadge: "● 100% Online",
-      latencia: "RESPOSTA: - 1 segundo",
+      latencia: "RESPOSTA: < 1 segundo",
     },
 
     // ── Seção exclusiva: escopo de automação ──
@@ -439,7 +439,7 @@ export const services = [
         "Conforme sua empresa cresce, surgem processos próprios, exceções, sistemas diferentes e rotinas que não cabem em soluções comuns. É nesse momento que automatizar do jeito certo deixa de ser apenas eficiência e passa a ser uma necessidade para manter controle, produtividade e clareza.",
       cards: [
         { tag: "Operação personalizada", title: "Soluções genéricas não resolvem", desc: "Cada negócio tem processos, exceções e formas próprias de funcionar. Quando a ferramenta não acompanha essa realidade, a equipe cria atalhos, planilhas e controles paralelos para compensar." },
-        { tag: "Fluxos soltos", title: "Automações pontuais não criam uma operação integrada", desc: "Automatizar uma etapa ajuda, mas nem sempre resolve o fluxo inteiro. Quando cada automação funciona isoladamente, a empresa ganha velocidade em alguns pontos, mas continua perdendo eficiência entre uma etapas" },
+        { tag: "Fluxos soltos", title: "Automações pontuais não criam uma operação integrada", desc: "Automatizar uma etapa ajuda, mas nem sempre resolve o fluxo inteiro. Quando cada automação funciona isoladamente, a empresa ganha velocidade em alguns pontos, mas continua perdendo eficiência entre as etapas." },
         { tag: "Áreas desconectadas", title: "Cada área trabalha bem, mas a operação não flui como um todo", desc: "Comercial, financeiro, atendimento, operações e gestão até fazem sua parte, mas a informação nem sempre passa de uma área para outra com clareza, velocidade e contexto." },
         { tag: "Sistemas que não conversam", title: "As ferramentas existem, mas não trabalham juntas", desc: "Sua empresa já pode ter boas ferramentas, mas se elas não trocam informações no momento certo, a equipe vira a ponte entre os sistemas. Isso gera atrasos, retrabalho e inconsistências" },
         { tag: "Dados fragmentados", title: "Informação espalhada em diferentes plataformas ", desc: "Informações importantes ficam divididas entre sistemas, planilhas, relatórios e pessoas. Isso dificulta enxergar a operação completa e acompanhar indicadores com clareza." },
@@ -447,7 +447,7 @@ export const services = [
       ],
       resumoTitle: "O diagnóstico é claro:",
       resumoText: "sua empresa não precisa se adaptar a mais uma solução genérica. Precisa de soluções construídas especificamente para o seu negócio, capazes de conectar processos, sistemas, dados e a forma como sua operação realmente funciona.",
-      prejuizoLabel: "Orçamento disperdiçado",
+      prejuizoLabel: "Orçamento desperdiçado",
       prejuizoValue: "Tecnologias contratadas\nque não trabalham juntas",
     },
 
@@ -465,7 +465,7 @@ export const services = [
       {
         n: "2",
         title: "Para operações que desejam que diferentes áreas e sistemas se comuniquem entre si",
-        desc: "A hiperatuomação é ideal para empresas que usam várias ferramentas, plataformas ou sistemas, mas querem reduzir conexões manuais e fazer as informações fluírem melhor entre setores, equipes e processos.",
+        desc: "A hiperautomação é ideal para empresas que usam várias ferramentas, plataformas ou sistemas, mas querem reduzir conexões manuais e fazer as informações fluírem melhor entre setores, equipes e processos.",
       },
       {
         n: "3",
@@ -534,9 +534,9 @@ export const services = [
     detail: "Definimos etapas, regras, exceções, responsáveis, integrações e caminhos possíveis para que a solução siga a realidade do negócio e resolva o problema da forma mais eficiente possível."
   },
   {
-    badge: "Fase 03 - Aprovação com a Equipe",
-    text: "Apresentamos a estrutura proposta e ajustamos tudo junto com sua empresa.",
-    detail: "Antes do desenvolvimento, validamos expectativas, regras, prioridades e detalhes da solução para garantir que a entrega esteja alinhada ao que a operação precisa e ao que a equipe espera."
+  badge: "Fase 03 - Aprovação com a Equipe",
+  text: "Apresentamos a estrutura proposta, o escopo e o orçamento personalizado do projeto.",
+  detail: "Antes do desenvolvimento, validamos expectativas, regras, prioridades, entregas e investimento necessário para garantir que a solução esteja alinhada ao que a operação precisa e ao que a empresa espera."
   },
   {
     badge: "Fase 04 - Agentes, Integrações e Implementação",
