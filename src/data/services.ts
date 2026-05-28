@@ -244,7 +244,7 @@ export const services = [
 
     // ── Lado direito da seção "O que faz" (A Orquestração) ──
     orquestracao: {
-      badge: "A Orquestração",
+      badge: "Para a sua empresa",
       canais: [
         { title: "WhatsApp", desc: "Respotas em segundos 24 horas por dia" },
         { title: "Agente Qualificador", desc: "Seus vendendores recebem apenas quem quer comprar de você" },
@@ -255,6 +255,23 @@ export const services = [
       statusTitle: "Potencializa Agente Comercial",
       statusBadge: "● 100% Online",
       latencia: "RESPOSTA: - 1 segundo",
+    },
+
+    // ── Seção exclusiva: escopo de automação ──
+    escopoAutomacao: {
+      badge: "Flexibilidade total",
+      title: "Você escolhe até onde automatizar",
+      description: "A Automação Comercial é construída conforme a realidade da sua empresa. Podemos automatizar desde o primeiro atendimento e qualificação até follow-ups, agendamentos, reativação de clientes, registros no CRM e apoio ao fechamento, sempre com possibilidade de supervisão e passagem para o time humano.",
+      areas: [
+        { label: "Primeiro atendimento" },
+        { label: "Qualificação de leads" },
+        { label: "Follow-ups" },
+        { label: "Agendamentos" },
+        { label: "Reativação de clientes" },
+        { label: "Registros no CRM" },
+        { label: "Apoio ao fechamento" },
+      ],
+      footer: "Supervisão humana e passagem para o time sempre disponíveis",
     },
 
     whatItDoesTitle: "Para quem é a Automação Comercial",
@@ -383,172 +400,245 @@ export const services = [
   },
 
   {
-    title: "Suporte Turbo",
+    title: "Soluções exclusivas para potencializar sua operação",
     slug: "suporte-turbo",
-    badge: "suporte",
-    subtitle: "Resolva chamados com respostas guiadas e base viva",
+    badge: "Hiperautomação Empresarial",
+    subtitle: "A Hiperautomação Empresarial automatiza processos repetitivos em áreas específicas ou em diferentes setores da sua empresa, conecta os sistemas que você já utiliza e centraliza informações para que a gestão acompanhe a operação com mais clareza, produtividade e controle.",
     description:
-      "Agilize o suporte técnico com IA treinada e fluxos passo a passo, diminuindo tickets e aumentando satisfação.",
+      "Automatize processos de diferentes áreas, conecte sistemas e centralize informações para que sua empresa opere com mais clareza, produtividade e controle.",
     image:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=700&fit=crop&crop=face",
 
-    messageUser: "Quero otimizar meu suporte técnico com IA.",
+    messageUser: "Quero automatizar e conectar os processos da minha empresa.",
     messageBot:
-      "Ótimo! Vamos criar um suporte turbo para resolver chamados com eficiência.",
+      "Ótimo! Vamos mapear sua operação e construir uma hiperautomação sob medida para o seu negócio.",
 
-    cta: "Quero otimizar meu suporte",
+    cta: "Entender como funciona",
     ctaHref: "/#contato",
 
     benefits: [
-      "Resolução mais rápida",
-      "Menos tickets repetidos",
-      "Base de conhecimento organizada",
-      "Melhor experiência do cliente",
+      "Mais produtividade no dia a dia",
+      "Sistemas e áreas conectados",
+      "Gestão com dados na mão",
+      "Redução de custos operacionais",
     ],
 
     features: [
-      "Tutoriais e troubleshooting guiado",
-      "Integração com helpdesk (se usar)",
-      "Registro de dúvidas recorrentes",
-      "Relatórios de causas e recorrência",
+      "Automação de processos repetitivos",
+      "Integração com os sistemas que você já usa",
+      "Centralização de dados da operação",
+      "Relatórios e indicadores para a gestão",
     ],
 
-    whatItDoesTitle: "O que faz",
+     // ── Seção "Diagnóstico de Perdas" ──
+    problemas: {
+      badge: "Diagnóstico de Perdas",
+      title: "Soluções prontas e genéricas já não",
+      titleHighlight: "acompanham a sua operação",
+      intro:
+        "Conforme sua empresa cresce, surgem processos próprios, exceções, sistemas diferentes e rotinas que não cabem em soluções comuns. É nesse momento que automatizar do jeito certo deixa de ser apenas eficiência e passa a ser uma necessidade para manter controle, produtividade e clareza.",
+      cards: [
+        { tag: "Operação personalizada", title: "Soluções genéricas não resolvem", desc: "Cada negócio tem processos, exceções e formas próprias de funcionar. Quando a ferramenta não acompanha essa realidade, a equipe cria atalhos, planilhas e controles paralelos para compensar." },
+        { tag: "Fluxos soltos", title: "Automações pontuais não criam uma operação integrada", desc: "Automatizar uma etapa ajuda, mas nem sempre resolve o fluxo inteiro. Quando cada automação funciona isoladamente, a empresa ganha velocidade em alguns pontos, mas continua perdendo eficiência entre uma etapas" },
+        { tag: "Áreas desconectadas", title: "Cada área trabalha bem, mas a operação não flui como um todo", desc: "Comercial, financeiro, atendimento, operações e gestão até fazem sua parte, mas a informação nem sempre passa de uma área para outra com clareza, velocidade e contexto." },
+        { tag: "Sistemas que não conversam", title: "As ferramentas existem, mas não trabalham juntas", desc: "Sua empresa já pode ter boas ferramentas, mas se elas não trocam informações no momento certo, a equipe vira a ponte entre os sistemas. Isso gera atrasos, retrabalho e inconsistências" },
+        { tag: "Dados fragmentados", title: "Informação espalhada em diferentes plataformas ", desc: "Informações importantes ficam divididas entre sistemas, planilhas, relatórios e pessoas. Isso dificulta enxergar a operação completa e acompanhar indicadores com clareza." },
+        { tag: "Gestão sem visão real", title: "A liderança decide sem enxergar a operação inteira", desc: "Quando os dados chegam atrasados, incompletos ou espalhados, decisões importantes acabam sendo tomadas por percepção, urgência ou tentativa e erro." },
+      ],
+      resumoTitle: "O diagnóstico é claro:",
+      resumoText: "sua empresa não precisa se adaptar a mais uma solução genérica. Precisa de soluções construídas especificamente para o seu negócio, capazes de conectar processos, sistemas, dados e a forma como sua operação realmente funciona.",
+      prejuizoLabel: "Orçamento disperdiçado",
+      prejuizoValue: "Tecnologias contratadas\nque não trabalham juntas",
+    },
+
+    whatItDoesTitle: "Para quem é a Hiperautomação Empresarial",
     whatItDoesIntro:
-      "Quando o suporte depende sempre do time humano para questões repetidas, a operação fica lenta, cara e desgastante.",
+      "Para empresas que já têm processos, sistemas e rotinas em funcionamento, mas precisam de soluções personalizadas para conectar a operação, automatizar gargalos específicos e tomar decisões com mais clareza.",
     whatItDoesHighlight:
-      "Nossa IA ajuda a resolver dúvidas recorrentes, orienta o cliente passo a passo e reduz o volume de chamados desnecessários.",
+      "Nossa solução não substitui a sua equipe — automatiza o que é repetitivo para que seu time tenha mais tempo para o que realmente exige análise, decisão e relacionamento.",
     whatItDoesSteps: [
       {
         n: "1",
-        title: "Responde dúvidas recorrentes",
-        desc: "Atua sobre perguntas repetidas e problemas comuns com agilidade.",
+        title: "Para empresas com rotinas, regras e exceções que não cabem em soluções prontas",
+        desc: "Cada empresa tem formas próprias de operar. A Hiperautomação é indicada quando ferramentas genéricas já não acompanham os detalhes, exceções e necessidades reais do negócio.",
       },
       {
         n: "2",
-        title: "Guia a resolução passo a passo",
-        desc: "Entrega instruções claras para o cliente resolver o problema com autonomia.",
+        title: "Para operações que desejam que diferentes áreas e sistemas se comuniquem entre si",
+        desc: "A hiperatuomação é ideal para empresas que usam várias ferramentas, plataformas ou sistemas, mas querem reduzir conexões manuais e fazer as informações fluírem melhor entre setores, equipes e processos.",
       },
       {
         n: "3",
-        title: "Identifica quando escalar",
-        desc: "Encaminha o caso para o time técnico quando realmente precisa de intervenção humana.",
+        title: "Para empresas que querem crescer com mais controle e estar à frente da nova era da automação",
+        desc: "A Hiperautomação ajuda a preparar a operação para crescer com processos mais conectados, dados mais claros e soluções capazes de evoluir junto com as necessidades da empresa.",
       },
       {
         n: "4",
-        title: "Transforma suporte em inteligência",
-        desc: "Registra padrões, causas e dúvidas frequentes para melhorar sua operação.",
+        title: "Para lideranças que querem ter mais assertividade e visão na tomada de decisões",
+        desc: "Com processos, sistemas e dados mais conectados, a gestão ganha uma visão mais confiável da operação e consegue decidir com mais segurança, menos achismo e mais controle sobre o negócio.",
       },
     ],
-
-    timelineSteps: [
-      { badge: "Fase 01", text: "Cliente abre contato com uma dúvida ou problema", detail: "O cliente inicia o contato com uma dúvida ou problema pelo canal de preferência — WhatsApp, Web Widget, Instagram ou Voz. Nenhum chamado fica sem registro." },
-      { badge: "Fase 02", text: "IA identifica o tipo de chamado e busca a melhor resposta", detail: "A IA analisa a mensagem, identifica a intenção e busca na base de conhecimento a resposta mais adequada para aquele tipo específico de chamado." },
-      { badge: "Fase 03", text: "Orienta a resolução com passos simples e claros", detail: "O cliente recebe instruções claras, passo a passo, que permitem resolver o problema com autonomia — reduzindo a necessidade de intervenção humana em chamados de nível 1." },
-      { badge: "Fase 04", text: "Escala para o time técnico quando necessário", detail: "Quando o chamado exige análise técnica especializada ou ação manual, a IA encaminha para o time com todo o contexto da conversa já registrado, evitando repetição de informações." },
-      { badge: "Fase 05", text: "Registra padrões para evoluir a base de conhecimento", detail: "Cada interação alimenta a base de conhecimento: dúvidas recorrentes, causas raízes e padrões identificados são registrados para melhorar continuamente a eficiência do suporte." },
-    ],
-
-    timelineExtra: {
-      badge: "Base Viva",
-      text: "Sua base de conhecimento evolui com o uso",
-      detail: "Com o tempo, a IA aprende com os chamados reais da sua empresa, amplia as respostas disponíveis e reduz progressivamente o volume de tickets que chegam ao time técnico.",
-    },
-
-    faq: [
-      {
-        q: "A IA aprende com meus artigos e documentos?",
-        a: "Sim. Podemos treinar com sua base (FAQ, docs, helpdesk, site) e manter tudo atualizado.",
-      },
-      {
-        q: "Ela reduz tickets repetidos?",
-        a: "Sim. Respostas guiadas e triagem diminuem volume e aumentam resolução no primeiro contato.",
-      },
-      {
-        q: "Pode abrir chamado quando necessário?",
-        a: "Sim. Quando não resolver, registra e encaminha com o contexto completo.",
-      },
-    ],
-
-    // ── Seção "Diagnóstico de Perdas" ──
-    problemas: {
-      badge: "Diagnóstico de Perdas",
-      title: "O custo invisível de um",
-      titleHighlight: "suporte sobrecarregado.",
-      intro:
-        "Quando todo chamado depende de uma pessoa, a fila cresce, o cliente espera e o custo dispara. Suporte lento é cliente insatisfeito.",
-      cards: [
-        { tag: "Resolução Lenta", title: "Tempo de Espera", desc: "Cada minuto na fila aumenta a frustração. Quanto mais demora a primeira resposta, maior a chance de o cliente desistir." },
-        { tag: "Fila Crescente", title: "Demanda que Acumula", desc: "Quando o volume de chamados sobe, o time não dá conta — e os tickets se acumulam mais rápido do que são resolvidos." },
-        { tag: "Risco de Branding", title: "Respostas Inconsistentes", desc: "Atendentes diferentes resolvem o mesmo problema de formas diferentes, gerando confusão e perda de confiança." },
-        { tag: "Falta de Inteligência", title: "Causas Invisíveis", desc: "Sem registrar padrões, você apaga incêndios sem nunca enxergar — nem corrigir — o que mais gera chamados." },
-        { tag: "Cliente sem Autonomia", title: "Tudo Vira Ticket", desc: "Dúvidas simples e repetidas poderiam ser resolvidas na hora, mas acabam ocupando o time técnico." },
-        { tag: "Dreno Financeiro", title: "Custo do Nível 1", desc: "Grande parte do orçamento de suporte é gasto com perguntas básicas que uma IA treinada resolveria sozinha." },
-      ],
-      resumoTitle: "O diagnóstico é claro:",
-      resumoText: "Seu time técnico está preso em tarefas repetitivas que poderiam ser resolvidas automaticamente.",
-      prejuizoLabel: "Prejuízo Estimado",
-      prejuizoValue: "Até 40% ao ano",
-    },
 
     // ── Lado direito da seção "O que faz" (A Orquestração) ──
     orquestracao: {
-      badge: "A Orquestração",
+      badge: "Pilares da solução",
       canais: [
-        { title: "WhatsApp", desc: "Suporte Oficial" },
-        { title: "Web Widget", desc: "Central de Ajuda" },
-        { title: "Instagram", desc: "Atendimento Social" },
-        { title: "Voice Agent", desc: "Suporte por Voz" },
+        { title: "Personalização Total", desc: "Construída sob medida para a sua operação" },
+        { title: "Integração Inteligente", desc: "Áreas e sistemas conectados em um só fluxo" },
+        { title: "Operação Escalável", desc: "Preparada para crescer com mais controle" },
+        { title: "Visão Estratégica", desc: "Dados claros para decisões mais assertivas" },
       ],
-      statusLabel: "Status Global",
-      statusTitle: "Potencializa Support Mesh",
-      statusBadge: "● 100% Online",
-      latencia: "SLA: < 1min",
+      statusLabel: "Construída para você",
+      statusTitle: "Potencializa Centro de Controle",
+      statusBadge: "● 100% Personalizado",
+      latencia: "ESCOPO: SOB MEDIDA",
     },
 
-    // ── Seção "Como funciona" (Roadmap) ──
+    // ── Seção exclusiva: escopo de automação ──
+    escopoAutomacao: {
+      badge: "Automação sob medida",
+      title: "Você escolhe o que precisa evoluir dentro da sua empresa",
+      description: "A Hiperautomação é construída conforme a realidade da sua empresa, pode ser criada para resolver uma dor específica, automatizar um processo crítico, conectar sistemas ou integrar fluxos entre diferentes áreas. Sempre com possibilidade de supervisão humana e ajustes ao longo do tempo.",
+      areas: [
+        { label: "Processos críticos" },
+        { label: "Times de agentes IA" },
+        { label: "Conexão entre áreas" },
+        { label: "Integração entre sistemas" },
+        { label: "Centralização de dados" },
+        { label: "Rotinas automáticas" },
+        { label: "Aprovações e validações" },
+        { label: "Personalização total" },
+        { label: "Relatórios para gestão" },
+      ],
+      footer: "",
+    },
+
+     // ── Seção "Como funciona" (Roadmap) ──
     roadmap: {
-      badge: "Metodologia Ágil",
-      title: "A jornada para um",
-      titleHighlight: "suporte que escala.",
-      ctaText: "Iniciar meu setup agora",
-      ctaSubtext: "Garantia de implementação em contrato",
+      badge: "A jornada",
+      title: "Como construímos a ",
+      titleHighlight: "hiperautomação empresarial",
+      ctaText: "Quero automatizar minha empresa",
+      ctaSubtext: "Prazo definido em contrato conforme o escopo do projeto",
     },
 
+   timelineSteps: [
+  {
+    badge: "Fase 01 - Diagnóstico Inicial",
+    text: "Analisamos sua operação para entender processos, sistemas, áreas envolvidas e viabilidade do projeto.",
+    detail: "Antes de construir qualquer solução, entendemos a dor, os fluxos atuais, as ferramentas utilizadas e onde a empresa perde tempo, clareza ou produtividade. Assim, conseguimos desenhar uma solução viável, personalizada e alinhada aos objetivos da operação."
+  },
+  {
+    badge: "Fase 02 - Desenho da Solução",
+    text: "Criamos os fluxos que mostram como a automação deve funcionar na prática.",
+    detail: "Definimos etapas, regras, exceções, responsáveis, integrações e caminhos possíveis para que a solução siga a realidade do negócio e resolva o problema da forma mais eficiente possível."
+  },
+  {
+    badge: "Fase 03 - Aprovação com a Equipe",
+    text: "Apresentamos a estrutura proposta e ajustamos tudo junto com sua empresa.",
+    detail: "Antes do desenvolvimento, validamos expectativas, regras, prioridades e detalhes da solução para garantir que a entrega esteja alinhada ao que a operação precisa e ao que a equipe espera."
+  },
+  {
+    badge: "Fase 04 - Agentes, Integrações e Implementação",
+    text: "Criamos os agentes, automações e conexões com as tecnologias que sua empresa já utiliza.",
+    detail: "Desenvolvemos a solução sob medida, conectando sistemas, dados e fluxos sempre que houver possibilidade técnica, sem exigir trocas desnecessárias de ferramentas."
+  },
+  {
+    badge: "Fase 05 - Validação Operacional",
+    text: "Testamos os fluxos, ajustamos cenários reais e estruturamos os dados que serão acompanhados.",
+    detail: "Validamos respostas, registros, integrações, exceções e caminhos da automação para reduzir falhas, garantir mais segurança e manter a solução em conformidade com as regras da operação."
+  },
+  {
+    badge: "Fase 06 - Operação Pronta",
+    text: "Entregamos a solução pronta para uso, com orientações e estrutura para acompanhar a operação.",
+    detail: "Sua empresa recebe a automação finalizada, os alinhamentos necessários, orientações de uso e, quando aplicável, dashboards para acompanhar dados importantes para a gestão."
+  },
+],
+
+timelineExtra: {
+  badge: "Evolução Contínua",
+  text: "Se sua empresa continua evoluindo, seus sistemas também precisam acompanhar.",
+  detail: "Com acompanhamento mensal, revisamos fluxos, aplicamos melhorias, criamos novas automações e ajustamos a solução conforme a operação cresce, muda ou ganha novas necessidades."
+},
+   
     // ── Faixa de Stats ──
     stats: [
-      { value: "-60%", label: "Tickets Repetidos" },
-      { value: "< 1min", label: "1ª Resposta" },
-      { value: "24/7", label: "Disponível" },
-      { value: "+35%", label: "Satisfação" },
+      { value: "Sob medida", label: "para sua operação" },
+      { value: "Áreas", label: "mais conectadas" },
+      { value: "Dados", label: "Centralizados para gestão" },
+      { value: "Sistemas", label: "integrados" },
     ],
 
     // ── Seção "Benefícios" ──
     beneficios: {
-      badge: "Vantagem Competitiva",
-      titlePre: "O que a IA ",
-      titleHighlight: "resolve",
-      titlePost: " no seu suporte.",
+      badge: "Ganhos para sua empresa",
+      titlePre: "Sua empresa depois da ",
+      titleHighlight: "hiperautomação.",
+      titlePost: "",
       cards: [
-        { title: "Menos Custo por Ticket", desc: "Reduza o volume de chamados de nível 1 e diminua o custo operacional do seu suporte." },
-        { title: "Atendimento 24/7", desc: "Seus clientes recebem resposta a qualquer hora, sem depender do horário do time técnico." },
-        { title: "Respostas Padronizadas", desc: "Toda dúvida recebe a mesma resposta correta e atualizada, com base no seu conhecimento." },
-        { title: "Time Focado no Complexo", desc: "A IA resolve o repetitivo e libera seus especialistas para os casos que realmente exigem gente." },
+        { title: "Mais produtividade no dia a dia", desc: "Sua equipe deixa de gastar tempo com tarefas repetitivas, conferências e repasses manuais, passando a focar em atividades que realmente movimentam o negócio: análise, relacionamento, decisões e projetos estratégicos." },
+        { title: "Sistemas e áreas conectados", desc: "Ferramentas, dados e setores passam a trabalhar de forma mais integrada. As informações fluem melhor entre as áreas, reduzindo retrabalho, falhas de comunicação e perda de contexto." },
+        { title: "Gestão com dados na mão", desc: "A liderança ganha uma visão mais clara da operação, com informações centralizadas e mais fáceis de acompanhar. As decisões deixam de depender de planilhas defasadas, dados soltos ou percepções do dia a dia." },
+        { title: "Mais eficiência com a estrutura atual", desc: "Com menos tarefas manuais, menos retrabalho e melhor aproveitamento da equipe, sua empresa aumenta a capacidade operacional sem precisar resolver todo problema que aparece apenas com novas contratações." },
       ],
-      rodape: "Base de conhecimento viva • Integração com helpdesk • Segurança LGPD",
+      rodape: "Solução personalizada • Integração com seus sistemas • Acompanhamento opcional",
     },
 
     // ── Seção "CTA + FAQ" (Fechamento) ──
     fechamento: {
-      badge: "Vamos Conversar",
-      title: "Seu suporte está pronto para",
-      titleHighlight: "resolver na hora?",
-      intro: "Reduza tickets repetidos e acelere a resolução com uma IA treinada na sua base de conhecimento.",
-      ctaPrimary: "Solicitar Diagnóstico Gratuito",
-      ctaSecondary: "Falar com Engenheiro",
-      rodape: "Setup em tempo recorde • Sem fidelidade",
+      badge: "Vamos conversar",
+      title: "Sua empresa está pronta para conectar",
+      titleHighlight: "processos, sistemas e dados?",
+      // Sua empresa está pronta para liderar a nova era da automação? - Outra opção
+      intro: "Agora é a sua vez de potencializar o seu negócio!",
+      ctaPrimary: "Solicitar análise inicial",
+      ctaSecondary: "Falar com um especialista",
+      rodape: "Análise inicial sem custos • Projeto sob medida • Acompanhamento opcional",
       faqTitle: "Perguntas frequentes",
-      faqSubtitle: "Tire suas dúvidas sobre suporte com IA.",
+      faqSubtitle: "Tire suas dúvidas sobre a Hiperautomação Empresarial.",
     },
+
+    faq: [
+      {
+        q: "Quais áreas da empresa a Hiperautomação atende?",
+        a: "A Hiperautomação pode atuar em qualquer área da empresa, como financeiro, comercial, atendimento, operações, RH, administrativo, logística, estoque e gestão. A empresa escolhe quais áreas, processos ou rotinas deseja automatizar de acordo com suas necessidades e prioridades.",
+      },
+      {
+        q: "A solução é personalizada ou são pacotes prontos?",
+        a: "Temos modelos de automações recorrentes que podem servir como base, mas toda entrega é personalizada conforme a realidade da sua empresa. Cada fluxo, integração, regra e agente é construído de acordo com o processo que precisa ser resolvido.",
+      },
+      {
+        q: "Preciso trocar os sistemas que minha empresa já usa?",
+        a: "Não necessariamente. Nossa solução é construída para se conectar às ferramentas que sua empresa já utiliza, como CRMs, ERPs, planilhas, WhatsApp, e-mail e sistemas internos. A integração depende da disponibilidade técnica de cada plataforma, como APIs ou recursos de conexão.",
+      },
+      {
+        q: "Para qual tipo de empresa esse serviço é indicado?",
+        a: "A Hiperautomação é indicada para empresas que desejam automatizar processos, reduzir tarefas manuais e ganhar mais clareza sobre a operação. É ideal para negócios que querem conectar áreas, integrar sistemas, aumentar a produtividade da equipe e tomar decisões com mais controle.",
+      },
+      {
+        q: "Existe um diagnóstico antes da implementação?",
+        a: "Sim. Antes de qualquer desenvolvimento, fazemos uma análise da operação para entender o problema, identificar o que pode ser automatizado, avaliar a viabilidade do projeto e apresentar um escopo com orçamento. O desenvolvimento só começa depois de tudo aprovado e alinhado.",
+      },
+      {
+        q: "A Hiperautomação substitui minha equipe?",
+        a: "Não. O objetivo não é substituir colaboradores, mas liberar a equipe de tarefas repetitivas, manuais e operacionais para que ela tenha mais tempo para atividades que exigem análise, decisão, relacionamento e estratégia.",
+      },
+      {
+        q: "A operação fica 100% automática?",
+        a: "Não prometemos isso. Os processos podem ser automatizados ou semiautomatizados, dependendo do que faz sentido para cada fluxo. Mesmo em automações avançadas, recomendamos supervisão humana para acompanhar a operação, validar exceções e garantir mais segurança.",
+      },
+      {
+        q: "Vocês oferecem acompanhamento depois da entrega?",
+        a: "Sim. Oferecemos acompanhamento mensal opcional, contratado à parte. Nele, revisamos fluxos, aplicamos melhorias, criamos novas automações, ajustamos integrações e evoluímos a solução conforme o negócio cresce ou muda.",
+      },
+      {
+        q: "Quanto tempo leva a implementação?",
+        a: "O prazo varia conforme o escopo do projeto, o número de áreas envolvidas, a complexidade dos fluxos e as integrações necessárias. Após o diagnóstico inicial e a aprovação da proposta, definimos o prazo em contrato para que sua empresa tenha previsibilidade sobre cada fase.",
+      },
+      {
+        q: "A Hiperautomação precisa envolver a empresa inteira?",
+        a: "Não. A Hiperautomação pode ser criada para resolver uma dor específica, automatizar um processo crítico, desenvolver um agente personalizado ou conectar fluxos entre diferentes áreas. O escopo é definido conforme a necessidade da empresa.",
+      },
+    ],
   },
 ] as const;

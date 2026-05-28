@@ -34,6 +34,24 @@ import {
   Database,
   EyeOff,
   Fingerprint,
+  Inbox,
+  UserCheck,
+  Send,
+  RefreshCw,
+  FileText,
+  Handshake,
+  Package,
+  Unlink,
+  Boxes,
+  Unplug,
+  Puzzle,
+  Workflow,
+  Rocket,
+  BarChart3,
+  Bot,
+  Network,
+  ClipboardCheck,
+  SlidersHorizontal,
 } from "lucide-react";
 
 import { services } from "../data/services";
@@ -56,10 +74,15 @@ import {
 const PROBLEMA_ICONS = [Clock, TrendingUp, ShieldCheck, Activity, MessageCircle, Wallet];
 const PROBLEMA_ICONS_CONSULTORIA = [Cpu, Shuffle, Navigation, HelpCircle, AlertTriangle, TrendingDown];
 const PROBLEMA_ICONS_ATENDIMENTO = [Zap, Calendar, UserX, Database, EyeOff, Fingerprint];
+const PROBLEMA_ICONS_HIPERAUTOMACAO = [Package, Unlink, Boxes, Unplug, Database, EyeOff];
 const CANAL_ICONS = [MessageCircle, Globe, Instagram, Phone];
 const CANAL_ICONS_CONSULTORIA = [ClipboardList, GitBranch, GraduationCap, Target];
+const CANAL_ICONS_HIPERAUTOMACAO = [Puzzle, Workflow, Rocket, BarChart3];
 const BENEFICIO_ICONS = [Wallet, CalendarCheck, ShieldCheck, Users];
 const BENEFICIO_ICONS_CONSULTORIA = [Compass, Layers, TrendingUp, Unlock];
+const BENEFICIO_ICONS_HIPERAUTOMACAO = [Users, GitBranch, Database, Wallet];
+const ESCOPO_AUTOMACAO_ICONS = [Inbox, UserCheck, Send, Calendar, RefreshCw, FileText, Handshake];
+const ESCOPO_AUTOMACAO_ICONS_HIPERAUTOMACAO = [Zap, Bot, Network, Workflow, Database, RefreshCw, ClipboardCheck, SlidersHorizontal, BarChart3];
 
 export function ServicePage() {
   const { slug } = useParams();
@@ -125,7 +148,7 @@ export function ServicePage() {
             {/* Grid de Problemas Estruturados */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {service.problemas.cards.map((item, i) => {
-                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : slug === "atendimento-inteligente" ? PROBLEMA_ICONS_ATENDIMENTO : PROBLEMA_ICONS;
+                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : slug === "atendimento-inteligente" ? PROBLEMA_ICONS_ATENDIMENTO : slug === "suporte-turbo" ? PROBLEMA_ICONS_HIPERAUTOMACAO : PROBLEMA_ICONS;
                 const Icon = problemaIcons[i] ?? problemaIcons[0];
                 return (
                 <StaggerItem key={item.title}>
@@ -168,7 +191,7 @@ export function ServicePage() {
               <div className="flex items-center gap-4">
                 <div className="text-right">
                   <p className="text-sm font-bold text-red-500 uppercase tracking-widest">{service.problemas.prejuizoLabel}</p>
-                  <p className="text-3xl font-black text-[#2D2D4A]">{service.problemas.prejuizoValue}</p>
+                  <p className="text-3xl font-black text-[#2D2D4A] whitespace-pre-line leading-tight">{service.problemas.prejuizoValue}</p>
                 </div>
                 <div className="w-12 h-12 rounded-full border-4 border-red-500/20 border-t-red-500 animate-spin" />
               </div>
@@ -238,7 +261,7 @@ export function ServicePage() {
                     {/* Grid de Canais */}
                     <div className="grid grid-cols-2 gap-5 mb-10">
                       {service.orquestracao.canais.map((canal, idx) => {
-                        const canalIcons = slug === "consultoria-ia" ? CANAL_ICONS_CONSULTORIA : CANAL_ICONS;
+                        const canalIcons = slug === "consultoria-ia" ? CANAL_ICONS_CONSULTORIA : slug === "suporte-turbo" ? CANAL_ICONS_HIPERAUTOMACAO : CANAL_ICONS;
                         const Icon = canalIcons[idx] ?? canalIcons[0];
                         return (
                         <div
@@ -287,6 +310,53 @@ export function ServicePage() {
             </div>
           </div>
         </section>
+
+        {/* ================= ESCOPO DE AUTOMAÇÃO (SERVIÇOS COM ESCOPO MODULAR) ================= */}
+        {"escopoAutomacao" in service && (
+          <section className="py-20 bg-white relative overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <AnimatedSection>
+                <div className="bg-white rounded-[40px] border-2 border-[#ff851b]/40 shadow-sm p-10 md:p-14 grid md:grid-cols-2 gap-12 items-center">
+                  {/* COLUNA ESQUERDA: copy */}
+                  <div>
+                    <SectionBadge text={service.escopoAutomacao.badge} className="mb-6" />
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#2D2D4A] tracking-tighter leading-[1.1] mb-5">
+                      {service.escopoAutomacao.title}
+                      <span className="text-[#ff851b]">.</span>
+                    </h2>
+                    <p className="text-base md:text-lg text-[#2D2D4A]/60 font-medium leading-relaxed">
+                      {service.escopoAutomacao.description}
+                    </p>
+                    <div className="mt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#2D2D4A]/50">
+                      <ShieldCheck className="w-4 h-4 text-[#71d7ff]" />
+                      {service.escopoAutomacao.footer}
+                    </div>
+                  </div>
+
+                  {/* COLUNA DIREITA: grid de chips */}
+                  <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {service.escopoAutomacao.areas.map((area, idx) => {
+                      const escopoIcons = slug === "suporte-turbo" ? ESCOPO_AUTOMACAO_ICONS_HIPERAUTOMACAO : ESCOPO_AUTOMACAO_ICONS;
+                      const Icon = escopoIcons[idx] ?? escopoIcons[0];
+                      return (
+                        <StaggerItem key={area.label}>
+                          <div className="group h-full bg-[#F5F5F7] hover:bg-white rounded-2xl p-4 border border-gray-100 hover:border-[#ff851b]/30 hover:shadow-md transition-all duration-300 flex flex-col items-start gap-3">
+                            <div className="w-9 h-9 bg-white group-hover:bg-[#ff851b]/10 rounded-xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 transition-all">
+                              <Icon className="w-4 h-4 text-[#ff851b]" />
+                            </div>
+                            <p className="text-sm font-bold text-[#2D2D4A] leading-tight">
+                              {area.label}
+                            </p>
+                          </div>
+                        </StaggerItem>
+                      );
+                    })}
+                  </StaggerContainer>
+                </div>
+              </AnimatedSection>
+            </div>
+          </section>
+        )}
 
         {/* ================= COMO FUNCIONA (ROADMAP DE IMPLEMENTAÇÃO) ================= */}
         <section className="py-24 bg-[#F5F5F7] relative overflow-hidden">
@@ -436,7 +506,7 @@ export function ServicePage() {
             <AnimatedSection delay={0.2}>
               <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {service.beneficios.cards.map((item, i) => {
-                  const beneficioIcons = slug === "consultoria-ia" ? BENEFICIO_ICONS_CONSULTORIA : BENEFICIO_ICONS;
+                  const beneficioIcons = slug === "consultoria-ia" ? BENEFICIO_ICONS_CONSULTORIA : slug === "suporte-turbo" ? BENEFICIO_ICONS_HIPERAUTOMACAO : BENEFICIO_ICONS;
                   const Icon = beneficioIcons[i] ?? beneficioIcons[0];
                   return (
                   <StaggerItem key={item.title}>
