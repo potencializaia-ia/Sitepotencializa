@@ -148,7 +148,7 @@ export function ServicePage() {
             {/* Grid de Problemas Estruturados */}
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {service.problemas.cards.map((item, i) => {
-                const problemaIcons = slug === "consultoria-ia" ? PROBLEMA_ICONS_CONSULTORIA : slug === "atendimento-inteligente" ? PROBLEMA_ICONS_ATENDIMENTO : slug === "suporte-turbo" ? PROBLEMA_ICONS_HIPERAUTOMACAO : PROBLEMA_ICONS;
+                const problemaIcons = slug === "imersao-potencializa" ? PROBLEMA_ICONS_CONSULTORIA : slug === "automacao-comercial" ? PROBLEMA_ICONS_ATENDIMENTO : slug === "hiperautomacao-personalizada" ? PROBLEMA_ICONS_HIPERAUTOMACAO : PROBLEMA_ICONS;
                 const Icon = problemaIcons[i] ?? problemaIcons[0];
                 return (
                 <StaggerItem key={item.title}>
@@ -261,7 +261,7 @@ export function ServicePage() {
                     {/* Grid de Canais */}
                     <div className="grid grid-cols-2 gap-5 mb-10">
                       {service.orquestracao.canais.map((canal, idx) => {
-                        const canalIcons = slug === "consultoria-ia" ? CANAL_ICONS_CONSULTORIA : slug === "suporte-turbo" ? CANAL_ICONS_HIPERAUTOMACAO : CANAL_ICONS;
+                        const canalIcons = slug === "imersao-potencializa" ? CANAL_ICONS_CONSULTORIA : slug === "hiperautomacao-personalizada" ? CANAL_ICONS_HIPERAUTOMACAO : CANAL_ICONS;
                         const Icon = canalIcons[idx] ?? canalIcons[0];
                         return (
                         <div
@@ -336,7 +336,7 @@ export function ServicePage() {
                   {/* COLUNA DIREITA: grid de chips */}
                   <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {service.escopoAutomacao.areas.map((area, idx) => {
-                      const escopoIcons = slug === "suporte-turbo" ? ESCOPO_AUTOMACAO_ICONS_HIPERAUTOMACAO : ESCOPO_AUTOMACAO_ICONS;
+                      const escopoIcons = slug === "hiperautomacao-personalizada" ? ESCOPO_AUTOMACAO_ICONS_HIPERAUTOMACAO : ESCOPO_AUTOMACAO_ICONS;
                       const Icon = escopoIcons[idx] ?? escopoIcons[0];
                       return (
                         <StaggerItem key={area.label}>
@@ -506,7 +506,7 @@ export function ServicePage() {
             <AnimatedSection delay={0.2}>
               <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {service.beneficios.cards.map((item, i) => {
-                  const beneficioIcons = slug === "consultoria-ia" ? BENEFICIO_ICONS_CONSULTORIA : slug === "suporte-turbo" ? BENEFICIO_ICONS_HIPERAUTOMACAO : BENEFICIO_ICONS;
+                  const beneficioIcons = slug === "imersao-potencializa" ? BENEFICIO_ICONS_CONSULTORIA : slug === "hiperautomacao-personalizada" ? BENEFICIO_ICONS_HIPERAUTOMACAO : BENEFICIO_ICONS;
                   const Icon = beneficioIcons[i] ?? beneficioIcons[0];
                   return (
                   <StaggerItem key={item.title}>

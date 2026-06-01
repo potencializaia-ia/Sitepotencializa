@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { Button } from '@/components/ui/button';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
 
-const consultoria = {
+const imersao = {
   title: 'Imersão Potencializa',
-  slug: 'consultoria-ia',
+  slug: 'imersao-potencializa',
   description: 'O primeiro passo para a eficiência. Mapeamos os processos que travam o seu crescimento e treinamos sua equipe para dominar as ferramentas que multiplicam a entrega. Transformamos o tempo gasto em tarefas repetitivas em foco no que realmente traz faturamento.',
   image: '/src/images/imersao.png',
 };
@@ -16,16 +16,16 @@ const products = [
   {
     title: 'Automação Comercial',
     icon: Zap,
-    description: 'Sua empresa ativa 24/7 com assistentes que qualificam leads, agendam reuniões e atendem com precisão humana. Tudo integrado ao seu CRM e com dashboards de performance para você ter controle total sobre cada venda e o crescimento da sua operação.',
+    description: 'Seu comercial ativo 24/7 com assistentes que qualificam leads, agendam reuniões e atendem com precisão humana. Tudo integrado ao seu CRM e com dashboards de performance para você ter controle total sobre cada venda e o crescimento da sua operação.',
     topics: ['Agentes de Vendas', 'Qualificação Automática', 'Integração CRM', 'Dashboards de Performance'],
-    slug: 'automacao-agentic',
+    slug: 'automacao-comercial',
   },
   {
-    title: 'Hiperautomação Personalizada',
+    title: 'Hiperautomação Empresarial',
     icon: Target,
     description: 'Onde a tecnologia se molda ao seu negócio. Criamos sistemas exclusivos para automatizar fluxos complexos e resolver desafios que só a sua operação conhece. A engenharia da eficiência desenhada sob medida para as dificuldades únicas da sua empresa.',
-    topics: ['Automação Sob Medida', 'Soluções Híbridas', 'Integração Total', 'Escalabilidade Garantida'],
-    slug: 'sistemas-inteligencia',
+    topics: ['Automação Sob Medida', 'Fluxos conectados', 'Integração com sistemas que você já usa', 'Dados centralizados'],
+    slug: 'hiperautomacao-personalizada',
   },
 ];
 
@@ -54,7 +54,7 @@ export function Products() {
         {/* Grid de Conteúdo */}
         <StaggerContainer className="flex flex-col gap-8">
           
-          {/* CONSULTORIA - CARD DE DESTAQUE (FULL WIDTH) */}
+          {/* IMERSÃO - CARD DE DESTAQUE (FULL WIDTH) */}
           <StaggerItem>
             <motion.div
               whileHover={{ y: -5 }}
@@ -66,8 +66,8 @@ export function Products() {
               <div className="flex flex-col lg:flex-row">
                 <div className="relative lg:w-1/2 h-72 lg:h-auto overflow-hidden">
                   <img
-                    src={consultoria.image}
-                    alt={consultoria.title}
+                    src={imersao.image}
+                    alt={imersao.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-transparent to-transparent hidden lg:block" />
@@ -79,13 +79,13 @@ export function Products() {
                     Destaque
                   </div>
                   <h3 className="text-3xl font-bold text-[#2D2D4A] mb-4">
-                    {consultoria.title}
+                    {imersao.title}
                   </h3>
                   <p className="text-[#2D2D4A]/70 mb-8 leading-relaxed text-lg">
-                    {consultoria.description}
+                    {imersao.description}
                   </p>
                   <Link
-                    to={`/servicos/${consultoria.slug}`}
+                    to={`/servicos/${imersao.slug}`}
                     className="inline-flex items-center gap-3 text-white font-bold bg-[#ff851b] px-8 py-4 rounded-2xl w-fit hover:bg-[#e07316] transition-all shadow-lg shadow-orange-500/20 group/btn"
                   >
                     Saiba mais

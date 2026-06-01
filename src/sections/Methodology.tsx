@@ -64,10 +64,10 @@ export function Methodology() {
             <StaggerItem key={step.number}>
               <motion.div
                 whileHover={{ y: -10 }}
-                className="relative h-full bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group"
+                className="relative h-full bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden"
               >
                 {/* Connector Dot (Desktop) */}
-                <div className="absolute top-1/2 -right-4 w-8 h-8 hidden xl:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-1/2 right-4 -translate-y-1/2 w-8 h-8 hidden xl:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                    {idx < steps.length - 1 && <ArrowRight className="text-[#ff851b] w-5 h-5" />}
                 </div>
 

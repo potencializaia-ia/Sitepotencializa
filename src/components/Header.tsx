@@ -19,20 +19,20 @@ import { useAuth } from "@/context/AuthContext";
 // Itens de Soluções com ícones e descrições (Padrão SaaS Premium)
 const solucoesItems = [
   { 
-    title: "Consultoria em IA", 
-    href: "/servicos/consultoria-ia",
+    title: "Imersão Potencializa", 
+    href: "/servicos/imersao-potencializa",
     description: "Estratégia e implementação de modelos LLM.",
     icon: <Cpu className="w-5 h-5 text-[#ff851b]" />
   },
   { 
-    title: "Atendimento Inteligente 24/7", 
-    href: "/servicos/atendimento-inteligente",
+    title: "Automação Comercial", 
+    href: "/servicos/automacao-comercial",
     description: "Agentes autônomos para suporte e vendas.",
     icon: <MessageSquare className="w-5 h-5 text-[#ff851b]" />
   },
   { 
-    title: "IA Sob Medida", 
-    href: "/servicos/suporte-turbo",
+    title: "Hiperautomação Empresarial", 
+    href: "/servicos/hiperautomacao-personalizada",
     description: "Soluções personalizadas para fluxos complexos.",
     icon: <Settings className="w-5 h-5 text-[#ff851b]" />
   },

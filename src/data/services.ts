@@ -2,7 +2,7 @@ export const services = [
   {
     //Seção - Header
     title: "Imersão Potencializa",
-    slug: "consultoria-ia",
+    slug: "imersao-potencializa",
     badge: "Bem-vindo à Imersão Potencializa",
     subtitle: "A Imersão Potencializa ajuda sua empresa a sair do improviso operacional. Em aproximadamente 1 mês, analisamos processos, organizamos prioridades e treinamos sua equipe para construir uma rotina mais eficiente, previsível e menos dependente da presença constante dos líderes.",
     // A descrição não aparece também
@@ -33,11 +33,11 @@ export const services = [
 
      // ── Seção "Diagnóstico de Perdas" ──
     problemas: {
-      badge: "Por que seu faturamento não cresce",
+      badge: "Diagnóstico Operacional",
       title: "O custo invisível da",
       titleHighlight: "ineficiência operacional.",
       intro:
-        "Você já se perguntou onde sua empresa perde todos os dias e você não percebeu?",
+        "Nem toda perda aparece no caixa. Muitas começam em tarefas manuais, retrabalho e decisões sem clareza.",
       cards: [
         { tag: "Tecnologia Desconectada", title: "Tecnologia sem estratégia", desc: "Ferramentas novas entram na empresa, mas não se conectam com a rotina real do time. Em vez de simplificar o trabalho, viram mais uma camada de complexidade." },
         { tag: "Rotina sem Fluxo", title: "Falta de processos", desc: "Atividades importantes acontecem de forma solta, sem fluxo definido, registro claro ou sequência bem estabelecida. Isso torna a rotina mais lenta, confusa e difícil de acompanhar." },
@@ -49,7 +49,7 @@ export const services = [
       resumoTitle: "O que parece apenas rotina pode estar custando tempo, produtividade e crescimento.",
       resumoText: "A Imersão Potencializa revela esses pontos invisíveis e mostra como transformar esforço perdido em uma operação mais clara, eficiente e preparada para crescer.",
       prejuizoLabel: "Potencial Desperdiçado",
-      prejuizoValue: "Até 40% ao ano",
+      prejuizoValue: "Na operação",
     },
 
     // Seção - Para quem é a Imersão Potencializa
@@ -62,7 +62,7 @@ export const services = [
       {
         n: "1",
         title: "Para empresários presos na operação",
-        desc: "Para donos e sócios que querem ter mais liberdade para viver fora da empresa, sem passar o tempo todo no celular resolvendo problemas, apagando incêndios e acompanhando cada detalhe da rotina.",
+        desc: "Para donos e sócios que querem reduzir a dependência da sua presença na operação e construir uma rotina mais organizada, previsível e fácil de acompanhar.",
       },
       {
         n: "2",
@@ -83,7 +83,7 @@ export const services = [
 
     // ── Lado direito da seção "O que faz" (A Imersão) ──
     orquestracao: {
-      badge: "Descubra se a Imersão Potencializa é para a sua empresa",
+      badge: "Ideal para você",
       canais: [
         { title: "Diagnóstico", desc: "Análise profunda da operação" },
         { title: "Mapeamento", desc: "Processos e fluxos de trabalho" },
@@ -130,15 +130,15 @@ export const services = [
 
     // ── Seção "Benefícios" ──
     beneficios: {
-      badge: "O que sua empresa ganha ",
+      badge: "Resultados",
       titlePre: "Depois da imersão, o que ",
       titleHighlight: " minha empresa ganha na prática?",
       titlePost: "",
       cards: [
         { title: "Clareza operacional", desc: "Sua empresa passa a ter uma visão mais clara da própria rotina, com prioridades bem definidas, mais produtividade e entendimento sobre quais tarefas devem ser realizadas primeiro e quais devem ser automatizadas." },
         { title: "Processos mais organizados", desc: "As rotinas ficam mais estruturadas, padronizadas e fáceis de acompanhar, tornando a operação mais previsível para a equipe e para a liderança." },
-        { title: "Equipe mais produtiva", desc: "Seu time ganha direcionamento prático para usar melhor o tempo, executar tarefas com mais consistência e concentrar energia nas atividades que realmente movem o negócio e colocam dinheiro no seu bolso." },
-        { title: "Mais liberdade para o dono", desc: "Com processos mais claros e uma equipe mais preparada, o negócio passa a funcionar com mais autonomia, reduzindo a dependência da sua presença constante na operação." },
+        { title: "Equipe mais produtiva", desc: "Sua equipe ganha direcionamento prático para usar melhor o tempo, aplicar as tecnologias da forma correta e executar a rotina com mais consistência, focando nas atividades que realmente geram resultado para a empresa." },
+        { title: "Mais liberdade para o dono", desc: "Com processos mais claros e uma equipe mais preparada, o negócio passa a funcionar com mais autonomia, reduzindo a dependência constante dos donos e gestores na operação." },
       ],
       rodape: "Diagnóstico sob medida • Plano personalizado • Treinamento incluso",
     },
@@ -146,8 +146,8 @@ export const services = [
     // ── Seção "CTA + FAQ" (Fechamento) ──
     fechamento: {
       badge: "A decisão depende de você",
-      title: "Sua empresa está pronta para crescer sem depender tanto",
-      titleHighlight: "de você?",
+      title: "Sua empresa está pronta para crescer com mais",
+      titleHighlight: "clareza e eficiência?",
       intro: "Agora é a sua vez de potencializar o seu negócio",
       ctaPrimary: "Solicitar Diagnóstico Gratuito",
       ctaSecondary: "Falar com um Especialista",
@@ -159,15 +159,11 @@ export const services = [
      faq: [
       {
         q: "A consultoria já inclui a implementação?",
-        a: "A consultoria é focada no diagnóstico e plano. A implementação pode ser contratada separadamente ou feita pelo seu time com base no roadmap.",
+        a: "A Imersão é focada no diagnóstico, organização dos processos, treinamento da equipe e plano de ação. A implementação das soluções pode ser feita pelo time da sua empresa ou contratada separadamente com a Potencializa, conforme as prioridades definidas no projeto.",
       },
       {
-        q: "Minha empresa precisa já usar tecnologia ou automações para contratar a Imersão?",
-        a: "Não. A Imersão é justamente para empresas que querem entender por onde começar. Avaliamos o nível atual da sua operação e indicamos caminhos realistas, considerando a estrutura, a equipe, os processos e os objetivos do negócio.",
-      },
-      {
-        q: "Para quais tipos de empresa a Imersão é indicada?",
-        a: "A Imersão é indicada para empresas que já possuem rotina operacional, equipe, clientes e processos acontecendo, mas sentem que ainda perdem tempo com tarefas repetitivas, falta de padronização, controles manuais ou dependência excessiva dos donos e líderes.",
+        q: "Preciso ter tecnologia ou automações na empresa para começar?",
+        a: "Não. A Imersão foi criada justamente para empresas que ainda não sabem por onde começar. Primeiro entendemos o momento atual da operação e, a partir disso, indicamos caminhos realistas de melhoria considerando a estrutura, a equipe, os processos e os objetivos do negócio.",
       },
       {
         q: "Quanto tempo dura a Imersão?",
@@ -178,12 +174,8 @@ export const services = [
         a: "Sua empresa recebe um diagnóstico da operação, mapeamento dos principais processos, identificação de oportunidades de melhoria, plano de atuação com prioridades, treinamento prático da equipe e materiais de apoio para continuar evoluindo depois da Imersão.",
       },
        {
-        q: "A Imersão inclui treinamento da equipe?",
-        a: "Sim. Um dos pontos centrais da Imersão é capacitar a equipe com aplicações práticas voltadas para a rotina da empresa. O objetivo é que o time entenda como trabalhar com mais organização, clareza e eficiência no dia a dia.",
-      },
-       {
         q: "Preciso contratar novas ferramentas depois da Imersão?",
-        a: "Nem sempre. Antes de recomendar qualquer ferramenta, analisamos o que sua empresa já utiliza e quais melhorias podem ser feitas com a estrutura atual. Quando uma nova ferramenta fizer sentido, ela será indicada com base em necessidade real, não por moda ou excesso de tecnologia.",
+        a: "Nem sempre. Antes de recomendar qualquer ferramenta, analisamos o que sua empresa já utiliza e quais melhorias podem ser feitas com a estrutura atual. Se identificarmos a necessidade de uma nova solução, ela será indicada com base no impacto real que pode gerar para a operação.",
       },
        {
         q: "Depois da Imersão, a Potencializa continua acompanhando a empresa?",
@@ -193,7 +185,7 @@ export const services = [
   },
   {
     title: "Seu comercial ativo 24 horas por dia",
-    slug: "atendimento-inteligente",
+    slug: "automacao-comercial",
     badge: "Comercial Inteligente 24 horas",
     subtitle: "A Automação Comercial da Potencializa estrutura agentes personalizados para atender leads, qualificar oportunidades, fazer follow-ups, organizar informações no CRM e manter sua empresa disponível em todos os canais, mesmo fora do horário comercial.",
     description:
@@ -227,7 +219,7 @@ export const services = [
       title: "Seus clientes não esperam ",
       titleHighlight: "sua equipe estar disponível.",
       intro:
-        "Enquanto sua equipe está ocupada, em reunião ou fora do horário comercial, novas oportunidades continuam chegando. O problema é que, se sua empresa não estiver preparada para atender seus clientes quando eles te procuram e querem comprar de você muitos leads esfriam, follow-ups são esquecidos e vendas potenciais se perdem.",
+        "Enquanto sua equipe está ocupada, em reunião ou fora do horário comercial, novas oportunidades continuam chegando. O problema é que, se sua empresa não estiver preparada para atender os clientes no momento em que eles procuram e querem comprar, muitos leads esfriam, follow-ups são esquecidos e vendas potenciais se perdem.",
       cards: [
         { tag: "Leads esfriam rápido", title: "Seu cliente não te espera", desc: "Quando um cliente demonstra interesse, cada minuto conta. 78% dos clientes compram de quem responde primeiro. Se você demora mais de 5 minutos, sua chance de conversão cai drasticamente." },
         { tag: "Horário limitado", title: "Oportunidades chegam a todo momento", desc: "Mais de 60% das compras, agendamentos e contatos acontecem fora do horário comercial. Quando sua empresa não responde nesse momento, seu concorrente já sai na frente." },
@@ -244,7 +236,7 @@ export const services = [
 
     // ── Lado direito da seção "O que faz" (A Orquestração) ──
     orquestracao: {
-      badge: "Para a sua empresa",
+      badge: "ideal para você",
       canais: [
         { title: "WhatsApp", desc: "Respostas em segundos 24 horas por dia" },
         { title: "Agente Qualificador", desc: "Seus vendedores recebem apenas quem quer comprar de você" },
@@ -401,7 +393,7 @@ export const services = [
 
   {
     title: "Soluções exclusivas para potencializar sua operação",
-    slug: "suporte-turbo",
+    slug: "hiperautomacao-personalizada",
     badge: "Hiperautomação Empresarial",
     subtitle: "A Hiperautomação Empresarial automatiza processos repetitivos em áreas específicas ou em diferentes setores da sua empresa, conecta os sistemas que você já utiliza e centraliza informações para que a gestão acompanhe a operação com mais clareza, produtividade e controle.",
     description:
@@ -441,7 +433,7 @@ export const services = [
         { tag: "Operação personalizada", title: "Soluções genéricas não resolvem", desc: "Cada negócio tem processos, exceções e formas próprias de funcionar. Quando a ferramenta não acompanha essa realidade, a equipe cria atalhos, planilhas e controles paralelos para compensar." },
         { tag: "Fluxos soltos", title: "Automações pontuais não criam uma operação integrada", desc: "Automatizar uma etapa ajuda, mas nem sempre resolve o fluxo inteiro. Quando cada automação funciona isoladamente, a empresa ganha velocidade em alguns pontos, mas continua perdendo eficiência entre as etapas." },
         { tag: "Áreas desconectadas", title: "Cada área trabalha bem, mas a operação não flui como um todo", desc: "Comercial, financeiro, atendimento, operações e gestão até fazem sua parte, mas a informação nem sempre passa de uma área para outra com clareza, velocidade e contexto." },
-        { tag: "Sistemas que não conversam", title: "As ferramentas existem, mas não trabalham juntas", desc: "Sua empresa já pode ter boas ferramentas, mas se elas não trocam informações no momento certo, a equipe vira a ponte entre os sistemas. Isso gera atrasos, retrabalho e inconsistências" },
+        { tag: "Sistemas que não conversam", title: "As ferramentas existem, mas não trabalham juntas", desc: "Sua empresa já pode ter boas ferramentas, mas se elas não trocam informações no momento certo, a equipe vira a ponte entre os sistemas. Isso gera atrasos, retrabalho e inconsistências." },
         { tag: "Dados fragmentados", title: "Informação espalhada em diferentes plataformas ", desc: "Informações importantes ficam divididas entre sistemas, planilhas, relatórios e pessoas. Isso dificulta enxergar a operação completa e acompanhar indicadores com clareza." },
         { tag: "Gestão sem visão real", title: "A liderança decide sem enxergar a operação inteira", desc: "Quando os dados chegam atrasados, incompletos ou espalhados, decisões importantes acabam sendo tomadas por percepção, urgência ou tentativa e erro." },
       ],
@@ -481,7 +473,7 @@ export const services = [
 
     // ── Lado direito da seção "O que faz" (A Orquestração) ──
     orquestracao: {
-      badge: "Pilares da solução",
+      badge: "Ideal para você",
       canais: [
         { title: "Personalização Total", desc: "Construída sob medida para a sua operação" },
         { title: "Integração Inteligente", desc: "Áreas e sistemas conectados em um só fluxo" },
