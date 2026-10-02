@@ -1,4 +1,4 @@
-import type { FormData, AnalysisResult } from "@/types";
+import type { FormData, AnalysisResult } from "../../types/saas.js";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("pt-BR", {

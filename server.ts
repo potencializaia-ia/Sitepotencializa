@@ -1,8 +1,8 @@
 import "./loadEnv";
 import express from "express";
 import cors from "cors";
-import { analyzeProcesses } from "./src/api/analyze";
-import type { FormData } from "./src/types/saas";
+import { analyzeProcesses } from "./src/api/analyze.js";
+import type { FormData } from "./src/types/saas.js";
 
 const app = express();
 const PORT = process.env.API_PORT || 3001;

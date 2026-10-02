@@ -1,7 +1,7 @@
 import {
   Document, Page, Text, View, StyleSheet,
 } from "@react-pdf/renderer";
-import type { AnalysisResult, FormData, Automacao } from "@/types";
+import type { AnalysisResult, FormData, Automacao } from "@/types/saas";
 
 // Sem registro de fonte customizada — usa Helvetica embutida no renderer
 // (evita qualquer falha de rede ou formato inválido no serverless)

@@ -1,5 +1,5 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import type { FormData, AnalysisResult, AutomacaoCatalogo } from "@/types";
+import type { FormData, AnalysisResult, AutomacaoCatalogo } from "../../types/saas.js";
 
 // Lazy initialization — só cria o client quando chamado (não no build)
 let _client: SupabaseClient | null = null;

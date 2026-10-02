@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { saveLeadToSupabase, fetchCatalogAutomations } from "@/lib/saas/supabase";
-import { notifyNewLead } from "@/lib/saas/email";
-import type { FormData, AnalysisResult, AutomacaoCatalogo } from "@/types/saas";
+import { saveLeadToSupabase, fetchCatalogAutomations } from "../lib/saas/supabase.js";
+import { notifyNewLead } from "../lib/saas/email.js";
+import type { FormData, AnalysisResult, AutomacaoCatalogo } from "../types/saas.js";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -275,7 +275,7 @@ export async function analyzeProcesses(data: FormData): Promise<AnalysisResult |
     }
 
     if (parsed.erro === "dados_insuficientes") {
-      return { erro: "dados_insuficientes", mensagem: parsed.mensagem };
+      return { erro: "dados_insuficientes", mensagem: parsed.mensagem ?? "Dados insuficientes para a análise" };
     }
 
     const result = parsed as AnalysisResult;
