@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# Site da Potencializa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site institucional da Potencializa, focado na criação de sites para empresas (Site Profissional e Landing Page), com portfólio, planos e acompanhamento mensal.
 
-Currently, two official plugins are available:
+Feito com **React 19 + TypeScript + Vite + Tailwind CSS + Framer Motion**. Publicado na Vercel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Rodar localmente
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev:vite      # só o site, em http://localhost:5173
+npm run dev           # site + servidor da API (usado pelas páginas de Diagnóstico/SaaS)
+npm run build         # gera a versão de produção em dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+As variáveis de ambiente estão listadas em `.env.example`. A página inicial não depende delas; as páginas de Diagnóstico/SaaS usam o Supabase e precisam de `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Onde editar
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| O quê | Arquivo |
+| --- | --- |
+| Sites do portfólio (clientes e modelos) | `src/data/portfolio.ts` + prints em `public/portfolio/` |
+| Planos, preços e acompanhamento | `src/sections/Pricing.tsx` |
+| Perguntas frequentes | `src/sections/FAQ.tsx` |
+| Número do WhatsApp | `src/lib/contact.ts` |
+| Ordem das seções da página inicial | `src/App.tsx` |
+| Cores, fontes e utilitários visuais | `src/index.css` e `tailwind.config.js` |
+| Páginas de automação (`/servicos/...`) | `src/data/services.ts` e `src/pages/ServicePage.tsx` |
+
+### Adicionar um site ao portfólio
+
+1. Tire um print do topo do site em 1440 × 900 px e salve em `public/portfolio/nome.jpg`.
+2. Em `src/data/portfolio.ts`, copie um item existente e preencha título, segmento, `kind` (`"Cliente"` ou `"Modelo"`), `type` (`"Site Profissional"` ou `"Landing Page"`), descrição, imagem, link e até 3 tags.
+
+Clientes aparecem de 2 em 2 e modelos de 3 em 3 no computador; no celular, um por vez, arrastando para o lado.
+
+## Seções guardadas (fora da página por enquanto)
+
+- `src/sections/FinalCTA.tsx`: chamada final "Vamos começar?"
+- `src/sections/AutomationTeaser.tsx`: "Além de sites", com links para as páginas de automação
+
+Para voltar a exibir, importe e adicione a seção em `src/App.tsx`.

@@ -1,121 +1,111 @@
-import { motion, type Variants } from 'framer-motion';
-import { Search, Layout, Code2, LineChart, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { SectionBadge } from '@/components/SectionBadge';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
+import { MessagesSquare, PenTool, Code2, Rocket, ShieldCheck } from "lucide-react";
+import { SectionBadge } from "@/components/SectionBadge";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { useScrollHighlight } from "@/hooks/use-scroll-highlight";
 
 const steps = [
   {
-    number: '01',
-    label: 'Diagnóstico',
-    title: 'Entendemos seu negócio a fundo',
-    description: 'Analisamos seus processos, canais, funil e objetivos para identificar oportunidades reais de automação.',
-    icon: Search,
+    number: "01",
+    label: "Briefing",
+    title: "Entendemos seu negócio",
+    description: "Conversamos sobre seus objetivos, público, concorrentes e referências para definir a estrutura ideal do site.",
+    icon: MessagesSquare,
   },
   {
-    number: '02',
-    label: 'Imersão',
-    title: 'Estratégia e Treinamento',
-    description: 'Desenhamos o ecossistema ideal para o seu negócio e capacitamos sua equipe para dominar com eficiência as melhores ferramentas de IA.',
-    icon: Layout,
+    number: "02",
+    label: "Design",
+    title: "Criamos o visual",
+    description: "Criamos o visual com a identidade da sua marca e mostramos uma prévia navegável do site para você aprovar e pedir ajustes.",
+    icon: PenTool,
   },
   {
-    number: '03',
-    label: 'Implementação',
-    title: 'Construímos e integramos tudo',
-    description: 'Desenvolvemos e conectamos a IA aos seus sistemas, garantindo segurança e performance máxima.',
+    number: "03",
+    label: "Desenvolvimento",
+    title: "Finalizamos cada detalhe",
+    description: "Com o visual aprovado, deixamos o site rápido, perfeito no celular, seguro e com a estrutura pronta para o Google.",
     icon: Code2,
   },
   {
-    number: '04',
-    label: 'Otimização',
-    title: 'Aprimoramos com dados reais',
-    description: 'Ajustamos a solução com base em métricas e comportamento real dos usuários para escala contínua.',
-    icon: LineChart,
+    number: "04",
+    label: "Publicação",
+    title: "Colocamos no ar",
+    description: "Configuramos seu domínio, testamos tudo e publicamos. O primeiro mês de acompanhamento já está incluso.",
+    icon: Rocket,
+  },
+  {
+    number: "05",
+    label: "Acompanhamento",
+    tag: "Contratado à parte",
+    title: "Cuidamos do seu site",
+    description: "Depois do primeiro mês, seguimos com você no acompanhamento mensal: segurança, ajustes, atualizações e correções, sem dor de cabeça.",
+    icon: ShieldCheck,
   },
 ];
 
+function StepCard({ step }: { step: (typeof steps)[number] }) {
+  const [ref, active] = useScrollHighlight<HTMLDivElement>();
+  return (
+                  <div ref={ref}
+      className={`group relative flex gap-6 rounded-[24px] p-6 sm:p-7 border bg-white hover:border-[#ff851b]/30 hover:shadow-[0_24px_50px_-24px_rgba(45,45,74,0.3)] transition-all duration-500 ${
+        active ? "border-[#ff851b]/30 shadow-[0_24px_50px_-24px_rgba(45,45,74,0.3)]" : "border-[#2D2D4A]/[0.07]"
+      }`}>
+                    <div className={`relative z-10 shrink-0 w-14 h-14 rounded-2xl group-hover:bg-[#ff851b] ${active ? "bg-[#ff851b]" : "bg-[#2D2D4A]"} flex items-center justify-center transition-colors duration-500 shadow-lg shadow-[#2D2D4A]/10`}>
+                      <step.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-1.5">
+                        <span className="text-xs font-bold uppercase tracking-widest text-[#ff851b]">{step.label}</span>
+                        <span className="text-xs font-bold text-[#2D2D4A]/25">{step.number}</span>
+                        {"tag" in step && (
+                          <span className="sm:ml-auto whitespace-nowrap rounded-full bg-[#7fdbff]/20 border border-[#7fdbff]/40 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#1f6f8f]">
+                            {step.tag}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-xl font-bold text-[#2D2D4A] mb-2">{step.title}</h3>
+                      <p className="text-[#2D2D4A]/60 leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+  );
+}
+
 export function Methodology() {
   return (
-    <section className="py-24 bg-[#F5F5F7] relative overflow-hidden">
-      {/* Linha de Conexão (Workflow Path) - Visível apenas em Desktop */}
-      <div className="absolute top-[60%] left-0 w-full h-[2px] border-t-2 border-dashed border-[#71d7ff]/80 hidden xl:block z-0" />
-
+    <section id="processo" className="py-16 md:py-20 bg-white relative overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center mb-20">
-          <SectionBadge text="Workflow de Sucesso" className="mb-6" />
-          <AnimatedSection>
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#2D2D4A] mb-6 tracking-tight">
-              Modelo de <span className="text-[#ff851b]">operação.</span>
-            </h2>
-          </AnimatedSection>
-          <AnimatedSection delay={0.1}>
-            <p className="text-lg text-[#2D2D4A]/60 max-w-2xl mx-auto leading-relaxed">
-              Da análise inicial à evolução contínua, estruturamos cada etapa para transformar sua tecnologia em faturamento.
-            </p>
-          </AnimatedSection>
-        </div>
-
-        {/* Steps Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-          {steps.map((step, idx) => (
-            <StaggerItem key={step.number}>
-              <motion.div
-                whileHover={{ y: -10 }}
-                className="relative h-full bg-white rounded-[32px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden"
-              >
-                {/* Connector Dot (Desktop) */}
-                <div className="absolute top-1/2 right-4 -translate-y-1/2 w-8 h-8 hidden xl:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   {idx < steps.length - 1 && <ArrowRight className="text-[#ff851b] w-5 h-5" />}
-                </div>
-
-                {/* Step Header */}
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-14 h-14 bg-[#2D2D4A] group-hover:bg-[#ff851b] rounded-2xl flex items-center justify-center transition-colors duration-500 shadow-lg shadow-blue-900/10 group-hover:shadow-orange-500/30">
-                    <step.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <span className="text-4xl font-black text-gray-100 group-hover:text-[#ff851b]/10 transition-colors duration-500">
-                    {step.number}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="space-y-4">
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#ff851b]">
-                    {step.label}
-                  </p>
-                  <h3 className="text-xl font-bold text-[#2D2D4A] leading-tight group-hover:text-[#ff851b] transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-[#2D2D4A]/60 text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Hover Glow */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#ff851b] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        {/* CTA */}
-        <AnimatedSection delay={0.4} className="text-center mt-20">
-          <div className="inline-flex flex-col items-center">
-            <Button
-              size="lg"
-              className="bg-[#2D2D4A] hover:bg-[#1a1a2e] text-white px-10 py-7 text-lg font-bold rounded-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/10"
-            >
-              Iniciar meu projeto
-            </Button>
-            <p className="mt-6 text-sm text-[#2D2D4A]/40 flex items-center gap-2 font-medium">
-              <span className="w-2 h-2 rounded-full bg-[#71d7ff] animate-pulse" />
-              Processo de implementação ágil (2-4 semanas)
-            </p>
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-start">
+          <div className="lg:sticky lg:top-32 text-center lg:text-left">
+            <SectionBadge text="Como funciona" className="mb-6" />
+            <AnimatedSection>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2D2D4A] mb-5">
+                Do briefing ao <br />
+                site <span className="text-[#ff851b]">no ar.</span>
+              </h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <p className="text-lg text-[#2D2D4A]/60 leading-relaxed mb-8">
+                Um processo simples e transparente, em que você acompanha e aprova cada etapa. Sem surpresas, sem complicação técnica.
+              </p>
+              <div className="inline-flex items-center gap-3 rounded-2xl bg-[#F5F5F7] px-5 py-4">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#7fdbff] animate-pulse" />
+                <span className="text-sm font-semibold text-[#2D2D4A]/70">
+                  Seu site no ar em até 2 semanas
+                </span>
+              </div>
+            </AnimatedSection>
           </div>
-        </AnimatedSection>
+
+          <StaggerContainer className="relative min-w-0">
+            <div className="absolute left-7 top-8 bottom-8 w-px bg-gradient-to-b from-[#ff851b] via-[#7fdbff] to-transparent hidden sm:block" />
+            <div className="space-y-5">
+              {steps.map((step) => (
+                <StaggerItem key={step.number}>
+                  <StepCard step={step} />
+                </StaggerItem>
+              ))}
+            </div>
+          </StaggerContainer>
+        </div>
       </div>
     </section>
   );

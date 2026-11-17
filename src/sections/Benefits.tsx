@@ -1,170 +1,141 @@
-import { motion } from 'framer-motion';
-import { 
-  TrendingUp, Clock, Settings, 
-  UserCheck, ShieldCheck, BarChart3, 
-  Zap, ArrowRight 
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { SectionBadge } from '@/components/SectionBadge';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/AnimatedSection';
+import type { ReactNode } from "react";
+import { Lock, ShieldCheck, Eye, Wrench, Smartphone, Monitor, Search, CalendarCheck } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+import { SectionBadge } from "@/components/SectionBadge";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 
-const benefits = [
-  {
-    title: 'Economia Operacional',
-    description: 'Reduza custos drásticos ao automatizar processos e tarefas repetitivas.',
-    icon: TrendingUp,
-    side: 'left'
-  },
-  {
-    title: 'Conversão em Escala',
-    description: 'Aumente em até 82% suas chances de venda com respostas qualificadas no exato momento do interesse.',
-    icon: Zap,
-    side: 'left'
-  },
-  {
-    title: 'Automação sob Medida',
-    description: 'Fluxos inteligentes desenhados para a realidade específica do seu modelo de negócio.',
-    icon: Settings,
-    side: 'left'
-  },
-  {
-    title: 'Personalização Humana',
-    description: 'Nossa IA mantém o tom de voz da sua marca, garantindo empatia e naturalidade em cada conversa.',
-    icon: UserCheck,
-    side: 'right'
-  },
-  {
-    title: 'Disponibilidade Total',
-    description: 'Sua empresa operando 24/7, sem pausas, feriados ou perda de oportunidades por demora.',
-    icon: Clock,
-    side: 'right'
-  },
-  {
-    title: 'Inteligência de Dados',
-    description: 'Transforme interações em relatórios estratégicos e insights para decisões em tempo real.',
-    icon: BarChart3,
-    side: 'right'
-  },
-];
+function Tile({ title, text, children, className = "" }: { title: string; text: string; children: ReactNode; className?: string }) {
+  return (
+    <div
+      className={`group relative h-full flex flex-col rounded-[28px] border border-white/10 bg-white/[0.04] overflow-hidden hover:border-[#ff851b]/30 hover:bg-white/[0.06] transition-colors duration-500 ${className}`}
+    >
+      <div className="relative flex-1 flex items-center justify-center p-6 sm:p-8 min-h-[170px]">{children}</div>
+      <div className="relative px-6 sm:px-8 pb-7">
+        <h3 className="text-xl font-bold text-white mb-1.5">{title}</h3>
+        <p className="text-sm text-white/55 leading-relaxed">{text}</p>
+      </div>
+    </div>
+  );
+}
 
 export function Benefits() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Detalhe de fundo - Glow sutil */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-500/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="py-16 md:py-20 bg-[#0a0a0a] bg-section-gradient relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-dark mask-fade-y pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <SectionBadge text="Por que a Potencializa?" className="mb-6" />
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <SectionBadge text="Incluso em todo projeto" className="mb-6 bg-white/5 border-white/10 text-white/80" />
           <AnimatedSection>
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#2D2D4A] mb-6">
-              Tecnologia para quem <span className="text-[#ff851b]">decide crescer.</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">
+              Tudo o que seu site precisa, <span className="text-[#ff851b]">já incluso.</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <p className="text-lg text-[#2D2D4A]/60 max-w-2xl mx-auto">
-              Mais do que sistemas, entregamos a estrutura necessária para sua empresa escalar sem que você precise estar em todos os lugares ao mesmo tempo.
+            <p className="text-lg text-white/55 leading-relaxed">
+              Os detalhes técnicos que fazem um site funcionar de verdade, sem custo extra e sem você precisar entender de tecnologia.
             </p>
           </AnimatedSection>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-          
-          {/* Lado Esquerdo */}
-          <StaggerContainer className="space-y-12">
-            {benefits.filter(b => b.side === 'left').map((benefit) => (
-              <StaggerItem key={benefit.title}>
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  className="group flex flex-col items-center gap-6 text-center"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#F9F9FB] rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-orange-500/10 transition-all duration-300">
-                    <benefit.icon className="w-6 h-6 text-[#ff851b]" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-[#2D2D4A] mb-2 group-hover:text-[#ff851b] transition-colors">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-[#2D2D4A]/65 leading-relaxed text-sm">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* CENTRO: O "CORE" TECNOLÓGICO */}
-          <AnimatedSection delay={0.2} className="flex justify-center relative">
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96">
-              {/* Círculos de pulso decorativos */}
-              <div className="absolute inset-0 border border-orange-500/10 rounded-full animate-[ping_3s_linear_infinite]" />
-              <div className="absolute inset-8 border border-orange-500/20 rounded-full animate-[ping_4s_linear_infinite]" />
-              
-              {/* Frame Principal (Efeito Glass) */}
-              <motion.div
-                animate={{ y: [0, -20, 0], rotate: [0, 2, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 bg-gradient-to-br from-[#2D2D4A] to-[#1E2235] rounded-[60px] shadow-2xl border border-white/20 flex items-center justify-center overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,133,27,0.2),transparent)]" />
-
-                {/* Visual Central: Placeholder para algo que remeta a IA/Dados */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-20 h-20 bg-[#ff851b] rounded-3xl flex items-center justify-center shadow-[0_15px_35px_rgba(255,133,27,0.4)] mb-6">
-                    <ShieldCheck className="w-10 h-10 text-white" />
-                  </div>
-                  <span className="text-white font-bold tracking-tighter text-xl">SISTEMA ATIVO</span>
-                  <div className="mt-2 flex gap-1">
-                    {[1,2,3].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#71d7ff]/80 animate-pulse" />)}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </AnimatedSection>
-
-          {/* Lado Direito */}
-          <StaggerContainer className="space-y-12">
-            {benefits.filter(b => b.side === 'right').map((benefit) => (
-              <StaggerItem key={benefit.title}>
-                <motion.div
-                  whileHover={{ x: -10 }}
-                  className="group flex flex-col items-center gap-6 text-center"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-[#F9F9FB] rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-[#ff851b]/30 group-hover:bg-white group-hover:shadow-lg group-hover:shadow-orange-500/10 transition-all duration-300">
-                    <benefit.icon className="w-6 h-6 text-[#ff851b]" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-[#2D2D4A] mb-2 group-hover:text-[#ff851b] transition-colors">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-[#2D2D4A]/65 leading-relaxed text-sm">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-
-        {/* CTA FINAL */}
-        <AnimatedSection delay={0.4} className="text-center mt-24">
-          <div className="inline-flex flex-col items-center">
-            <Button
-              size="lg"
-              className="bg-[#2D2D4A] hover:bg-[#1a1a2e] text-white px-10 py-7 text-lg font-bold rounded-2xl transition-all hover:scale-105 shadow-xl shadow-blue-900/10"
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-6 gap-5">
+          {/* SEGURANÇA, destaque */}
+          <StaggerItem className="md:col-span-4">
+            <Tile
+              title="Seguro desde o primeiro dia"
+              text="Conexão protegida, o famoso cadeado no navegador, e boas práticas para proteger seu site e os dados dos seus clientes."
             >
-              Começar minha transformação
-            </Button>
-            <p className="mt-4 text-sm text-[#2D2D4A]/40 font-medium flex items-center gap-2">
-              <Zap className="w-3 h-3 text-[#71d7ff]" /> 
-              Diagnóstico inicial gratuito disponível!
-            </p>
-          </div>
-        </AnimatedSection>
+              <div className="w-full max-w-md space-y-4">
+                <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)]">
+                  <span className="w-8 h-8 rounded-lg bg-[#28c840]/15 flex items-center justify-center">
+                    <Lock className="w-4 h-4 text-[#1a9e35]" />
+                  </span>
+                  <span className="text-sm font-semibold text-[#2D2D4A]">
+                    <span className="text-[#1a9e35]">https://</span>suaempresa.com.br
+                  </span>
+                  <span className="ml-auto text-[10px] font-bold uppercase tracking-wider text-[#1a9e35] bg-[#28c840]/10 rounded-full px-2 py-1">
+                    Seguro
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { icon: ShieldCheck, label: "SSL ativo" },
+                    { icon: Eye, label: "Monitorado" },
+                    { icon: Wrench, label: "Correções rápidas" },
+                  ].map((c) => (
+                    <div key={c.label} className="flex flex-col items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] py-3">
+                      <c.icon className="w-4 h-4 text-[#7fdbff]" />
+                      <span className="text-[11px] font-semibold text-white/70 text-center">{c.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Tile>
+          </StaggerItem>
+
+          {/* WHATSAPP */}
+          <StaggerItem className="md:col-span-2">
+            <Tile title="Direto no WhatsApp" text="Um toque e o visitante já está conversando com você, com a mensagem pronta.">
+              <div className="w-full max-w-[240px] space-y-2">
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-white/50">
+                  <SiWhatsapp className="w-3.5 h-3.5 text-[#25D366]" /> Nova mensagem
+                </div>
+                <div className="rounded-2xl rounded-tl-md bg-[#25D366] px-4 py-3 text-sm font-medium text-white shadow-lg shadow-[#25D366]/20">
+                  Olá! Vim pelo site e quero um orçamento 😊
+                </div>
+              </div>
+            </Tile>
+          </StaggerItem>
+
+          {/* RESPONSIVO */}
+          <StaggerItem className="md:col-span-2">
+            <Tile title="Perfeito em qualquer tela" text="No celular, no tablet ou no computador, seu site fica bonito e fácil de usar.">
+              <div className="flex items-end gap-3">
+                <div className="w-28 h-20 rounded-lg border-2 border-white/25 bg-white/[0.06] p-1.5 flex flex-col gap-1">
+                  <span className="h-1.5 w-1/2 rounded bg-[#ff851b]" />
+                  <span className="flex-1 rounded bg-white/10" />
+                </div>
+                <div className="w-11 h-20 rounded-lg border-2 border-white/25 bg-white/[0.06] p-1 flex flex-col gap-1">
+                  <span className="h-1.5 w-2/3 rounded bg-[#ff851b]" />
+                  <span className="flex-1 rounded bg-white/10" />
+                </div>
+                <div className="flex flex-col gap-2 ml-1 text-white/40">
+                  <Monitor className="w-4 h-4" />
+                  <Smartphone className="w-4 h-4" />
+                </div>
+              </div>
+            </Tile>
+          </StaggerItem>
+
+          {/* GOOGLE */}
+          <StaggerItem className="md:col-span-2">
+            <Tile title="Pronto para o Google" text="Estrutura otimizada e carregamento rápido para o seu negócio ser encontrado.">
+              <div className="w-full max-w-[260px] rounded-2xl bg-white p-4 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)]">
+                <div className="flex items-center gap-2 rounded-full border border-[#2D2D4A]/10 px-3 py-1.5 mb-3">
+                  <Search className="w-3.5 h-3.5 text-[#2D2D4A]/40" />
+                  <span className="text-[11px] text-[#2D2D4A]/60">sua empresa perto de mim</span>
+                </div>
+                <p className="text-[10px] text-[#2D2D4A]/45">suaempresa.com.br</p>
+                <p className="text-sm font-semibold text-[#1a56db] leading-tight">Sua Empresa | Site oficial</p>
+                <span className="mt-1.5 block h-1.5 w-[85%] rounded bg-[#2D2D4A]/10" />
+              </div>
+            </Tile>
+          </StaggerItem>
+
+          {/* ACOMPANHAMENTO */}
+          <StaggerItem className="md:col-span-2">
+            <Tile title="1º mês de acompanhamento" text="Depois da entrega, seguimos por perto um mês inteiro, sem custo, resolvendo o que precisar.">
+              <div className="relative">
+                <div className="absolute inset-0 bg-[#ff851b]/30 blur-2xl rounded-full" />
+                <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-[#ff851b] to-[#e07316] flex flex-col items-center justify-center shadow-[0_20px_40px_rgba(255,133,27,0.35)]">
+                  <CalendarCheck className="w-6 h-6 text-white mb-1" />
+                  <span className="font-display text-2xl font-extrabold text-white leading-none">30</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/85">dias</span>
+                </div>
+              </div>
+            </Tile>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </section>
   );

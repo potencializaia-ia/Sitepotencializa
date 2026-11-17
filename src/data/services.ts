@@ -270,7 +270,7 @@ export const services = [
     whatItDoesIntro:
       "Para empresas que já têm demanda, mas sentem que ainda perdem oportunidades por falta de disponibilidade, personalização, acompanhamento ou capacidade comercial para atender cada cliente no momento certo.",
     whatItDoesHighlight:
-      "Nossa IA não substitui sua equipe — potencializa seu alcance e garante que nenhuma oportunidade seja perdida.",
+      "Nossa IA não substitui sua equipe, ela potencializa seu alcance e garante que nenhuma oportunidade seja perdida.",
     whatItDoesSteps: [
       {
         n: "1",
@@ -447,7 +447,7 @@ export const services = [
     whatItDoesIntro:
       "Para empresas que já têm processos, sistemas e rotinas em funcionamento, mas precisam de soluções personalizadas para conectar a operação, automatizar gargalos específicos e tomar decisões com mais clareza.",
     whatItDoesHighlight:
-      "Nossa solução não substitui a sua equipe — automatiza o que é repetitivo para que seu time tenha mais tempo para o que realmente exige análise, decisão e relacionamento.",
+      "Nossa solução não substitui a sua equipe, ela automatiza o que é repetitivo para que seu time tenha mais tempo para o que realmente exige análise, decisão e relacionamento.",
     whatItDoesSteps: [
       {
         n: "1",

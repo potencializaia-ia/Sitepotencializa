@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,6 +86,10 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
+  h1, h2, h3, .font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
 }
 
 @layer utilities {
@@ -119,6 +123,39 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
   
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(45,45,74,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45,45,74,0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .mask-fade-y {
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(90deg, #ff851b 0%, #ffb067 45%, #7fdbff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .shadow-card-hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
@@ -146,4 +183,18 @@
 ::selection {
   background-color: rgba(127, 219, 255, 0.25);
   color: inherit;
+}
+
+/* Acessibilidade: quem pediu menos movimento no aparelho não vê animações decorativas */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
